@@ -8,7 +8,7 @@
     brand: { mark: "Malu", tagline: ["Product", "Designer"], href: "./" },
     social: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/tsmalu/", icon: "linkedin" },
-      { label: "GitHub", href: "https://github.com/ts-malu", icon: "github" },
+      { label: "GitHub", href: "https://github.com/tsmalu", icon: "github" },
       { label: "Behance", href: "https://www.behance.net/ts_malu", icon: "behance" },
     ],
     nav: [
