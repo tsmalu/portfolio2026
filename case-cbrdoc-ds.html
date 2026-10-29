@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Design System e redesign de plataforma SaaS · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+  /* Espaço reservado para imagens que ainda vão entrar */
+  .slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 220px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+  .sub-h { margin: 12px 0 0; font-family: var(--font-body); font-weight: 700; font-size: clamp(1.0625rem, 1.3vw, 1.25rem); color: var(--fg); }
+  .list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+  .list strong { color: var(--fg); }
+
+  /* Etapas do redesign (sequência real do projeto) */
+  .phases { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px); counter-reset: phase; }
+  .phase { counter-increment: phase; background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius); padding: clamp(18px, 2vw, 24px); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .phase::before { content: "Etapa " counter(phase); font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .phase__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 2vw, 1.875rem); line-height: 1; color: var(--fg); margin: 0; }
+  .phase__text { font-size: 0.9375rem; line-height: 1.6; margin: 0; }
+  @media (max-width: 960px) { .phases { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .phases { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Fluxo de kits: grade de telas com nome, imagem e problemas numerados */
+  .kits-map { margin-top: clamp(24px, 3vw, 40px); }
+  .kits-map__inner { max-width: 1440px; margin-inline: auto; padding-inline: var(--gutter); display: flex; flex-direction: column; gap: clamp(32px, 4vw, 56px); }
+  .kits-map__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto; column-gap: clamp(24px, 3vw, 48px); row-gap: 12px; }
+  .kits-map__step { margin: 0; min-width: 0; display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; }
+  .kits-map__row > :nth-child(1) { grid-column: 1; }
+  .kits-map__row > :nth-child(2) { grid-column: 2; }
+  .kits-map__name { font-weight: 600; font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); color: var(--fg); align-self: end; }
+  .kits-map__screen { position: relative; aspect-ratio: 3 / 2; border: 1px solid #DDDDDA; border-radius: 10px; background: var(--surface); }
+  .kits-map__screen--img { aspect-ratio: auto; overflow: hidden; align-self: start; }
+  .kits-map__screen--img img { display: block; width: 100%; height: auto; }
+  .kits-map__hint { position: absolute; left: 12px; bottom: 10px; font-size: 0.6875rem; color: var(--muted); }
+  .kits-map__arrow { grid-row: 2; display: grid; place-items: center; color: var(--muted); }
+  .kits-map__arrow svg { width: 70%; max-width: 48px; height: 12px; }
+  .kits-map__mark {
+    position: absolute; transform: translate(-50%, -50%);
+    width: clamp(28px, 2.6vw, 40px); aspect-ratio: 1; border-radius: 50%;
+    background: #111111; border: 0; color: #FFFFFF;
+    display: grid; place-items: center; font-weight: 600; font-size: clamp(0.875rem, 1.2vw, 1.125rem);
+  }
+  .kits-map__notes { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .kits-map__notes li { display: flex; gap: 6px; align-items: baseline; font-size: 0.875rem; line-height: 1.5; color: var(--text); }
+  .kits-map__num { flex: none; font: inherit; color: inherit; }
+  .kits-map__aside { margin: 4px 0 0; font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
+  @media (max-width: 760px) {
+    .kits-map__row { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 32px; }
+    .kits-map__step { grid-row: auto; grid-column: auto !important; display: flex; flex-direction: column; gap: 12px; }
+    .kits-map__arrow { display: none; }
+    .kits-map__name { align-self: auto; }
+  }
+
+  /* Galeria dos fluxos redesenhados */
+  .flow-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+  .flow-gallery figure { margin: 0; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .flow-gallery figcaption { font-size: 0.875rem; color: var(--muted); }
+  @media (max-width: 760px) { .flow-gallery { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="./">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page">Design System e redesign de plataforma SaaS</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1">Design System e redesign de plataforma SaaS</h1>
+      <ul class="tags">
+        <li class="tag">Design System</li>
+        <li class="tag">UI e UX</li>
+        <li class="tag">Inteligência artificial</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="col block stack" aria-labelledby="projeto" style="padding-block-start: clamp(24px, 3vw, 40px)">
+    <h2 class="h2" id="projeto">Projeto</h2>
+    <p>A CBRdoc é uma plataforma jurídica para solicitar certidões, pesquisas de processos e documentos.</p>
+    <p>Fui responsável pelo style guide, pelo Design System e pelo redesign da plataforma, feitos ao longo de meses junto com as entregas do produto. Com o DS estruturado, passei a usar IA no processo: o Claude gerava alternativas de tela e protótipos a partir do sistema, e eu comparava, refinava e especificava as soluções para o time.</p>
+    <!-- Link para a apresentação no Behance: troque o href pelo link do projeto no Behance quando ele for publicado -->
+    <a class="linkcard" href="https://claude.ai/artifact/RZUEQv2UjfeYvFBpkqeNDw" target="_blank" rel="noopener noreferrer">
+      <img src="assets/projetos/cbrdoc-ds-capa-v3.jpg" alt="" width="1400" height="662">
+      <div>
+        <p class="linkcard__title">Ver no Behance ↗</p>
+        <p class="linkcard__text">Apresentação visual do Design System: cores, tokens, tipografia, componentes e ícones.</p>
+      </div>
+    </a>
+  </section>
+
+  <section class="block" aria-labelledby="partida">
+    <div class="col stack">
+      <h2 class="h2" id="partida">Ponto de partida</h2>
+      <p>Quando comecei a trabalhar com a CBRdoc, a plataforma estava em crescimento, com novas funcionalidades chegando. A interface precisava acompanhar o ritmo e ter uma base visual que permitisse evoluir o produto com consistência.</p>
+      <p>Como o produto não podia parar, o redesign precisava acontecer junto com as entregas. Para definir por onde começar, fiz uma análise geral de UI e UX: percorri os fluxos principais de ponta a ponta e anotei os problemas tela por tela.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="plano">
+    <div class="col stack">
+      <h2 class="h2" id="plano">Plano de mudanças</h2>
+      <p>O redesign foi dividido em etapas que avançavam junto com as funcionalidades. Cada entrega nova já seguia o novo padrão, e as telas existentes eram migradas aos poucos.</p>
+    </div>
+    <div class="container media-row">
+      <ol class="phases">
+        <li class="phase">
+          <p class="phase__title">Style guide</p>
+          <p class="phase__text">Base visual e componentes a partir do que já existia na plataforma.</p>
+        </li>
+        <li class="phase">
+          <p class="phase__title">Fluxos principais</p>
+          <p class="phase__text">Criação de pedido e kits.</p>
+        </li>
+        <li class="phase">
+          <p class="phase__title">Design System</p>
+          <p class="phase__text">Tokens primitivos e semânticos, documentados para design e desenvolvimento.</p>
+        </li>
+        <li class="phase">
+          <p class="phase__title">DS no Claude</p>
+          <p class="phase__text">Design System configurado no Claude para gerar componentes e telas.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="styleguide">
+    <div class="col stack">
+      <h2 class="h2" id="styleguide">Style guide</h2>
+      <p>Comecei o style guide a partir do que já existia na plataforma, organizando primeiro a base: marca, tipografia, cores, espaçamentos, iconografia e os componentes mais usados. Depois, ele cresceu junto com o redesign: cada tela redesenhada acrescentava componentes e padrões. Com o tempo, o arquivo passou a cobrir quase toda a interface.</p>
+    </div>
+    <div class="wide media-row">
+      <!-- Composição do style guide (HTML). Martel Sans só neste bloco. -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@400;600;700&display=swap">
+      <style>
+        .sg {
+          /* Cores do style guide: troque só os valores abaixo */
+          --sg-primaria: #527EDD;
+          --sg-neutro-escuro: #2A3245;
+          --sg-neutro-claro: #AEB6C8;
+          --sg-sucesso: #40CA8F;
+          --sg-alerta: #FED77F;
+          --sg-erro: #E55C5C;
+          display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 20px);
+        }
+        .sg__block { background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius); padding: clamp(18px, 2vw, 24px); display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+        .sg__block--full { grid-column: 1 / -1; }
+        .sg__block--2 { grid-column: span 2; }
+        .sg__label { font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+        .sg__spec { font-size: 0.8125rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+        /* Cores */
+        .sg-colors { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); }
+        .sg-colors li { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .sg-colors__chip { aspect-ratio: 1; border-radius: 8px; background: var(--c); border: 1px solid rgb(0 0 0 / .08); margin-bottom: 6px; }
+        .sg-colors__name { font-size: 0.875rem; font-weight: 600; color: var(--fg); }
+
+        /* Tipografia */
+        .sg-type { font-family: "Martel Sans", sans-serif; color: var(--fg); }
+        .sg-type__body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+        .sg-type__aside { display: flex; flex-direction: column; gap: 6px; }
+        .sg-type__aa { font-size: 96px; line-height: 1; font-weight: 600; margin: 0 0 8px; }
+        .sg-type__family { font-size: 18px; line-height: 1.4; font-weight: 600; margin: 0 0 6px; }
+        .sg-type__weight { font-size: 16px; line-height: 1.4; margin: 0; }
+        .sg-type__scale { list-style: none; margin: 0; padding: 0; }
+        .sg-type__row { display: grid; grid-template-columns: 120px minmax(0, 1fr) auto; align-items: baseline; gap: 16px; padding-block: 14px; border-top: 1px solid #E2E2E2; }
+        .sg-type__row:first-child { border-top: 0; padding-top: 0; }
+        .sg-type__fn { font-family: var(--font-body); font-size: 0.8125rem; color: var(--muted); }
+        .sg-type__ex { min-width: 0; }
+        @media (max-width: 760px) {
+          .sg-type__body { grid-template-columns: minmax(0, 1fr); }
+          .sg-type__row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 6px; }
+          .sg-type__ex { grid-column: 1 / -1; grid-row: 2; }
+        }
+
+        /* Placeholders (somem quando a imagem existir) */
+        .sg-media { flex: 1; min-height: 140px; border: 1.5px dashed var(--line); border-radius: 10px; background: #FAFAFA; display: grid; place-items: center; text-align: center; padding: 16px; color: var(--muted); font-size: 0.875rem; overflow: hidden; }
+        .sg-media img { display: none; width: 100%; height: auto; }
+        .sg-media.is-loaded { border: 0; background: none; padding: 0; }
+        .sg-media.is-loaded img { display: block; }
+        .sg-media.is-loaded span { display: none; }
+
+        @media (max-width: 760px) {
+          .sg { grid-template-columns: minmax(0, 1fr); }
+          .sg__block--2 { grid-column: auto; }
+          .sg-colors { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+      </style>
+
+      <div class="sg">
+        <div class="sg__block sg__block--full">
+          <p class="sg__label">Cores</p>
+          <ul class="sg-colors">
+            <li><span class="sg-colors__chip" style="--c: var(--sg-primaria)"></span><span class="sg-colors__name">Primária</span><span class="sg__spec" data-sg-var="--sg-primaria">#527EDD</span></li>
+            <li><span class="sg-colors__chip" style="--c: var(--sg-neutro-escuro)"></span><span class="sg-colors__name">Neutro escuro</span><span class="sg__spec" data-sg-var="--sg-neutro-escuro">#2A3245</span></li>
+            <li><span class="sg-colors__chip" style="--c: var(--sg-neutro-claro)"></span><span class="sg-colors__name">Neutro claro</span><span class="sg__spec" data-sg-var="--sg-neutro-claro">#AEB6C8</span></li>
+            <li><span class="sg-colors__chip" style="--c: var(--sg-sucesso)"></span><span class="sg-colors__name">Sucesso</span><span class="sg__spec" data-sg-var="--sg-sucesso">#40CA8F</span></li>
+            <li><span class="sg-colors__chip" style="--c: var(--sg-alerta)"></span><span class="sg-colors__name">Alerta</span><span class="sg__spec" data-sg-var="--sg-alerta">#FED77F</span></li>
+            <li><span class="sg-colors__chip" style="--c: var(--sg-erro)"></span><span class="sg-colors__name">Erro</span><span class="sg__spec" data-sg-var="--sg-erro">#E55C5C</span></li>
+          </ul>
+        </div>
+
+        <div class="sg__block sg__block--full sg-type">
+          <p class="sg__label">Tipografia</p>
+          <div class="sg-type__body">
+            <div class="sg-type__aside">
+              <p class="sg-type__aa">Aa</p>
+              <p class="sg-type__family">Martel Sans</p>
+              <p class="sg-type__weight" style="font-weight:400">Regular 400</p>
+              <p class="sg-type__weight" style="font-weight:600">SemiBold 600</p>
+              <p class="sg-type__weight" style="font-weight:700">Bold 700</p>
+            </div>
+            <ul class="sg-type__scale">
+              <li class="sg-type__row"><span class="sg-type__fn">Título 1</span><span class="sg-type__ex" style="font-size:24px;line-height:1.2;font-weight:700">Meus pedidos</span><span class="sg__spec">24 / 120% · Bold</span></li>
+              <li class="sg-type__row"><span class="sg-type__fn">Título 2</span><span class="sg-type__ex" style="font-size:22px;line-height:1.3;font-weight:600">Certidão de Imóvel</span><span class="sg__spec">22 / 130% · SemiBold</span></li>
+              <li class="sg-type__row"><span class="sg-type__fn">Título 3</span><span class="sg-type__ex" style="font-size:18px;line-height:1.4;font-weight:700">Dados do pedido</span><span class="sg__spec">18 / 140% · Bold</span></li>
+              <li class="sg-type__row"><span class="sg-type__fn">Label</span><span class="sg-type__ex" style="font-size:14px;line-height:1.4;font-weight:700">Estado do documento</span><span class="sg__spec">14 / 140% · Bold</span></li>
+              <li class="sg-type__row"><span class="sg-type__fn">Corpo</span><span class="sg-type__ex" style="font-size:16px;line-height:1.4;font-weight:400">Selecione os documentos que farão parte do kit.</span><span class="sg__spec">16 / 140% · Regular</span></li>
+              <li class="sg-type__row"><span class="sg-type__fn">Corpo pequeno</span><span class="sg-type__ex" style="font-size:12px;line-height:1.3;font-weight:400">Pedido realizado em 5 de julho</span><span class="sg__spec">12 / 130% · Regular</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sg__block sg__block--2">
+          <p class="sg__label">Botões</p>
+          <div class="sg-media"><img src="assets/cbrdoc/sg-botoes.png?v=2" alt="Botões do style guide: tipos primary, secondary, tertiary e link, nos estados default, hover, pressed, disabled e loading" width="2240" height="1360" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Botões</span></div>
+        </div>
+        <div class="sg__block">
+          <p class="sg__label">Controles</p>
+          <div class="sg-media"><img src="assets/cbrdoc/sg-controles.png?v=2" alt="Controles do style guide: switch, checkbox, radio e card de seleção" width="1120" height="1360" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Controles</span></div>
+        </div>
+
+        <div class="sg__block sg__block--full">
+          <p class="sg__label">Campos de texto</p>
+          <div class="sg-media"><img src="assets/cbrdoc/sg-campos.png?v=2" alt="Campos de texto do style guide: input preenchido, em foco e desabilitado, select aberto e barra de busca nos estados padrão, foco e preenchido" width="3280" height="984" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Campos de texto</span></div>
+        </div>
+        <div class="sg__block sg__block--full">
+          <p class="sg__label">Feedback</p>
+          <div class="sg-media"><img src="assets/cbrdoc/sg-feedback.png?v=2" alt="Feedback do style guide: alertas de sucesso, informação, aviso e erro, e toast de confirmação" width="3280" height="910" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Feedback</span></div>
+        </div>
+
+        <div class="sg__block sg__block--full">
+          <p class="sg__label">Ícones</p>
+          <div class="sg-media"><img src="assets/cbrdoc/sg-icones.png" alt="Ícones do style guide usados na plataforma" width="2460" height="564" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Ícones</span></div>
+        </div>
+      </div>
+      <script>
+        /* Os hex exibidos leem as variáveis de .sg */
+        (function () {
+          var sg = document.currentScript.previousElementSibling;
+          var cs = getComputedStyle(sg);
+          sg.querySelectorAll("[data-sg-var]").forEach(function (el) {
+            var v = cs.getPropertyValue(el.dataset.sgVar).trim();
+            if (v) el.textContent = v.toUpperCase();
+          });
+        })();
+      </script>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="redesign">
+    <div class="col stack">
+      <h2 class="h2" id="redesign">Redesign dos fluxos principais</h2>
+      <p>Com o style guide como base, redesenhei os fluxos com mais impacto no uso da plataforma: criação de pedido e kits. Cada redesign foi entregue junto com as funcionalidades do produto, e os componentes criados voltavam para o style guide, valendo para as telas seguintes.</p>
+      <p>A seguir, cada fluxo com a versão anterior, a nova e as principais decisões.</p>
+    </div>
+
+    <!-- Criação de pedido: antes e depois -->
+    <style>
+      .ped { display: flex; flex-direction: column; gap: clamp(28px, 3.5vw, 48px); }
+      .ped-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px clamp(16px, 2vw, 28px); }
+      .ped-pair__title { grid-column: 1 / -1; margin: 0; font-weight: 600; font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--fg); }
+      .ped-pair figure { margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+      .ped-pair figcaption { font-size: 0.75rem; line-height: 1.3; color: var(--muted); }
+      .ped-media { flex: 1; min-height: 220px; border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; overflow: hidden; }
+      .ped-media img { display: none; width: 100%; height: auto; }
+      .ped-media.is-loaded { flex: none; display: block; border: 0; background: none; padding: 0; min-height: 0; border-radius: 0; }
+      .ped-media.is-loaded img { display: block; }
+      .ped-media.is-loaded span { display: none; }
+      .ped-notes { grid-column: 1 / -1; max-width: 760px; }
+      .ped-notes strong { color: var(--fg); font-weight: 600; }
+      @media (max-width: 760px) { .ped-pair { grid-template-columns: minmax(0, 1fr); } }
+    </style>
+
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+      <h3 class="h3">Criação de pedido</h3>
+      <p>Criar um pedido é o fluxo principal da plataforma. Na versão anterior, a lista de documentos ocupava muito espaço na horizontal, e o formulário de dados ficava longo, com a ação principal no fim da página.</p>
+    </div>
+
+    <div class="wide media-row">
+      <div class="ped">
+        <div class="ped-pair">
+          <p class="ped-pair__title">Escolha do documento</p>
+          <figure>
+            <div class="ped-media"><img src="assets/cbrdoc/ped-01-antes.png" alt="Escolha do documento, versão anterior" width="2714" height="1520" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Escolha do documento (antes)</span></div>
+            <figcaption>Antes</figcaption>
+          </figure>
+          <figure>
+            <div class="ped-media"><img src="assets/cbrdoc/ped-01-depois.png" alt="Escolha do documento, versão nova" width="2049" height="1152" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Escolha do documento (depois)</span></div>
+            <figcaption>Depois</figcaption>
+          </figure>
+          <ol class="kits-map__notes ped-notes">
+            <li><span class="kits-map__num">1.</span><span><strong>Lista em grade de duas colunas, com a busca ao lado do título:</strong> o usuário vê mais opções de uma vez e encontra o documento com mais facilidade.</span></li>
+          </ol>
+        </div>
+        <div class="ped-pair">
+          <p class="ped-pair__title">Localização do cartório</p>
+          <figure>
+            <div class="ped-media"><img src="assets/cbrdoc/ped-02-antes.png" alt="Localização do cartório, versão anterior" width="2732" height="1535" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Localização do cartório (antes)</span></div>
+            <figcaption>Antes</figcaption>
+          </figure>
+          <figure>
+            <div class="ped-media"><img src="assets/cbrdoc/ped-02-depois.png?v=2" alt="Localização do cartório, versão nova" width="2049" height="1148" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Localização do cartório (depois)</span></div>
+            <figcaption>Depois</figcaption>
+          </figure>
+          <ol class="kits-map__notes ped-notes">
+            <li><span class="kits-map__num">2.</span><span><strong>Etapas e botão “Continuar” fixos no topo:</strong> o usuário sabe em que etapa está e avança sem precisar rolar até o fim do formulário.</span></li>
+          </ol>
+        </div>
+        <div class="ped-pair">
+          <p class="ped-pair__title">Dados da certidão</p>
+          <figure>
+            <div class="ped-media"><img src="assets/cbrdoc/ped-03-antes.png?v=3" alt="Dados da certidão, versão anterior" width="1721" height="1117" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Dados da certidão (antes)</span></div>
+            <figcaption>Antes</figcaption>
+          </figure>
+          <figure>
+            <div class="ped-media"><img src="assets/cbrdoc/ped-03-depois.png?v=2" alt="Dados da certidão, versão nova" width="2049" height="1330" onload="this.parentNode.classList.add('is-loaded')" onerror="this.remove()"><span>Imagem: Dados da certidão (depois)</span></div>
+            <figcaption>Depois</figcaption>
+          </figure>
+          <ol class="kits-map__notes ped-notes">
+            <li><span class="kits-map__num">3.</span><span><strong>Tipo de certidão em um select com descrição em cada opção:</strong> as descrições continuam disponíveis, mas só aparecem quando o usuário abre a lista. O formulário fica bem mais curto.</span></li>
+            <li><span class="kits-map__num">4.</span><span><strong>Resumo do pedido com cada item e a opção de excluir:</strong> o usuário corrige o pedido sem voltar etapas.</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+      <h3 class="h3">Fluxo de kits</h3>
+      <p>O kit existe para quem já sabe quais documentos precisa pedir com frequência. A plataforma deveria tornar essa seleção rápida, mas o fluxo fazia o contrário.</p>
+      <p>Os problemas se concentravam em três pontos: a listagem não ajudava a entender e escolher os kits, montar o kit exigia mais esforço do que deveria e a navegação levava a caminhos sem saída.</p>
+    </div>
+
+    <div class="kits-map" role="group" aria-label="Problemas encontrados no fluxo de kits">
+      <div class="kits-map__inner">
+        <div class="kits-map__row">
+          <figure class="kits-map__step">
+            <figcaption class="kits-map__name">Meus kits</figcaption>
+            <div class="kits-map__screen kits-map__screen--img"><img src="assets/cbrdoc/kits-01-meus-kits.png?v=2" alt="Tela Meus kits da versão anterior, com três problemas destacados" width="1078" height="586" loading="lazy"></div>
+            <ol class="kits-map__notes">
+              <li><span class="kits-map__num">1.</span><span>O link para a FAQ aparecia sozinho, sem um texto que explicasse para que serve o kit.</span></li>
+              <li><span class="kits-map__num">2.</span><span>A coluna de documentos listava todos os itens de cada kit, e kits maiores geravam linhas enormes na tabela.</span></li>
+              <li><span class="kits-map__num">3.</span><span>A data de criação ocupava uma coluna inteira sem ajudar a escolher qual kit usar.</span></li>
+            </ol>
+          </figure>
+          <figure class="kits-map__step">
+            <figcaption class="kits-map__name">Seleção de documentos</figcaption>
+            <div class="kits-map__screen kits-map__screen--img"><img src="assets/cbrdoc/kits-02-selecao-documentos.png" alt="Tela de seleção de documentos da versão anterior, com três problemas destacados" width="1366" height="792" loading="lazy"></div>
+            <ol class="kits-map__notes">
+              <li><span class="kits-map__num">4.</span><span>A lista mostrava certidões que não se aplicavam ao tipo de pessoa, em vez de escondê-las.</span></li>
+              <li><span class="kits-map__num">5.</span><span>O botão “Voltar” levava para a tela inicial da plataforma, em qualquer etapa.</span></li>
+              <li><span class="kits-map__num">6.</span><span>Não dava para remover itens pelo resumo do kit.</span></li>
+            </ol>
+          </figure>
+        </div>
+        <div class="kits-map__row">
+          <figure class="kits-map__step">
+            <figcaption class="kits-map__name">Definição de dados</figcaption>
+            <div class="kits-map__screen kits-map__screen--img"><img src="assets/cbrdoc/kits-03-definicao-dados.png" alt="Tela de definição de dados da versão anterior, com dois problemas destacados" width="1366" height="773" loading="lazy"></div>
+            <ol class="kits-map__notes">
+              <li><span class="kits-map__num">7.</span><span>A etapa “Fixar dados do pedido” não explicava o que significava. O único aviso dizia que ela não era obrigatória.</span></li>
+              <li><span class="kits-map__num">8.</span><span>O botão “Adicionar” ficava solto entre os documentos e incluía um item por vez, então pedir 10 certidões significava clicar 10 vezes.</span></li>
+            </ol>
+          </figure>
+          <figure class="kits-map__step">
+            <figcaption class="kits-map__name">Solicitar kit</figcaption>
+            <div class="kits-map__screen kits-map__screen--img"><img src="assets/cbrdoc/kits-06-solicitar-kit.png?v=2" alt="Tela de solicitação de kit da versão anterior, com três problemas destacados" width="1614" height="900" loading="lazy"></div>
+            <ol class="kits-map__notes">
+              <li><span class="kits-map__num">10.</span><span>Documentos do mesmo tipo apareciam sem diferenciação.</span></li>
+              <li><span class="kits-map__num">11.</span><span>O número ao lado de “Seu Kit” não tinha rótulo, então não ficava claro que indicava a quantidade de documentos.</span></li>
+              <li><span class="kits-map__num">12.</span><span>No resumo, os documentos ficavam numa lista longa, sem separação clara e sem opção de excluir.</span></li>
+            </ol>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+      <p>O objetivo do redesign passou a ser reduzir o esforço de seleção e preenchimento e organizar melhor os itens do kit.</p>
+    </div>
+
+    <!-- Fluxo de kits redesenhado: vídeo + decisões -->
+    <style>
+      .kv { display: flex; flex-direction: column; gap: 12px; }
+      .kv-media { position: relative; aspect-ratio: 16 / 9; border: 1.5px dashed var(--line); border-radius: 10px; background: #FAFAFA; overflow: hidden; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+      .kv-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; opacity: 0; cursor: pointer; background: var(--surface); }
+      .kv-media.is-loaded { border: 1px solid #DDDDDA; background: var(--surface); padding: 0; }
+      .kv-media.is-loaded video { opacity: 1; }
+      .kv-media.is-loaded > span { visibility: hidden; }
+      .kv .ped-notes { margin-top: 12px; }
+      .kv .kits-map__name { align-self: auto; margin: 0; }
+    </style>
+    <div class="wide media-row">
+      <div class="kv">
+        <p class="kits-map__name">Fluxo redesenhado</p>
+        <div class="kv-media">
+          <video src="kits-fluxo-novo.mp4" poster="kits-fluxo-novo-poster.png" autoplay muted loop playsinline preload="auto" aria-label="Vídeo do fluxo de kits redesenhado, da listagem à solicitação"></video>
+          <span>Vídeo: fluxo de kits redesenhado</span>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var box = document.currentScript.previousElementSibling.querySelector(".kv-media");
+        var v = box.querySelector("video");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (reduce) { v.removeAttribute("autoplay"); v.autoplay = false; v.pause(); v.controls = true; }
+        v.addEventListener("loadeddata", function () { box.classList.add("is-loaded"); });
+        if (v.readyState >= 2) box.classList.add("is-loaded");
+        v.addEventListener("click", function () {
+          if (v.controls) return;
+          if (v.paused) v.play(); else v.pause();
+        });
+      })();
+    </script>
+
+  </section>
+
+  <section class="block" aria-labelledby="ds">
+    <div class="col stack">
+      <h2 class="h2" id="ds">Design System</h2>
+      <p>Conforme as entregas aconteciam, começaram a aparecer inconsistências visuais. A mesma cor chegava em produção com tons diferentes de uma tela para outra, porque o style guide mostrava como a interface devia parecer, mas não dizia como cada valor devia ser aplicado.</p>
+      <p>Eu queria uma fonte única de referência para design e desenvolvimento, em que cada decisão visual fosse tomada uma vez e valesse para a plataforma inteira. O plano era começar pelas cores, onde as inconsistências eram mais visíveis, e depois seguir para espaçamento e tipografia.</p>
+
+      <h3 class="h3" style="margin-top: 16px">Desafio</h3>
+      <p>O produto não podia parar. O Design System precisava ser construído em paralelo com as entregas, sem travar o time e sem exigir que tudo fosse refeito de uma vez. E precisava partir do que já existia no código.</p>
+
+      <h3 class="h3" style="margin-top: 16px">Processo</h3>
+      <p>O Design System foi organizado em três frentes: cores, tipografia e espaçamento. Em todas, o ponto de partida foi o que já existia na plataforma, e o objetivo era que Figma e código usassem as mesmas referências. Trabalhei junto com a dev de front-end, e as cores vieram primeiro, porque eram onde as inconsistências mais apareciam.</p>
+      <h4 class="sub-h">Cores</h4>
+      <p>A dev de front-end fez o levantamento das cores usadas no CSS, que mostrou variações da mesma cor espalhadas pelo código. Usei esse levantamento como ponto de partida: agrupei as cores repetidas e quase iguais e defini o que cada uma deveria representar na interface.</p>
+      <p>A paleta partiu das cores da marca (azul, verde e amarelo) e ganhou o que a interface precisava além delas. Ficaram cinco famílias, cada uma com um papel:</p>
+      <ul class="list">
+        <li><strong>Azul:</strong> a cor principal da marca, usada em ações principais, links e foco.</li>
+        <li><strong>Verde e amarelo:</strong> também da marca, usados nos estados de sucesso e alerta.</li>
+        <li><strong>Vermelho:</strong> o estado de erro.</li>
+        <li><strong>Neutros:</strong> textos, fundos, bordas e superfícies. É a maior família, com 10 tons, porque sustenta a maior parte da interface.</li>
+      </ul>
+    </div>
+
+    <div class="wide media-row">
+      <!-- Paleta: cores da marca e de interface -->
+      <style>
+        .pal { background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius); padding: clamp(20px, 3vw, 40px); display: flex; flex-direction: column; gap: 32px; }
+        .pal-group { display: flex; flex-direction: column; gap: 18px; }
+        .pal-group + .pal-group { padding-top: 32px; border-top: 1px solid #ECECEC; }
+        .pal-label { margin: 0; font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+        .pal-row { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: start; column-gap: 16px; }
+        .pal-name { margin: 0; padding-top: 18px; font-size: 0.9375rem; color: var(--fg); }
+        .pal-swatches { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 16px 12px; justify-content: flex-start; }
+        .pal-swatches li { width: 56px; display: flex; flex-direction: column; gap: 2px; }
+        .pal-chip { width: 56px; height: 56px; border-radius: 8px; margin-bottom: 6px; }
+        .pal-chip--light { box-shadow: inset 0 0 0 1px #D9D9D9; }
+        .pal-num { font-size: 0.75rem; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+        .pal-hex { font-size: 0.6875rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+        @media (max-width: 760px) {
+          .pal-row { grid-template-columns: minmax(0, 1fr); row-gap: 10px; }
+          .pal-name { padding-top: 0; font-weight: 600; }
+          .pal-swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 56px)); gap: 14px 8px; }
+          .pal-swatches li { width: auto; min-width: 0; }
+          .pal-chip { width: 100%; height: auto; aspect-ratio: 1; }
+        }
+      </style>
+      <div class="pal">
+        <div class="pal-group">
+          <p class="pal-label">Cores da marca</p>
+          <div class="pal-row">
+            <p class="pal-name">Azul</p>
+            <ul class="pal-swatches" aria-label="Azul (Blue)"><li><span class="pal-chip pal-chip--light" style="background:#E8EEF9"></span><span class="pal-num">100</span><span class="pal-hex">#E8EEF9</span></li><li><span class="pal-chip" style="background:#437FFF"></span><span class="pal-num">400</span><span class="pal-hex">#437FFF</span></li><li><span class="pal-chip" style="background:#527EDD"></span><span class="pal-num">500</span><span class="pal-hex">#527EDD</span></li><li><span class="pal-chip" style="background:#3655AA"></span><span class="pal-num">700</span><span class="pal-hex">#3655AA</span></li></ul>
+          </div>
+          <div class="pal-row">
+            <p class="pal-name">Verde</p>
+            <ul class="pal-swatches" aria-label="Verde (Green)"><li><span class="pal-chip pal-chip--light" style="background:#E0EEE8"></span><span class="pal-num">50</span><span class="pal-hex">#E0EEE8</span></li><li><span class="pal-chip" style="background:#62D4A3"></span><span class="pal-num">300</span><span class="pal-hex">#62D4A3</span></li><li><span class="pal-chip" style="background:#40CA8F"></span><span class="pal-num">500</span><span class="pal-hex">#40CA8F</span></li><li><span class="pal-chip" style="background:#2CA676"></span><span class="pal-num">700</span><span class="pal-hex">#2CA676</span></li></ul>
+          </div>
+          <div class="pal-row">
+            <p class="pal-name">Amarelo</p>
+            <ul class="pal-swatches" aria-label="Amarelo (Yellow)"><li><span class="pal-chip pal-chip--light" style="background:#F3EFE7"></span><span class="pal-num">50</span><span class="pal-hex">#F3EFE7</span></li><li><span class="pal-chip" style="background:#FED77F"></span><span class="pal-num">500</span><span class="pal-hex">#FED77F</span></li></ul>
+          </div>
+        </div>
+        <div class="pal-group">
+          <p class="pal-label">Cores de interface</p>
+          <div class="pal-row">
+            <p class="pal-name">Vermelho</p>
+            <ul class="pal-swatches" aria-label="Vermelho (Red)"><li><span class="pal-chip pal-chip--light" style="background:#F3E6E3"></span><span class="pal-num">50</span><span class="pal-hex">#F3E6E3</span></li><li><span class="pal-chip" style="background:#FF7D5F"></span><span class="pal-num">300</span><span class="pal-hex">#FF7D5F</span></li><li><span class="pal-chip" style="background:#FF6565"></span><span class="pal-num">400</span><span class="pal-hex">#FF6565</span></li><li><span class="pal-chip" style="background:#E55C5C"></span><span class="pal-num">500</span><span class="pal-hex">#E55C5C</span></li></ul>
+          </div>
+          <div class="pal-row">
+            <p class="pal-name">Neutros</p>
+            <ul class="pal-swatches" aria-label="Neutros (Neutral)"><li><span class="pal-chip pal-chip--light" style="background:#FFFFFF"></span><span class="pal-num">0</span><span class="pal-hex">#FFFFFF</span></li><li><span class="pal-chip pal-chip--light" style="background:#F5F5F5"></span><span class="pal-num">50</span><span class="pal-hex">#F5F5F5</span></li><li><span class="pal-chip pal-chip--light" style="background:#F2F2F2"></span><span class="pal-num">100</span><span class="pal-hex">#F2F2F2</span></li><li><span class="pal-chip pal-chip--light" style="background:#E8EBEF"></span><span class="pal-num">200</span><span class="pal-hex">#E8EBEF</span></li><li><span class="pal-chip pal-chip--light" style="background:#E0E3E8"></span><span class="pal-num">300</span><span class="pal-hex">#E0E3E8</span></li><li><span class="pal-chip" style="background:#AEB6C8"></span><span class="pal-num">400</span><span class="pal-hex">#AEB6C8</span></li><li><span class="pal-chip" style="background:#8394BC"></span><span class="pal-num">500</span><span class="pal-hex">#8394BC</span></li><li><span class="pal-chip" style="background:#4C566F"></span><span class="pal-num">700</span><span class="pal-hex">#4C566F</span></li><li><span class="pal-chip" style="background:#2A3245"></span><span class="pal-num">800</span><span class="pal-hex">#2A3245</span></li><li><span class="pal-chip" style="background:#000000"></span><span class="pal-num">900</span><span class="pal-hex">#000000</span></li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col stack media-row">
+      <p>Cada família ganhou uma escala numérica (como Neutral/0, Neutral/50 até Neutral/900), para que design e código falassem dos mesmos tons pelo mesmo nome. Também revisei o contraste das cores com base nas diretrizes de acessibilidade (WCAG) e propus ajustes em alguns tons. A empresa optou por manter as cores originais da marca.</p>
+      <h4 class="sub-h">Tokens</h4>
+      <p>A partir daí, os tokens foram organizados em duas camadas:</p>
+      <ul class="list">
+        <li><strong>Primitivos:</strong> 24 cores, que são os valores brutos da paleta e não são usados direto nas telas.</li>
+        <li><strong>Semânticos:</strong> 36 tokens que dizem para que cada cor serve. Eles cobrem fundo, texto, borda e superfície, os estados da interface (primário, sucesso, alerta e erro) e as sobreposições.</li>
+      </ul>
+    </div>
+    <div class="wide media-row">
+      <!-- Diagrama: primitivo → tokens semânticos → onde aparece -->
+      <style>
+        .tk { background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius); padding: clamp(20px, 3vw, 40px); display: grid; grid-template-columns: 112px 32px max-content max-content; justify-content: start; }
+        .tk-head, .tk-group { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; }
+        .tk-head { margin-bottom: 18px; font-size: 0.75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+        .tk-head > :nth-child(1) { grid-column: 1 / span 2; }
+        .tk-head > :nth-child(2) { grid-column: 3; }
+        .tk-head > :nth-child(3) { grid-column: 4; padding-left: 48px; }
+        .tk-group + .tk-group { margin-top: 28px; padding-top: 28px; border-top: 1px solid #ECECEC; }
+        .tk-group:last-child { padding-bottom: 28px; }
+        .tk-group:not(:last-child) { padding-bottom: 12px; }
+        .tk-prim { grid-column: 1; position: relative; display: flex; align-items: center; }
+        .tk-prim::after { content: ""; position: absolute; left: 56px; right: 0; top: 50%; border-top: 1px solid #C9C9C9; }
+        .tk-swatch { width: 56px; height: 56px; border-radius: 8px; flex: none; }
+        .tk-swatch--light { border: 1px solid #D9D9D9; }
+        .tk-prim__label { position: absolute; left: 0; top: calc(50% + 34px); display: flex; flex-direction: column; gap: 2px; white-space: nowrap; }
+        .tk-prim__name { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.875rem; font-weight: 600; color: var(--fg); }
+        .tk-prim__hex { font-size: 0.8125rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+        .tk-conn { grid-column: 2; position: relative; min-height: 60px; }
+        .tk-conn::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid #C9C9C9; }
+        .tk-conn::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid #C9C9C9; }
+        .tk-group > .tk-conn:nth-child(2)::after { top: 50%; }
+        .tk-group > .tk-conn:nth-last-child(3)::after { bottom: 50%; }
+        .tk-group > .tk-conn:nth-child(2):nth-last-child(3)::after { display: none; }
+        .tk-token { grid-column: 3; display: flex; align-items: center; min-width: 0; }
+        .tk-token code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.8125rem; color: var(--fg); background: #F2F2F2; border: 1px solid #E6E6E6; border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
+        .tk-use { grid-column: 4; display: flex; align-items: center; gap: 14px; padding-left: 48px; font-size: 0.9375rem; color: var(--text); min-width: 0; white-space: nowrap; }
+        .tk-mini { flex: none; width: 104px; display: flex; align-items: center; }
+        .tk-m-btn, .tk-m-inv { display: inline-flex; align-items: center; height: 26px; padding: 0 12px; background: #527EDD; color: #fff; font-size: 0.75rem; font-weight: 600; line-height: 1; border-radius: 4px; }
+        .tk-m-link { color: #527EDD; text-decoration: underline; text-underline-offset: 3px; font-size: 0.875rem; }
+        .tk-m-field { box-sizing: border-box; display: inline-flex; align-items: center; width: 104px; height: 26px; padding: 0 8px; border: 2px solid #527EDD; border-radius: 4px; background: #fff; font-size: 0.75rem; color: #333; white-space: nowrap; }
+        .tk-m-card { width: 64px; height: 36px; background: #fff; border: 1px solid #DADADA; border-radius: 6px; }
+        .tk-caption { margin: 12px 0 0; font-size: 0.875rem; color: var(--muted); width: 0; min-width: 100%; }
+        .tk-fig { margin: 0 auto; width: fit-content; max-width: 100%; }
+        .tk-m-dis { font-size: 0.875rem; color: #AEB6C8; }
+        .tk-m-strong { width: 64px; height: 36px; background: #fff; border: 1px solid #AEB6C8; border-radius: 6px; }
+        @media (max-width: 760px) {
+          .tk { display: block; }
+          .tk-fig { width: auto; }
+          .tk-head { display: none; }
+          .tk-prim__label { position: static; flex-direction: row; align-items: baseline; gap: 12px; flex: 1; }
+          .tk-group:last-child, .tk-group:not(:last-child) { padding-bottom: 0; }
+          .tk-use { padding-left: 14px; white-space: normal; }
+          .tk-m-field { width: 96px; }
+          .tk-group { grid-template-columns: auto minmax(0, 1fr); column-gap: 0; row-gap: 0; }
+          .tk-prim { grid-column: 1 / -1; grid-row: auto !important; flex-direction: row; align-items: center; justify-content: flex-start; gap: 12px; padding: 0 0 8px; }
+          .tk-prim::after, .tk-conn { display: none; }
+          .tk-swatch { margin: 0; width: 44px; height: 44px; }
+          .tk-prim__hex { margin-left: auto; }
+          .tk-token { grid-column: 1; padding: 12px 0; border-top: 1px solid #F0F0F0; }
+          .tk-token code { font-size: 0.75rem; padding: 4px 10px; }
+          .tk-use { grid-column: 2; padding: 12px 0 12px 14px; border-top: 1px solid #F0F0F0; flex-direction: column; align-items: flex-start; gap: 6px; font-size: 0.875rem; }
+          .tk-mini { width: auto; }
+        }
+      </style>
+      <figure class="tk-fig">
+      <div class="tk">
+        <div class="tk-head" aria-hidden="true"><span>Primitivo</span><span>Token semântico</span><span>Onde aparece</span></div>
+        <div class="tk-group" role="group" aria-label="Primitivo Blue/500">
+          <div class="tk-prim" style="grid-row: 1 / span 3">
+            <span class="tk-swatch" style="background:#527EDD"></span>
+            <span class="tk-prim__label"><code class="tk-prim__name">Blue/500</code>
+            <span class="tk-prim__hex">#527EDD</span></span>
+          </div>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Background/Brand</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-btn">Solicitar</span></span><span>Botão primário</span></span>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Text/Link</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-link">Link</span></span><span>Links</span></span>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Border/Focus</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-field">Kit Imóvel</span></span><span>Campo em foco</span></span>
+        </div>
+        <div class="tk-group" role="group" aria-label="Primitivo Neutral/0">
+          <div class="tk-prim" style="grid-row: 1 / span 2">
+            <span class="tk-swatch tk-swatch--light" style="background:#FFFFFF"></span>
+            <span class="tk-prim__label"><code class="tk-prim__name">Neutral/0</code>
+            <span class="tk-prim__hex">#FFFFFF</span></span>
+          </div>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Background/Surface</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-card"></span></span><span>Cards e painéis</span></span>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Text/Inverse</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-inv">Texto</span></span><span>Texto sobre botões</span></span>
+        </div>
+        <div class="tk-group" role="group" aria-label="Primitivo Neutral/400">
+          <div class="tk-prim" style="grid-row: 1 / span 2">
+            <span class="tk-swatch" style="background:#AEB6C8"></span>
+            <span class="tk-prim__label"><code class="tk-prim__name">Neutral/400</code>
+            <span class="tk-prim__hex">#AEB6C8</span></span>
+          </div>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Text/Disabled</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-dis">Indisponível</span></span><span>Texto desabilitado</span></span>
+          <span class="tk-conn" aria-hidden="true"></span>
+          <span class="tk-token"><code>Border/Strong</code></span>
+          <span class="tk-use"><span class="tk-mini" aria-hidden="true"><span class="tk-m-strong"></span></span><span>Bordas de destaque</span></span>
+        </div>
+      </div>
+      <figcaption class="tk-caption">Um mesmo primitivo pode cumprir funções diferentes. Se um valor mudar, a mudança vale para todos os usos de uma vez.</figcaption>
+      </figure>
+    </div>
+
+    <div class="col stack media-row">
+      <h4 class="sub-h">Tipografia e espaçamento</h4>
+      <p>Depois das cores, a mesma lógica foi levada para a tipografia e os espaçamentos: os valores foram organizados no Figma e alterados no código, para que design e desenvolvimento usassem as mesmas referências.</p>
+    </div>
+
+    <div class="col stack media-row">
+      <p>Com isso, quem desenha ou implementa uma tela não escolhe mais “um azul”, e sim “a cor de texto principal” ou “o fundo de erro”. Se uma cor precisar mudar, a mudança acontece em um lugar só e vale para toda a plataforma. Os devs adotaram os tokens e o DS está em produção.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="ia">
+    <div class="col stack">
+      <h2 class="h2" id="ia">DS no Claude</h2>
+      <p>A IA entrou depois que o DS existia, e foi o DS que a tornou útil. Construí com o Figma agent um arquivo do Design System no Claude, a partir do que estava no Figma. A partir daí, as telas geradas já saíam com os componentes e tokens do produto.</p>
+
+      <p class="ia-note">Esta seção está em construção. Em breve, exemplos de como usei IA para gerar variações de tela, criar protótipos navegáveis e escrever a documentação para o time.</p>
+      <style>.ia-note { margin: 8px 0 0; padding: 16px 20px; background: #F2F2F2; border-radius: 10px; font-size: 0.9375rem; line-height: 1.6; color: var(--muted); }</style>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

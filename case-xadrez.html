@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jogo de xadrez · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+.shots { display: flex; flex-direction: column; gap: 0; }
+.shots img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura (template de case) -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="./">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page">Interface para jogo de xadrez</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1 h1--fit" id="case-title">Interface para jogo de xadrez</h1>
+      <ul class="tags">
+        <li class="tag">UI e UX</li>
+        <li class="tag">identidade visual</li>
+        <li class="tag">Interface para jogo</li>
+      </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Projeto feito para Performa_IT Consultoria · 2023</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="col block stack" aria-labelledby="cliente" style="padding-block-start: clamp(24px, 3vw, 40px)">
+    <h2 class="h2" id="cliente">Cliente e atuação</h2>
+    <p>Atuei como UI/UX Designer na criação da interface completa do eChess, um jogo de xadrez digital desenvolvido por um estúdio em Oslo, Noruega, enquanto integrava a equipe da Performa_IT, consultoria de tecnologia.</p>
+    <p>O projeto envolveu o desenvolvimento de componentes de interface e o design de telas principais, como menu inicial, seleção de modos de jogo, área social, loja e configurações.</p>
+    <p>O foco foi criar uma experiência visual envolvente, funcional e consistente, adaptada ao público gamer e à identidade do produto. O resultado foi uma interface coesa, moderna e escalável, pronta para futuras atualizações do jogo.</p>
+  </section>
+
+  <!-- Sequência de telas: imagens coladas, sem espaço entre elas -->
+  <section class="block" aria-label="Telas e guia visual do eChess">
+    <div class="wide">
+      <div class="media shots">
+        <img src="assets/xadrez/xadrez-02-cores.png" alt="Paleta de cores do eChess: cores primárias em degradê dourado, prata e bronze, além de ciano e vermelho; cores de botões e cores base preta e branca." width="3456" height="1814" loading="lazy">
+        <img src="assets/xadrez/xadrez-03-tipografia-icones.jpg" alt="Tipografia do eChess, com as fontes TX Manifesto e Asap em seus tamanhos de título, e o conjunto de ícones da interface." width="3456" height="3248" loading="lazy">
+        <img src="assets/xadrez/xadrez-04-componentes.jpg" alt="Componentes da interface do eChess: navegação, perfil, cards de modo de jogo, login, botões, conquistas, configurações e modal de conquista." width="3456" height="4890" loading="lazy">
+        <img src="assets/xadrez/xadrez-05-home-modos.jpg" alt="Telas do eChess: home com o menu principal, seleção de modo de jogo e configuração da partida single player." width="3456" height="5800" loading="lazy">
+        <img src="assets/xadrez/xadrez-06-social-loja-tutoriais.jpg" alt="Telas do eChess: área social com lista de amigos, loja de temas com as peças incluídas e tutoriais por peça." width="3456" height="5940" loading="lazy">
+        <img src="assets/xadrez/xadrez-07-lobby-hud-promocao.jpg" alt="Telas do eChess: lobby de escolha entre tema e jogar primeiro, HUD multiplayer com webcams, desafios e chat, e seleção de peça na promoção." width="3456" height="6144" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

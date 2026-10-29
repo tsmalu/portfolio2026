@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Redesign de Marca e Site · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+.shots { display: flex; flex-direction: column; gap: 0; }
+.shots img { display: block; width: 100%; height: auto; }
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura (template de case) -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="./">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page">Redesign de Marca e Site</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1 h1--fit" id="case-title">Redesign de Marca e Site</h1>
+      <ul class="tags">
+        <li class="tag">UI e UX</li>
+        <li class="tag">Identidade visual</li>
+        <li class="tag">Web design</li>
+      </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Projeto feito para Fretadão · 2019</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="cliente" style="padding-block-start: clamp(24px, 3vw, 40px)">
+    <div class="col stack">
+      <h2 class="h2" id="cliente">Cliente e objetivo</h2>
+      <p>Fretadão é uma empresa de tecnologia voltada para a área de fretamento e oferece o serviço de planejamento, implantação e gestão da operação de fretado para colaboradores de empresas de médio e grande porte.</p>
+      <p>Como designer do projeto, minha função era reformular visualmente a marca e criar um protótipo navegável baseado nas discussões feitas pelo time.</p>
+      <p>O cliente precisava de ajuda com a usabilidade e arquitetura de informação de seu site para torná-lo mais fácil de usar e comunicar as soluções que a empresa entrega ao seu cliente.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="planejamento">
+    <div class="col stack">
+      <h2 class="h2" id="planejamento">Planejamento</h2>
+      <p>O projeto tinha um time enxuto de 3 pessoas, formado pelo CTO da empresa, a analista de marketing e eu. Os principais pontos de definição discutidos foram:</p>
+      <ul class="list">
+        <li>Como a marca queria ser vista pelo usuário;</li>
+        <li>Quais serviços serão apresentados e quais terão mais destaque;</li>
+        <li>O que e como devemos nos comunicar com a audiência;</li>
+        <li>Redesenhar o site com uma interface amigável e interativa;</li>
+        <li>Fornecer mais informações sobre fretamento e serviços oferecidos;</li>
+        <li>Simplificar a navegação separando o conteúdo para clientes B2B e B2C.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="arquitetura">
+    <div class="col stack">
+      <h2 class="h2" id="arquitetura">Arquitetura da informação</h2>
+      <p>O Fretadão oferece diversos serviços tanto para clientes que buscam um fretado individual (B2C), quanto para empresas que precisam fechar um pacote para todos ou uma parte de seu quadro de funcionários.</p>
+      <p>Um fluxo de usuário foi criado para descrever como o site está estruturado e quais etapas o usuário pode seguir ao usar o site.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/marca-site/jornada-fretadao.png" alt="Arquitetura do site: homepage com as seções B2C, B2B, Parcerias, Sobre, Blog, FAQ e Contato, e as páginas de cada uma." width="1186" height="778" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="direcao">
+    <div class="col stack">
+      <h2 class="h2" id="direcao">Direção de design de interface do usuário</h2>
+      <p>O primeiro passo foi a criação da nova identidade da marca e a criação do manual de identidade visual, veja mais detalhes na publicação do Behance abaixo.</p>
+      <p><a href="https://www.behance.net/gallery/140124405/Identidade-visual-Fretadao" target="_blank" rel="noopener noreferrer">Identidade visual | Fretadão, no Behance ↗</a></p>
+      <p>Nesta fase, foi determinado quais foram os componentes de interface cruciais para o projeto e para documentar as decisões, o guia de estilo de UI começava a ser construído.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/marca-site/guia-fretadao-1.png" alt="Guia de estilo de UI: tipografia com tamanhos e pesos, grid do site e cores de tema, escala de cinzas e cores da marca." width="1280" height="758" loading="lazy"></div>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/marca-site/guia-fretadao-2.png" alt="Componentes de interface: botões, paginação, controle de distância, seletor de ida e volta, menu, campo de seleção e calendário." width="2048" height="1197" loading="lazy"></div>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/marca-site/guia-fretadao-3.png" alt="Ilustrações do site: plataforma, economia, roteirização, sustentabilidade, passageiro, cobertura no Brasil, qualidade e aplicativo." width="2048" height="1174" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="resultado">
+    <div class="col stack">
+      <h2 class="h2" id="resultado">Resultado</h2>
+      <p>A home foi dividida nas seguintes seções: Carrossel de serviço, como funciona, clientes, vantagens, benefícios para colaboradores, fretado para pessoa física, blog e outros serviços. Veja o site no ar: <a href="https://www.fretadao.com.br" target="_blank" rel="noopener noreferrer">www.fretadao.com.br</a></p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/marca-site/home-fretadao.png" alt="Home do site do Fretadão: banner principal, seção Veja como funciona e empresas clientes." width="1024" height="916" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="b2b">
+    <div class="col stack">
+      <h2 class="h2" id="b2b">Página B2B</h2>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/marca-site/home-b2b-fretadao.png" alt="Página B2B do site: chamada sobre redução de custos com fretamento empresarial e formulário de contato comercial." width="1024" height="728" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

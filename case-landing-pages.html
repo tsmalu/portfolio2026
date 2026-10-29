@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Landing pages · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+.shots { display: flex; flex-direction: column; gap: 0; }
+.shots img { display: block; width: 100%; height: auto; }
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura (template de case) -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="./">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page">Landing pages</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1 h1--fit" id="case-title">Landing pages</h1>
+      <ul class="tags">
+        <li class="tag">Interface</li>
+        <li class="tag">Site</li>
+        <li class="tag">Página de venda</li>
+      </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Páginas de venda · Páginas institucionais</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="col block stack" aria-label="Sobre a coleção" style="padding-block-start: clamp(24px, 3vw, 40px)">
+      <p>Essa coleção reúne diferentes landing pages que desenvolvi para marcas e projetos com necessidades específicas, como campanhas de captação e páginas institucionais.</p>
+      <p>Cada uma foi pensada para comunicar com clareza, guiar o usuário à ação e refletir a identidade visual de cada negócio.</p>
+  </section>
+
+  <section class="block" aria-labelledby="cartao">
+    <div class="col stack">
+      <h2 class="h2" id="cartao">Landing page para Cartão Pão de Açúcar Itaucard</h2>
+      <p>Desenvolvimento de uma página para apresentar os benefícios e funcionalidades dos cartões Pão de Açúcar em parceria com o Itaú, com foco em conversão de novos clientes.</p>
+      <p>O objetivo principal era criar uma página que:</p>
+      <ul class="list">
+        <li>Apresentasse os principais diferenciais e benefícios do cartão;</li>
+        <li>Mostrasse como o cliente pode acumular milhas ou cashback;</li>
+        <li>Orientasse o usuário sobre como usar os descontos e vantagens exclusivas;</li>
+        <li>Transmitisse confiança e proximidade, alinhada à identidade das marcas Pão de Açúcar e Itaú.</li>
+      </ul>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/landing-pages/cartao-pao.png" alt="Landing page dos cartões Pão de Açúcar Itaú: banner, descontos exclusivos, benefícios, troca de pontos por milhas ou cashback, escolha do cartão e como usar os descontos." width="1280" height="1541" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="clube">
+    <div class="col stack">
+      <h2 class="h2" id="clube">Landing page para Clube do Livro</h2>
+      <p>Criação de uma landing page para divulgar a primeira edição do Clube do Livro, promovido pela Revista Gama, com foco na conversão de inscrições.</p>
+      <p>O objetivo principal era criar uma página de apresentação do clube que:</p>
+      <ul class="list">
+        <li>Explicasse o propósito e os benefícios do Clube do Livro;</li>
+        <li>Apresentasse a curadora e os livros selecionados;</li>
+        <li>Facilitasse a inscrição dos interessados;</li>
+        <li>Estivesse alinhada com a identidade visual do clube.</li>
+      </ul>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/landing-pages/clube-do-livro.png" alt="Landing page do Clube do Livro da Gama: apresentação da edição, curadora, o que tem no clube, oferta de lançamento, livros da edição e cadastro para novidades." width="1804" height="1271" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="traducao">
+    <div class="col stack">
+      <h2 class="h2" id="traducao">Landing page para Tradução e Apostila de Documentos</h2>
+      <p>Criação de uma landing page para promover o serviço online de tradução juramentada e apostilamento de documentos do site documentonobrasil. Com foco em orçamentos instantâneos e conversão de pedidos.</p>
+      <p>O objetivo principal era criar uma página que:</p>
+      <ul class="list">
+        <li>Explicasse de forma clara o processo de tradução e apostilamento;</li>
+        <li>Destacasse a validade internacional dos documentos emitidos;</li>
+        <li>Facilitasse o envio de arquivos e a solicitação de orçamento;</li>
+      </ul>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/landing-pages/lp-traducao.png" alt="Landing page de apostila de Haia e tradução de documentos: banner, como funciona em 4 passos, serviços, idiomas disponíveis e chamada para iniciar o pedido." width="1200" height="1027" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="whatsapp">
+    <div class="col stack">
+      <h2 class="h2" id="whatsapp">Landing page para Monitoramento de Documentos via WhatsApp</h2>
+      <p>Desenvolvimento de uma landing page para divulgar o serviço de monitoramento de documentos (veículos, processos e certidões) com envio de relatórios e alertas diretamente pelo WhatsApp.</p>
+      <p>O objetivo principal era criar uma página que:</p>
+      <ul class="list">
+        <li>Apresentasse o monitoramento de forma simples e visual;</li>
+        <li>Explicasse o processo de ativação a partir da consulta gratuita;</li>
+        <li>Mostrasse os planos disponíveis com suas diferenças de uso;</li>
+        <li>Reforçasse credibilidade com depoimentos, selos de segurança e parcerias oficiais.</li>
+      </ul>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/landing-pages/lp-whatsapp.png" alt="Landing page de consulta de documentos pelo WhatsApp: banner com a conversa, vantagens, o que pode ser monitorado, planos e depoimentos de clientes." width="1200" height="1027" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

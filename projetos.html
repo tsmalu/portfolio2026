@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projetos · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+/* Página de projetos: título central, filtros e grade de cards (mesmo card da home) */
+.projects-page { padding-block: clamp(24px, 3vw, 48px) 0; }
+.projects-page__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 5.4vw, 4.75rem); line-height: 1; color: var(--fg); text-align: center; margin: 0 0 clamp(32px, 4vw, 56px); }
+
+.projects__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2vw, 32px); }
+.project {
+  background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column; min-width: 0;
+  box-shadow: 0 1px 2px rgb(0 0 0 / .03);
+  transition: transform 260ms ease-out, box-shadow 260ms ease-out;
+  text-decoration: none; color: inherit;
+}
+@media (hover: hover) {
+  .project:hover { transform: translateY(-5px); box-shadow: 0 2px 6px rgb(0 0 0 / .04), 0 12px 32px rgb(0 0 0 / .09); }
+}
+@media (prefers-reduced-motion: reduce) { .project:hover { transform: none; } }
+.project:focus-visible { outline: 2px solid var(--select); outline-offset: 6px; }
+.project__media { position: relative; aspect-ratio: 1167 / 552; min-height: 0; overflow: hidden; border-bottom: 1px solid #E2E2E2; background: #F4F4F4; }
+.project__media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.project__body { padding: clamp(20px, 2.2vw, 32px) clamp(20px, 2.2vw, 32px) clamp(28px, 3vw, 44px); display: flex; flex-direction: column; gap: 12px; }
+.project__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1; color: var(--fg); margin: 0; text-wrap: balance; }
+.project__text { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; margin: 0; }
+
+@media (max-width: 760px) {
+  .projects__grid { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main class="container projects-page">
+  <h1 class="projects-page__title">Projetos de Design</h1>
+  <div class="projects__grid" id="grid"></div>
+</main>
+
+<footer id="site-footer"></footer>
+<script>
+/* Conteúdo: para incluir um projeto, adicione um item aqui. href só quando houver página. */
+const PROJECTS = [
+  { title: "Plataforma jurídica CBRdoc", text: "Redesenho da experiência para transformar consultas pontuais em acompanhamento e monitoramento jurídico contínuo.", img: "cbrdoc", cat: ["ux"], href: "case-cbrdoc.html" },
+  { title: "Design System e redesign de plataforma SaaS", text: "Criação do Design System com tokens e redesign dos fluxos principais, com IA para gerar variações de tela, protótipos e documentação.", img: "cbrdoc-ds-capa-v5", cat: ["ux"], href: "case-cbrdoc-ds.html" },
+  { title: "Plataforma para gerenciar ações de ESG", text: "Solução que ajuda empresas com ações ESG. O projeto inclui imersão, prototipação e testes de usabilidade.", img: "esg-capa", cat: ["ux"], href: "case-esg.html" },
+  { title: "Interface para jogo", text: "Criação de componentes para a interface de um jogo de xadrez. Inclui telas como menu, seleção de modos, área social, loja e etc.", img: "jogo-xadrez-capa", cat: ["ux"], href: "case-xadrez.html" },
+  { title: "App Pão de Açúcar", text: "Estudo de caso de um projeto realizado como parte do time de design do GPA, focado na reestruturação do app Pão de Açúcar.", img: "pao-de-acucar-capa", cat: ["ux"], href: "https://www.behance.net/gallery/171264907/App-Pao-de-Acucar-2022", external: true },
+  { title: "Design de APP para motoristas de fretado", text: "Aplicativo para motoristas de fretado que precisam aprender um trajeto novo ou acompanhar suas viagens com rotas atualizadas.", img: "app-motoristas-capa", cat: ["ux"], href: "case-motoristas.html" },
+  { title: "APP para passageiros | Mobile UI/UX", text: "Redesign de aplicativo, com foco em melhorar a experiência do usuário com nova identidade visual e funcionalidades otimizadas.", img: "app-passageiros-capa", cat: ["ux"], href: "case-passageiros.html" },
+  { title: "Redesign de Marca e Site", text: "Reformulação visual da marca e criação de site para startup de transporte, projeto otimiza layout para comunicar nova marca.", img: "fretadao-site", cat: ["ux"], href: "case-marca-site.html" },
+  { title: "Landing pages", text: "Páginas para diversos clientes com objetivo de guiar o usuário à ação e refletir a identidade visual de cada negócio.", img: "landing-pages", cat: ["ux"], href: "case-landing-pages.html" },
+];
+
+const card = (p) => {
+  const tag = p.href ? `a href="${p.href}"${p.external ? ' target="_blank" rel="noopener noreferrer"' : ""}` : "article";
+  const end = p.href ? "a" : "article";
+  return `<${tag} class="project" data-cat="${p.cat.join(" ")}">
+    <div class="project__media">${p.img ? `<img src="assets/projetos/${p.img}.jpg" alt="" loading="lazy" width="1026" height="486">` : ""}</div>
+    <div class="project__body">
+      <h2 class="project__title">${p.title}</h2>
+      <p class="project__text">${p.text}</p>
+    </div>
+  </${end}>`;
+};
+
+const grid = document.getElementById("grid");
+grid.innerHTML = PROJECTS.map(card).join("");
+</script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

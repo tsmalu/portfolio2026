@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>APP para passageiros · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+.shots { display: flex; flex-direction: column; gap: 0; }
+.shots img { display: block; width: 100%; height: auto; }
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.list strong { color: var(--fg); }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura (template de case) -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="./">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page">APP para passageiros | Mobile UI/UX</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1 h1--fit" id="case-title">APP para passageiros | Mobile UI/UX</h1>
+      <ul class="tags">
+        <li class="tag">UI e UX</li>
+        <li class="tag">Pesquisa</li>
+        <li class="tag">Aplicativo</li>
+      </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Projeto feito para Fretadão · 2021</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="cliente" style="padding-block-start: clamp(24px, 3vw, 40px)">
+    <div class="col stack">
+      <h2 class="h2" id="cliente">Cliente</h2>
+      <p>Fretadão é uma empresa de tecnologia voltada para a área de fretamento e oferece o serviço de planejamento, implantação e gestão da operação de fretado para colaboradores de empresas de médio e grande porte.</p>
+      <p>Meu primeiro projeto como designer de produtos no Fretadão foi redesenhar o aplicativo com a nova identidade visual que criei para a marca e torná-lo mais fácil de usar.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="objetivos">
+    <div class="col stack">
+      <h2 class="h2" id="objetivos">Objetivos</h2>
+      <ul class="list">
+        <li>Redesenhar o aplicativo com a nova identidade visual;</li>
+        <li>Melhorar a experiência dos usuários;</li>
+        <li>Otimizar o aplicativo com as funções existentes;</li>
+        <li>Testar com usuários e analisar o funcionamento do novo layout.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="processo">
+    <div class="col stack">
+      <h2 class="h2" id="processo">Processo de design</h2>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/processo-de-design.png" alt="Processo de design: imersão, ideação, prototipação e validação, com prototipação e validação se repetindo." width="1400" height="415" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="imersao">
+    <div class="col stack">
+      <h2 class="h2" id="imersao">Imersão</h2>
+      <h3 class="h3" style="margin-top: 16px">Análise dos concorrentes</h3>
+      <p>Há diversos sites e aplicativos de transporte no mercado, revisar esses produtos me ajudou a entender as estratégias que eles aplicam.</p>
+      <p><strong>Concorrentes diretos:</strong> oferecem serviços similares de fretados ou transporte rodoviário.</p>
+      <ul class="list">
+        <li>Viação Cometa</li>
+        <li>Buser</li>
+        <li>Clickbus</li>
+      </ul>
+      <p><strong>Concorrentes indiretos:</strong> soluções alternativas para mobilidade ou viagem.</p>
+      <ul class="list">
+        <li>Decolar</li>
+        <li>BlaBlaCar</li>
+        <li>Uber</li>
+      </ul>
+      <h3 class="h3" style="margin-top: 16px">Análise da interface</h3>
+      <p>Analisei tela por tela do aplicativo, para entender as funcionalidades, arquitetura, navegação e identificar pontos problemáticos e/ou de melhoria.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/analise-interface.png" alt="Prints do aplicativo anterior: tela inicial, busca de fretado, pontos da linha com valores e agendamento de viagem." width="1400" height="944" loading="lazy"></div>
+    </div>
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+      <p><strong>Página inicial:</strong> a primeira tela é muito simples, há apenas um texto e dois botões, quando baixamos um aplicativo novo, esperamos entender um pouco melhor sobre ele, ou até mesmo relembrar para que serve e porque o baixamos.</p>
+      <p><strong>Resultado de busca:</strong> olhando rapidamente, parece que todas as opções são iguais, é possível melhorar visualmente, organizar os dados nesta página, remover o que se repete e trazer mais informações sobre a linha, para que o usuário consiga diferenciar melhor as linhas para compará-las e então ver mais detalhes.</p>
+      <p><strong>Detalhes da linha:</strong> é uma página longa, as informações podem ser organizadas e divididas, assim será possível dar destaque para as informações mais importantes.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="ideacao">
+    <div class="col stack">
+      <h2 class="h2" id="ideacao">Ideação</h2>
+      <p>Depois de entender o problema e analisar cada ponto problemático, eu estava pronta para encontrar soluções.</p>
+      <h3 class="h3" style="margin-top: 16px">Fluxo do usuário</h3>
+      <p>Criei um fluxo sobre como os usuários vão navegar no novo app.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/passageiros-fluxo.png" alt="Fluxo de navegação do novo app: home, busca, listagem, detalhes, agendar viagem e resumo, com as informações de cada etapa." width="1400" height="785" loading="lazy"></div>
+    </div>
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+      <h3 class="h3" style="margin-top: 16px">Esboços</h3>
+      <p>Comecei a desenhar as telas principais do app para ter uma ideia das informações.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/passageiros-rascunhos.png" alt="Esboços em papel das telas principais: onboarding, escolha do fretado, detalhes da linha e escolha de datas." width="1400" height="793" loading="lazy"></div>
+    </div>
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+      <h3 class="h3" style="margin-top: 16px">Refinamento</h3>
+      <p>Depois de alguns rascunhos queria explorar mais e comecei a desenhar no Adobe XD, comecei com layouts sem cores.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/passageiros-refinamento.png" alt="Telas refinadas sem cor: onboarding, escolha do fretado de ida e detalhes da linha com o trajeto." width="1400" height="677" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="prototipo">
+    <div class="col stack">
+      <h2 class="h2" id="prototipo">Prototipagem e teste de usabilidade</h2>
+      <p>Após alguns esboços, fiz a primeira versão do protótipo, já com elementos da nova identidade visual, adicionando mais informações à página de busca e separando melhor o conteúdo da página de detalhes da linha.</p>
+      <h3 class="h3" style="margin-top: 16px">Testes internos</h3>
+      <p>Realizei alguns testes de usabilidade internos, com funcionários da empresa, antigos e recém chegados, foi uma etapa crucial para validar minhas ideias e detectar erros antes de testar com usuários reais.</p>
+      <p>Alguns aprendizados e decisões de design que apliquei:</p>
+      <ul class="list">
+        <li>Os horários são informações muito importantes e devem ser evidenciados.</li>
+        <li>O tempo de caminhada estava confuso.</li>
+        <li>Normalmente a viagem de ida e volta é feita pela mesma linha de fretado, então a divisão entre “ida” e “volta” no fluxo é uma coisa nova e não foi bem aceita entre os participantes. Decidi esperar e ver se mais usuários teriam essa percepção antes de remover a funcionalidade.</li>
+      </ul>
+      <h3 class="h3" style="margin-top: 16px">Testes externos</h3>
+      <p>Optei por testes presenciais e para que os participantes não tivessem que se deslocar de grandes distâncias, selecionei pessoas que estavam buscando por linhas que embarcavam ou desembarcavam no bairro da Barra Funda, que é onde está localizado o escritório do Fretadão, além de pessoas que estavam buscando por linhas, também recrutei quem havia feito uma viagem de teste recentemente.</p>
+      <p>Seis usuários foram convidados para conhecer nosso escritório e participar da pesquisa.</p>
+      <p>O teste tinha como objetivo identificar erros e verificar a compreensão dos usuários em relação às informações e funções do novo aplicativo.</p>
+      <p>Foram realizados testes de usabilidade em protótipos Android, com duração média de 20 minutos, observando aspectos de usabilidade e entendimento das funcionalidades.</p>
+      <p><strong>Cenário:</strong> imagine que você mora no bairro Barra Funda e vai começar a trabalhar em uma empresa em Campinas, com horário de entrada às 8h e saída às 17h.</p>
+      <p><strong>Tarefa:</strong> encontre um fretado que melhor te atenda nessas condições.</p>
+      <p>Nenhum usuário teve dificuldade em realizar a tarefa e os feedbacks foram muito importantes para adicionar informações, sanar dúvidas e fazer ajustes na interface.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="final">
+    <div class="col stack">
+      <h2 class="h2" id="final">Iterações e design final</h2>
+      <p>Depois de passar por várias iterações cheguei no design final, essas são as principais mudanças.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/passageiros-pagina-inicial.gif" alt="Animação da nova página inicial do app, com a nova identidade visual, ilustração do cenário de uso e os botões Buscar fretado e Já sou passageiro." width="1200" height="800" loading="lazy"></div>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/passageiros/passageiros-pagina-filtros.gif" alt="Animação do filtro no início da busca, em que o usuário informa os endereços de origem e destino." width="1200" height="800" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

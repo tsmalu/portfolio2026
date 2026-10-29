@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Blog · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+/* Blog: faixa escura no topo, avatar sobreposto, perfil à esquerda e lista de posts à direita */
+.blog-band { background: #363636; height: clamp(110px, 9.5vw, 190px); }
+.blog { display: grid; grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.7fr); gap: clamp(32px, 4vw, 72px); align-items: start; }
+.blog-profile { margin-top: calc(-1 * clamp(70px, 7vw, 140px)); display: flex; flex-direction: column; min-width: 0; }
+.blog-avatar {
+  width: clamp(120px, 11.5vw, 168px); aspect-ratio: 1; border-radius: 50%;
+  object-fit: cover; border: 5px solid var(--bg); background: var(--bg);
+}
+.blog-name { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 5.4vw, 5.5rem); line-height: 1; color: var(--fg); margin: clamp(16px, 2vw, 28px) 0 12px; }
+.blog-role { color: var(--muted); font-size: clamp(1rem, 1.2vw, 1.1875rem); margin: 0; }
+
+.posts { list-style: none; margin: 0; padding: clamp(24px, 3vw, 44px) 0 0; display: flex; flex-direction: column; min-width: 0; }
+.post {
+  display: grid; grid-template-columns: minmax(0, 1fr) clamp(180px, 20vw, 282px); gap: clamp(20px, 3vw, 44px);
+  padding-block: 0 clamp(24px, 2.6vw, 36px); margin-bottom: clamp(24px, 2.6vw, 40px);
+  border-bottom: 1px solid #E4E4E4;
+}
+.post__body { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.post__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.875rem, 3vw, 2.75rem); line-height: 1; color: var(--fg); margin: 0; text-wrap: balance; }
+.post__text { font-size: 0.875rem; line-height: 1.7; color: var(--text); margin: 0; }
+.post__year { font-size: 1rem; color: var(--muted); margin: 0; font-variant-numeric: tabular-nums; }
+.post__thumb { width: 100%; aspect-ratio: 282 / 197; object-fit: cover; border-radius: 10px; align-self: start; }
+
+.post { position: relative; }
+.post__link { color: inherit; text-decoration: none; }
+.post__link::after { content: ""; position: absolute; inset: 0; }   /* post inteiro clicável */
+.post:hover .post__title { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.post__link:focus-visible { outline: none; }
+.post:has(.post__link:focus-visible) { outline: 2px solid #0D99FF; outline-offset: 8px; border-radius: 6px; }
+.post__thumb { transition: transform .25s ease-out; }
+.post:hover .post__thumb { transform: translateY(-2px); }
+
+@media (max-width: 900px) {
+  .blog { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+}
+@media (max-width: 600px) {
+  .post { grid-template-columns: minmax(0, 1fr); }
+  .post__thumb { order: -1; }
+}
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <div class="blog-band" aria-hidden="true"></div>
+
+  <div class="container blog">
+    <aside class="blog-profile">
+      <img class="blog-avatar" src="assets/profile.jpg" alt="Foto de Malu Sousa" width="320" height="320">
+      <h1 class="blog-name">Malu Sousa</h1>
+      <p class="blog-role">Product Designer | São Paulo, Brasil</p>
+    </aside>
+
+    <ol class="posts" aria-label="Posts">
+      <li class="post">
+        <div class="post__body">
+          <h2 class="post__title"><a class="post__link" href="post-plataforma-esg.html">Plataforma ESG: estratégia, processo e impacto</a></h2>
+          <p class="post__text">O cliente buscava uma solução que ajudasse empresas com a implantação de ações ESG. O projeto incluiu imersão, entrevistas com especialistas e colaboração na definição de escopo e funcionalidades.</p>
+          <p class="post__year">2023</p>
+        </div>
+        <img class="post__thumb" src="assets/esg/workshop.jpg" alt="Workshop com o cliente diante dos painéis de visão do produto" width="900" height="506" loading="lazy">
+      </li>
+      <li class="post">
+        <div class="post__body">
+          <h2 class="post__title"><a class="post__link" href="post-clube-do-livro.html">Landing page para Clube do Livro</a></h2>
+          <p class="post__text">Criação de uma landing page para divulgar a primeira edição do Clube do Livro, promovido pela Revista Gama, com foco na conversão de inscrições.</p>
+          <p class="post__year">2025</p>
+        </div>
+        <img class="post__thumb" src="assets/blog/clube-do-livro.jpg" alt="Telas da landing page do Clube do Livro da Gama" width="394" height="284" loading="lazy">
+      </li>
+    </ol>
+  </div>
+</main>
+
+<footer id="site-footer"></footer>
+<script src="case.js"></script>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>

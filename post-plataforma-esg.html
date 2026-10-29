@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plataforma ESG · Blog · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+/* Peças específicas do post (tudo o mais vem do template de case) */
+.team { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.team strong { color: var(--fg); font-weight: 600; }
+.caption { font-size: 0.875rem; color: var(--muted); margin-top: 10px; }
+.img-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.slot-img { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 200px; display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); font-size: 0.875rem; }
+.personas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.persona { background: #E3E3E3; border-radius: 10px; padding: 18px 18px 22px; box-shadow: 0 1px 3px rgb(0 0 0 / .08); }
+.persona__name { margin: 0; font-weight: 700; font-size: 1.0625rem; color: var(--fg); display: flex; align-items: center; gap: 8px; }
+.persona .stack { gap: 16px; margin-top: 12px; font-size: 0.9375rem; line-height: 1.6; }
+.persona .stack p { margin: 0; }
+.persona strong { color: var(--fg); font-weight: 700; }
+@media (max-width: 760px) { .personas { grid-template-columns: minmax(0, 1fr); } }
+/* Fotos do workshop: quase a largura da tela */
+.bleed-pair { margin: clamp(20px, 2.4vw, 32px) auto 0; max-width: 1920px; padding-inline: clamp(12px, 1.6vw, 24px); }
+.bleed-pair .img-pair { gap: clamp(8px, 1vw, 16px); }
+.bleed-pair img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.bleed-pair--md { max-width: calc(1080px + 2 * clamp(12px, 1.6vw, 24px)); }
+.bleed-pair .caption { text-align: center; margin-top: clamp(16px, 2vw, 28px); }
+/* Projeto e Time lado a lado (2/3 + 1/3) */
+.proj-team { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); column-gap: clamp(24px, 3vw, 40px); align-items: start; }
+.proj-team .team { gap: 12px; }
+@media (max-width: 760px) { .proj-team { grid-template-columns: minmax(0, 1fr); row-gap: clamp(24px, 2.8vw, 40px); } }
+@media (max-width: 600px) { .img-pair { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura (template de case) -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="blog.html">Blog</a></li>
+      <li aria-current="page" data-short="Post">Plataforma ESG</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1 h1--fit" id="case-title">Plataforma ESG: estratégia, processo e impacto</h1>
+      <ul class="tags">
+        <li class="tag">UI e UX</li>
+        <li class="tag">Pesquisa</li>
+        <li class="tag">Consultoria</li>
+      </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Projeto feito com Performa_IT Consultoria · 2023</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="col block proj-team" style="padding-block-start: clamp(24px, 3vw, 40px)">
+    <section class="stack" aria-labelledby="projeto">
+      <h2 class="h2" id="projeto">Projeto</h2>
+      <p>O cliente precisava de uma solução para apoiar empresas na implantação de práticas ESG. O projeto envolveu imersão, entrevistas e definição colaborativa de funcionalidades, resultando em uma plataforma para diagnóstico, gestão de temas materiais e metas.</p>
+    </section>
+    <section class="stack" aria-labelledby="time">
+      <h2 class="h2" id="time">Time</h2>
+      <ul class="team">
+        <li><strong>Juliana Amorim</strong> - Chapter Lead</li>
+        <li><strong>Luiza Tavares</strong> - Business &amp; Service Designer</li>
+        <li><strong>Malu Sousa</strong> - UX UI Designer</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="col block stack" aria-labelledby="processo">
+    <h2 class="h2" id="processo">Processo de design</h2>
+    <img class="steps-img" src="assets/esg/etapas.png" alt="descoberta, definição, ideação e prototipação" width="3456" height="1000">
+  </section>
+
+  <section class="col block stack" aria-labelledby="descoberta">
+    <div class="icon-title">
+      <img class="icon-chip" src="assets/esg/icone-descoberta.png" alt="" width="40" height="40">
+      <h2 class="h2" id="descoberta">Descoberta</h2>
+    </div>
+    <p>Iniciamos a fase de descoberta com uma mentoria sobre ESG e durante duas semanas, entrevistamos consultores e profissionais do setor, identificando desafios como engajamento cultural, falta de ferramentas especializadas e resistência a investimentos.</p>
+    <figure style="margin: 0">
+      <img src="assets/esg/esg-matriz-csd.png" alt="Matriz CSD com as colunas Certezas, Suposições e Dúvidas, preenchidas com post-its" width="2048" height="954" loading="lazy" style="display:block; width:100%; height:auto; border-radius: var(--radius)">
+      <figcaption class="caption">Matriz CSD criada durante a etapa de descoberta, organizada na plataforma Mural.</figcaption>
+    </figure>
+  </section>
+
+  <section class="block" aria-labelledby="definicao">
+    <div class="col stack">
+      <div class="icon-title">
+        <img class="icon-chip" src="assets/esg/icone-definicao.png" alt="" width="40" height="40">
+        <h2 class="h2" id="definicao">Definição</h2>
+      </div>
+      <p>O workshop de Lean Inception representa um marco essencial na jornada do projeto, desdobrando-se ao longo de uma semana de imersão. Ao longo dessa semana, a equipe guiou o cliente por um processo estruturado para a construção do produto ideal de maneira colaborativa, oferecendo uma visão compartilhada e fundamentada para as próximas fases.</p>
+    </div>
+    <figure class="bleed-pair">
+      <div class="img-pair">
+        <img src="assets/esg/workshop-1.jpg" alt="Equipe e stakeholders do cliente diante dos painéis de visão do produto e É / Não é / Faz / Não faz, preenchidos com post-its." width="2048" height="1152" loading="lazy">
+        <img src="assets/esg/workshop-2.jpg" alt="Participante do cliente falando ao grupo durante o workshop, com os painéis de post-its na parede." width="2048" height="1152" loading="lazy">
+      </div>
+      <figcaption class="caption">Workshop de cocriação entre o time de design e stakeholders do cliente, focado em definir a visão do produto.</figcaption>
+    </figure>
+  </section>
+
+  <section class="block" aria-labelledby="ideacao">
+    <div class="col stack">
+    <div class="icon-title">
+      <img class="icon-chip" src="assets/esg/icone-ideacao.png" alt="" width="40" height="40">
+      <h2 class="h2" id="ideacao">Ideação</h2>
+    </div>
+    <p>Com a visão de produto definida, iniciamos a ideação para estruturar o que seria desenvolvido.</p>
+    <p>Nessa etapa, criamos as personas, mapeamos a jornada do usuário e definimos as funcionalidades essenciais para a plataforma.</p>
+
+    <h3 class="h3" style="margin-top: 16px">Personas</h3>
+    <div class="personas">
+      <div class="persona">
+        <p class="persona__name"><span aria-hidden="true">👨‍💼</span> Edson</p>
+        <div class="stack">
+          <p>Profissional de empresa de pequeno/médio porte e única pessoa responsável por sustentabilidade.</p>
+          <p><strong>Ações:</strong> Cumpre obrigações legais, possui pouco conhecimento em ESG e usa Excel.</p>
+          <p><strong>Desafios e Preocupações:</strong> Além da preocupação com a reputação da empresa, Edson está perdendo clientes por não se adequar ao ESG. Ele enfrenta a dificuldade de acesso limitado a informações da empresa e deseja expandir para novos mercados.</p>
+        </div>
+      </div>
+      <div class="persona">
+        <p class="persona__name"><span aria-hidden="true">👩‍💼</span> Silvia</p>
+        <div class="stack">
+          <p>Faz parte de um time ou comitê de ESG em uma empresa de grande porte com mais de 50 anos no mercado.</p>
+          <p><strong>Ações:</strong> Tem iniciativas e projetos de ESG, capta investimentos, é pressionada pelo mercado para cumprir práticas ESG e emite relatório de sustentabilidade.</p>
+          <p><strong>Desafios e Preocupações:</strong> Enfrenta dificuldades em monitorar fornecedores e engajar colaboradores. Busca certificações, mas enfrenta desafios na mensuração do impacto de suas ações.</p>
+        </div>
+      </div>
+      <div class="persona">
+        <p class="persona__name"><span aria-hidden="true">👩‍🏫</span> Gabriela</p>
+        <div class="stack">
+          <p>Consultora especialista em ESG, trabalha na área há mais de 10 anos.</p>
+          <p><strong>Ações:</strong> Atende empresas de pequeno e médio porte de diversos segmentos, se comunica com várias áreas dentro da empresa que atende, entrega relatórios e apresenta resultados de seus estudos.</p>
+          <p><strong>Desafios e Preocupações:</strong> Gabriela enfrenta dificuldades em mudar a cultura e o mindset da empresa. Ela lida com acesso limitado a informações internas e enfrenta o desafio de influenciar os tomadores de decisão para ir além do mínimo.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="h3" style="margin-top: 16px">Jornada da pessoa usuária</h3>
+    <p>Realizamos uma dinâmica com o cliente e desenhamos a jornada de experiência que esperamos para o produto.</p>
+    </div>
+    <figure class="bleed-pair bleed-pair--md">
+      <img src="assets/esg/esg-jornada.png" alt="Jornada da pessoa usuária em quatro etapas: descoberta, análise interna, estratégia e acompanhamento, com falas e uma curva de emoção ao longo do processo." width="2800" height="1392" loading="lazy">
+    </figure>
+    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+
+    <h3 class="h3" style="margin-top: 16px">Revisão técnica e sequenciador</h3>
+    <p>Classificamos o valor para o negócio, usuário e esforço de desenvolvimento. Utilizamos o sequenciador para ordenar funcionalidades essenciais que precisam ser entregues inicialmente no MVP.</p>
+    </div>
+    <figure class="bleed-pair bleed-pair--md">
+      <img src="assets/esg/esg-revisao.png" alt="Matriz de priorização de funcionalidades por esforço, valor para o negócio e para o usuário, ao lado do sequenciador que separa as funcionalidades do MVP." width="1344" height="614" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="col block stack" aria-labelledby="design">
+    <div class="icon-title">
+      <img class="icon-chip" src="assets/esg/icone-design.png" alt="" width="40" height="40">
+      <h2 class="h2" id="design">Design</h2>
+    </div>
+    <p>Após o alinhamento estratégico com o cliente, iniciamos a etapa de design, abordando o fluxo de navegação, o guia de estilo, o desenho da interface, a prototipação em alta fidelidade e os testes de usabilidade.</p>
+    <p>Para acompanhar o desenvolvimento visual completo do projeto, acesse a página de apresentação:</p>
+    <a class="linkcard" href="case-esg.html">
+      <img src="assets/projetos/esg-capa.jpg" alt="" width="1400" height="662">
+      <div>
+        <p class="linkcard__title">Veja o projeto completo</p>
+        <p class="linkcard__text">Conheça o processo de design visual da plataforma ESG.</p>
+      </div>
+    </a>
+  </section>
+
+  <div class="col back"><a href="blog.html">← Voltar para o blog</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>

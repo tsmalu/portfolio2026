@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Motoristas de fretado · Malu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+.shots { display: flex; flex-direction: column; gap: 0; }
+.shots img { display: block; width: 100%; height: auto; }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <!-- Abertura (template de case) -->
+  <section class="col intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="./">Início</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page">Design de APP para motoristas de fretado</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1 h1--fit" id="case-title">Design de APP para motoristas de fretado</h1>
+      <ul class="tags">
+        <li class="tag">UI e UX</li>
+        <li class="tag">Pesquisa</li>
+      </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Projeto feito para Fretadão · 2022</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="cliente" style="padding-block-start: clamp(24px, 3vw, 40px)">
+    <div class="col stack">
+      <h2 class="h2" id="cliente">Cliente e objetivo</h2>
+      <p>Fretadão é uma empresa de tecnologia voltada para a área de fretamento e oferece o serviço de planejamento, implantação e gestão da operação de fretado para colaboradores de empresas de médio e grande porte.</p>
+      <p>O objetivo do projeto é facilitar a navegação de motoristas durante suas viagens, simplificando o processo atual e com um aplicativo novo e próprio do Fretadão.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="pesquisa">
+    <div class="col stack">
+      <h2 class="h2" id="pesquisa">Pesquisa</h2>
+      <p>O primeiro passo foi buscar aplicativos de mapa e navegação para analisar prós e contras e o que faria sentido em nosso modelo de negócio, então estava pronta para construir um fluxo de navegação e estruturar as telas em um wireframe.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="userflow">
+    <div class="col stack">
+      <h2 class="h2" id="userflow">User flow</h2>
+      <p>Antes do Fretadão maps, o motorista precisava usar um aplicativo externo, baixar mapas, adicionar o arquivo de rota e fazer as configurações necessárias para usar a ferramenta de navegação e ser guiado no trajeto.</p>
+      <p>O fluxo foi simplificado para que a conta do usuário esteja vinculada às linhas que ele usa e o app esteja pronto para que o motorista comece a navegação rapidamente.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/motoristas/app-motorista-userflow.png" alt="User flow do app: tela inicial, login com matrícula e senha, mapa com opção para buscar linhas, mapa com trajeto completo e pontos de parada, e navegação guiada por GPS." width="2913" height="1294" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="wireframes">
+    <div class="col stack">
+      <h2 class="h2" id="wireframes">Wireframes</h2>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/motoristas/app-motorista-wireframes.png" alt="Wireframes do app: login, minhas linhas, trajeto da linha no mapa e navegação com a próxima parada." width="1279" height="446" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="ui">
+    <div class="col stack">
+      <h2 class="h2" id="ui">UI Design</h2>
+      <p>O app segue os padrões do design system do Fretadão, o Mão na roda.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/motoristas/app-motorista-tipografia.png" alt="Tipografia e cores do app: fonte Rubik em heading 25 medium, body 16 regular e body small 13 regular; cores #0052CC, #E8F2FF, #FF48B1, #383838 e #E8E8E8." width="4052" height="2120" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="aplicativo">
+    <div class="col stack">
+      <h2 class="h2" id="aplicativo">Aplicativo</h2>
+    </div>
+    <div class="wide media-row">
+      <div class="media"><img src="assets/motoristas/app-motorista-aplicativo.jpg" alt="Telas do aplicativo: login com matrícula e senha, lista de linhas do motorista e escolha do sentido, trajeto com pontos de parada, opções de iniciar ou simular e navegação guiada com velocidade e horários." width="3810" height="7482" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script src="case.js"></script>
+</body>
+</html>
