@@ -3,13 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Plataforma CBRdoc · Malu</title>
+<title>Plataforma jurídica CBRdoc · Malu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="case.css">
 <link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="footer.css">
+<style>
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.quote { margin: 8px 0 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--fg); font-size: clamp(1.0625rem, 1.3vw, 1.25rem); line-height: 1.6; color: var(--fg); }
+.h4 { margin: 8px 0 0; font-size: 1.0625rem; font-weight: 700; color: var(--fg); }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+.cm-media img { display: block; width: 100%; height: auto; }
+.cm-media .slot { display: none; }
+.cm-media.is-missing img { display: none; }
+.cm-media.is-missing .slot { display: grid; }
+</style>
 </head>
 <body>
 
@@ -21,21 +31,109 @@
     <ol class="crumbs" aria-label="Você está em">
       <li><a href="./">Início</a></li>
       <li><a href="projetos.html">Projetos</a></li>
-      <li aria-current="page">Plataforma CBRdoc</li>
+      <li aria-current="page">Plataforma jurídica CBRdoc</li>
     </ol>
     <div class="stack">
       <h1 class="h1 h1--fit" id="case-title">Plataforma jurídica CBRdoc</h1>
       <ul class="tags">
-        <li class="tag">Tag provisória</li>
-        <li class="tag">Tag provisória</li>
-        <li class="tag">Tag provisória</li>
+        <li class="tag">UI e UX</li>
+        <li class="tag">Estratégia de jornada</li>
+        <li class="tag">SaaS B2B</li>
       </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Product Designer</p>
+          <p class="byline__meta">Nova experiência de monitoramento · CBRdoc</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="col block stack" aria-labelledby="projeto" style="padding-block-start: clamp(24px, 3vw, 40px)">
-    <h2 class="h2" id="projeto">Projeto</h2>
-    <p class="ph">Texto provisório. Aqui entra o contexto do projeto: o problema, o objetivo e o seu papel. Será substituído pelo conteúdo real do case.</p>
+    <h2 class="h2" id="projeto">Nova experiência de monitoramento</h2>
+    <p>A CBRdoc estava evoluindo de uma experiência baseada em consultas e solicitações pontuais para uma plataforma de acompanhamento contínuo. Depois de encontrar e consultar um processo, o usuário ainda precisava voltar ao sistema para verificar novas movimentações.</p>
+    <p>O projeto de Monitoramento buscou fechar esse ciclo, permitindo acompanhar processos continuamente e receber alertas quando houvesse novas movimentações. A experiência também conectava a ativação do monitoramento ao fluxo de uso existente, tornando o acompanhamento uma extensão natural da consulta.</p>
+    <p>Atuei na estruturação da jornada de monitoramento, definição da lógica de ativação e organização da experiência de acompanhamento dentro da plataforma. O objetivo de negócio era aumentar a ativação e abrir caminho para uma nova fonte de receita recorrente.</p>
+  </section>
+
+  <section class="col block stack" aria-labelledby="contexto">
+    <h2 class="h2" id="contexto">Contexto do produto</h2>
+    <p>A CBRdoc tinha uma experiência predominantemente transacional: o usuário solicitava ou consultava uma informação e acompanhava aquele pedido até sua conclusão. A plataforma já oferecia diferentes formas de acesso a informações jurídicas e documentais, mas o acompanhamento após a consulta ainda era limitado.</p>
+    <p>A plataforma já oferecia:</p>
+    <ul class="list">
+      <li>Solicitação de certidões</li>
+      <li>Acompanhamento de pedidos</li>
+      <li>Dossiê com informações por CPF/CNPJ</li>
+      <li>Pesquisa de processos</li>
+    </ul>
+    <p>O desafio era ampliar esse modelo para que a plataforma continuasse útil depois da consulta, permitindo acompanhar mudanças relevantes sem depender de novas consultas manuais.</p>
+    <p>Essa mudança fazia parte de uma evolução maior do produto: sair de uma lógica centrada em consultas e solicitações pontuais para uma experiência de acompanhamento contínuo. Nesse contexto, o Monitoramento de Processos passou a funcionar como uma extensão da jornada de consulta, permitindo que o usuário continuasse acompanhando um processo depois de encontrá-lo.</p>
+  </section>
+
+  <section class="col block stack" aria-labelledby="problema">
+    <h2 class="h2" id="problema">Problema de experiência</h2>
+    <p>Após concluir uma solicitação, o usuário deixava de ter suporte da plataforma para acompanhar mudanças relacionadas aos documentos e processos consultados.</p>
+    <p>O controle passava a depender de ferramentas externas, consultas recorrentes e acompanhamento manual, tornando a experiência fragmentada e reativa.</p>
+    <p>Essa dinâmica gerava dificuldades principalmente em cenários que exigiam acompanhamento frequente de regularidade documental e movimentações processuais.</p>
+    <h3 class="h4">Principais fricções identificadas</h3>
+    <ul class="list">
+      <li>Ausência de alertas automáticos</li>
+      <li>Dependência de controle manual</li>
+      <li>Necessidade de consultas repetidas</li>
+      <li>Falta de visão consolidada por CPF/CNPJ</li>
+      <li>Baixa continuidade da experiência após o pedido</li>
+    </ul>
+    <blockquote class="quote">A hipótese era de que muitos usuários só voltavam à plataforma quando já existia um problema ou uma urgência operacional.</blockquote>
+  </section>
+
+  <section class="block" aria-labelledby="estrategia">
+    <div class="col stack">
+      <h2 class="h2" id="estrategia">Estratégia de jornada</h2>
+      <p>O principal desafio do projeto foi integrar o monitoramento à estrutura existente da plataforma, além de criar um módulo para ele.</p>
+      <p>A funcionalidade foi distribuída estrategicamente ao longo da jornada: no momento da solicitação, no acompanhamento por CPF/CNPJ e na visão de pedidos no módulo.</p>
+      <p>A ideia era manter coerência com o modelo mental do usuário e oferecer a ativação no momento de maior intenção.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media cm-media"><img src="assets/cbrdoc/monit-jornada.png" alt="Jornada antes e depois do monitoramento" width="2400" height="630" loading="lazy" onerror="this.parentElement.classList.add('is-missing')"><div class="slot">Imagem: jornada antes e depois</div></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="estrutura">
+    <div class="col stack">
+      <h2 class="h2" id="estrutura">Estrutura da experiência</h2>
+      <h3 class="h3" id="ativacao">Ativação no momento certo</h3>
+      <p>O monitoramento foi integrado ao fluxo de checkout de certidões e pesquisas processuais, aproveitando o momento em que o usuário já demonstrava preocupação com regularidade documental e possíveis riscos.</p>
+      <p>Em vez de depender de uma configuração posterior dentro da central de monitoramento, a ativação acontece no contexto da própria solicitação, com o objetivo de facilitar a adesão.</p>
+      <p>A decisão também evitava que o monitoramento fosse percebido como uma funcionalidade separada da jornada principal da plataforma.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media cm-media"><img src="assets/cbrdoc/monit-ativacao.png" alt="Fluxo de ativação do monitoramento no checkout" width="1575" height="804" loading="lazy" onerror="this.parentElement.classList.add('is-missing')"><div class="slot">Imagem: fluxo de ativação</div></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="dossie">
+    <div class="col stack">
+      <h3 class="h3" id="dossie">Dossiê</h3>
+      <p>O dossiê já existia como uma funcionalidade da plataforma, reunindo informações de diferentes consultas em uma visão única por CPF ou CNPJ. Durante o projeto, ele passou a desempenhar um papel importante na jornada de monitoramento.</p>
+      <p>Além de centralizar dados cadastrais, processos e indicadores, o dossiê passou a exibir o status do monitoramento e permitir novas ações a partir do mesmo contexto, evitando que o usuário precisasse alternar entre diferentes áreas da plataforma.</p>
+      <p>Dessa forma, cada CPF ou CNPJ passou a ter um ponto único de consulta e acompanhamento, reforçando a continuidade da experiência.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media cm-media"><img src="assets/cbrdoc/monit-dossie.png" alt="Fluxo do dossiê com status do monitoramento" width="1979" height="861" loading="lazy" onerror="this.parentElement.classList.add('is-missing')"><div class="slot">Imagem: fluxo do dossiê</div></div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="painel">
+    <div class="col stack">
+      <h3 class="h3" id="painel">Painel Jurídico</h3>
+      <p>O Painel Jurídico foi criado para reunir, em um único lugar, as duas principais funcionalidades de acompanhamento jurídico da plataforma: Dossiê e Monitoramento.</p>
+      <p>Antes, essas experiências estavam distribuídas em áreas diferentes. Com a criação do novo painel, o usuário passou a ter uma visão geral dos dossiês e monitoramentos ativos, além de um histórico para localizar e acessar cada acompanhamento.</p>
+      <p>A estrutura também facilita o retorno ao monitoramento criado, permitindo que o usuário consulte suas atualizações sem precisar refazer a busca ou navegar por diferentes áreas da plataforma.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="media cm-media"><img src="assets/cbrdoc/monit-painel.png" alt="Painel Jurídico com dossiês e monitoramentos ativos" width="1920" height="846" loading="lazy" onerror="this.parentElement.classList.add('is-missing')"><div class="slot">Imagem: Painel Jurídico</div></div>
+    </div>
   </section>
 
   <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
