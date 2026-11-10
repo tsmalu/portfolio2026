@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Clube do Livro · Malu</title>
+<title>Clube do Livro · Blog · Malu</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -13,6 +13,11 @@
 <link rel="stylesheet" href="case.css">
 <link rel="stylesheet" href="header.css">
 <link rel="stylesheet" href="footer.css">
+<style>
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.list strong { color: var(--fg); font-weight: 600; }
+.lp-shot img { display: block; width: 100%; height: auto; }
+</style>
 </head>
 <body>
 
@@ -22,24 +27,62 @@
   <!-- Abertura (template de case, usado como post) -->
   <section class="col intro">
     <ol class="crumbs" aria-label="Você está em">
-      <li><a href="./">Início</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li aria-current="page" data-short="Post">Clube do Livro</li>
     </ol>
     <div class="stack">
       <h1 class="h1 h1--fit" id="case-title">Landing page para Clube do Livro</h1>
       <ul class="tags">
-        <li class="tag">2025</li>
-        <li class="tag">Tag provisória</li>
-        <li class="tag">Tag provisória</li>
+        <li class="tag">Landing page</li>
+        <li class="tag">Interface</li>
+        <li class="tag">Conversão</li>
       </ul>
+      <div class="byline">
+        <img src="assets/profile.jpg" alt="" width="56" height="56">
+        <div>
+          <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
+          <p class="byline__meta">Projeto para a Revista Gama · 2025</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="col block stack" aria-labelledby="projeto" style="padding-block-start: clamp(24px, 3vw, 40px)">
     <h2 class="h2" id="projeto">Projeto</h2>
     <p>Criação de uma landing page para divulgar a primeira edição do Clube do Livro, promovido pela Revista Gama, com foco na conversão de inscrições.</p>
-    <p class="ph">Texto provisório. Aqui entra o conteúdo completo do post. Será substituído pelo texto real.</p>
+    <p>A edição tinha o tema "Leitura de Si" e curadoria da escritora Bianca Santana.</p>
+  </section>
+
+  <section class="col block stack" aria-labelledby="objetivo">
+    <h2 class="h2" id="objetivo">Objetivo</h2>
+    <p>Criar uma página de apresentação do clube que:</p>
+    <ul class="list">
+      <li>Explicasse o propósito e os benefícios do Clube do Livro;</li>
+      <li>Apresentasse a curadora e os livros selecionados;</li>
+      <li>Facilitasse a inscrição dos interessados;</li>
+      <li>Estivesse alinhada com a identidade visual do clube.</li>
+    </ul>
+  </section>
+
+  <section class="col block stack" aria-labelledby="estrutura">
+    <h2 class="h2" id="estrutura">Estrutura da página</h2>
+    <p>A página segue uma sequência que apresenta o clube, mostra o que está incluído e leva à inscrição:</p>
+    <ul class="list">
+      <li><strong>Abertura:</strong> nome do clube, edição, tema e um texto curto sobre a proposta, com o botão "Entrar no clube".</li>
+      <li><strong>Curadora:</strong> apresentação da Bianca Santana, com foto e biografia.</li>
+      <li><strong>O que tem no clube:</strong> encontros ao vivo, espaço de trocas, descontos nas editoras parceiras e certificado.</li>
+      <li><strong>Oferta de lançamento:</strong> valor parcelado em destaque e valor à vista.</li>
+      <li><strong>Livros da edição:</strong> capas, títulos e autores dos livros que serão lidos.</li>
+      <li><strong>Novidades:</strong> cadastro de nome e e-mail para quem quer acompanhar o clube.</li>
+      <li><strong>Perguntas frequentes.</strong></li>
+    </ul>
+    <p>O botão "Entrar no clube" aparece em três pontos: na abertura, na oferta e depois da lista de livros.</p>
+  </section>
+
+  <section class="block" aria-label="Telas da landing page">
+    <div class="wide media-row lp-shot">
+      <div class="media"><img src="assets/landing-pages/clube-do-livro.png" alt="Landing page do Clube do Livro da Gama: apresentação da edição, curadora, o que tem no clube, oferta de lançamento, livros da edição e cadastro para novidades." width="1804" height="1271" loading="lazy"></div>
+    </div>
   </section>
 
   <div class="col back"><a href="blog.html">← Voltar para o blog</a></div>
