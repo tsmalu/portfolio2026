@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR" data-lang-alt="graphic-design.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Design gráfico · Malu</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+/* Galeria de design gráfico: um bloco por projeto, texto curto + grade de imagens */
+.gd-lead { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--text); max-width: 60ch; }
+.gd-index { display: flex; flex-wrap: wrap; gap: 8px 10px; list-style: none; margin: 8px 0 0; padding: 0; }
+.gd-index a { display: inline-block; font-size: 0.875rem; font-weight: 500; color: var(--fg); text-decoration: none; border: 1px solid #D9D9D9; background: var(--surface); padding: 6px 14px; border-radius: 999px; }
+.gd-index a:hover { border-color: var(--fg); }
+
+.gd { padding-block: clamp(40px, 5vw, 72px) 0; scroll-margin-top: 24px; }
+.intro + .gd { padding-top: clamp(72px, 8vw, 128px); }
+.gd + .gd { border-top: 1px solid #E4E4E4; margin-top: clamp(40px, 5vw, 72px); }
+.gd__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(20px, 4vw, 64px); align-items: start; }
+.gd__meta { margin: 10px 0 0; font-size: 0.9375rem; color: var(--muted); }
+.gd__text { display: flex; flex-direction: column; gap: 14px; }
+
+.gd__be { align-self: flex-start; font-weight: 700; color: var(--fg); text-decoration: underline; text-underline-offset: 5px; }
+.gd__be:hover { text-decoration-thickness: 2px; }
+.gd__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(24px, 3vw, 40px); }
+.gd__grid figure { margin: 0; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.gd__grid img { display: block; width: 100%; height: auto; }
+.gd__grid .full { grid-column: 1 / -1; }
+.gd__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+.gd__grid + .gd__grid { margin-top: clamp(10px, 1.2vw, 16px); }
+.gd__grid--banners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gd__grid--emails { max-width: 820px; margin-inline: auto; align-items: start; margin-top: clamp(24px, 3vw, 40px) !important; }
+.gd__grid--emails figure { border-radius: 8px; box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 10px 28px rgb(0 0 0 / .08); }
+.gd__grid--banners figure { border-radius: 8px; }
+
+@media (max-width: 760px) {
+  .gd__head { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .gd__grid { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <section class="wide intro">
+    <ol class="crumbs" aria-label="Você está em">
+      <li><a href="projetos.html">Projetos</a></li>
+      <li aria-current="page" data-short="Design gráfico">Design gráfico</li>
+    </ol>
+    <div class="stack">
+      <h1 class="h1">Design gráfico</h1>
+      <p class="gd-lead">Identidade visual, campanhas e projeto editorial.</p>
+      <ul class="gd-index" aria-label="Projetos nesta página">
+        <li><a href="#enjoei">enjoei</a></li>
+        <li><a href="#fretadao">Fretadão</a></li>
+        <li><a href="#garsoni">Garsoni Seguros</a></li>
+        <li><a href="#kippu">Kippu</a></li>
+        <li><a href="#capitaes">Design de livro</a></li>
+        <li><a href="#dellas">Dellas Massas</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- enjoei -->
+  <section class="wide gd" id="enjoei" aria-labelledby="t-enjoei">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-enjoei">enjoei</h2>
+        <p class="gd__meta">Banners e campanhas · Marketplace</p>
+      </div>
+      <div class="gd__text">
+        <p>Como designer gráfica do enjoei, criei banners, newsletters e peças de campanha para o site e o app, seguindo o tom leve e irreverente da marca.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/55654785/Enjoei-Comunicacao-visual-enjoeicom" target="_blank" rel="noopener">Ver no Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid gd__grid--banners">
+      <figure><img src="assets/grafico/enjoei/banner-01.gif" alt="Banner animado do enjoei: lojinha da Pitty" width="600" height="187" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-02.jpg" alt="Banner do enjoei: Dona Diva Depressão" width="1400" height="437" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-03.gif" alt="Banner animado do enjoei: R$ 50 off em sapataria" width="1400" height="437" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-04.gif" alt="Banner animado do enjoei: Cobrinha Fanfarrona, com valores de frete" width="1176" height="367" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-05.jpg" alt="Banner do enjoei: Dani Noce e Paulo" width="1400" height="437" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-06.gif" alt="Banner animado do enjoei: 12x sem juros" width="1400" height="437" loading="lazy"></figure>
+    </div>
+    <div class="gd__grid gd__grid--emails">
+      <figure><img src="assets/grafico/enjoei/email-01.jpg" alt="E-mail marketing do enjoei para o Dia do Consumidor, inspirado nas frases de efeito das Casas Bahia" width="600" height="1370" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/email-02.gif" alt="E-mail animado do enjoei: Raspadinha da Felicidade, com botão Pegar cupom" width="600" height="847" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Fretadão -->
+  <section class="wide gd" id="fretadao" aria-labelledby="t-fretadao">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-fretadao">Fretadão</h2>
+        <p class="gd__meta">Identidade visual · Mobilidade corporativa</p>
+      </div>
+      <div class="gd__text">
+        <p>Nova identidade visual do Fretadão, empresa de fretamento para colaboradores, e o manual de marca com logo, variações, redução máxima, cores, ícones e tipografia.</p>
+        <p>A tipografia principal é a Lato, para títulos, e a Rubik, para textos. O manual também mostra a marca aplicada no app e nas redes sociais.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/140124405/Identidade-visual-Fretadao" target="_blank" rel="noopener">Ver no Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid">
+      <figure class="full"><img src="assets/grafico/fretadao/manual.jpg" alt="Manual de identidade visual do Fretadão: capa, logo, variações, redução máxima, cores, ícone, aplicações, tipografias e posts" width="1800" height="1013" loading="lazy"></figure>
+      <figure><img src="assets/grafico/fretadao/tipografia.jpg" alt="Página de tipografias do manual: Lato Bold como principal e Rubik Regular como secundária" width="711" height="399" loading="lazy"></figure>
+      <figure><img src="assets/grafico/fretadao/redes-sociais.jpg" alt="Posts do Fretadão para redes sociais" width="712" height="399" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Garsoni -->
+  <section class="wide gd" id="garsoni" aria-labelledby="t-garsoni">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-garsoni">Garsoni Seguros</h2>
+        <p class="gd__meta">Identidade visual · Consultoria de seguros</p>
+      </div>
+      <div class="gd__text">
+        <p>Identidade visual para uma consultoria especializada em seguros. Antes da parte visual, defini com o cliente visão, público e atributos da marca, e analisei as identidades já usadas no setor.</p>
+        <p>O conceito central foi suporte humanizado, explorado a partir da letra G. O verde principal (#48746C) foi escolhido para transmitir estabilidade e proximidade.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/225121563/Design-de-Identidade-Visual-para-Garsoni-Seguros" target="_blank" rel="noopener">Ver no Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid gd__grid--3">
+      <figure><img src="assets/grafico/garsoni/logo-final.jpg" alt="Logo final da Garsoni: símbolo com a letra G e a versão com o texto Consultoria em seguros" width="1600" height="1175" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/conceito.jpg" alt="Conceito suporte humanizado: cuidado, apoio, atendimento e personalização, com marcas de referência" width="1600" height="842" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/exploracao.jpg" alt="Exploração do logo a partir da letra G, com variações em contorno e negativo" width="1600" height="833" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/cores.jpg" alt="Paleta de cores: verde principal, verde secundário, claro e branco, com valores HEX e RGB" width="1600" height="856" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/cartao.jpg" alt="Cartão de visita da Garsoni, frente e verso" width="1600" height="827" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/linkedin.jpg" alt="Aplicação da marca na página da Garsoni no LinkedIn" width="1600" height="824" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Kippu -->
+  <section class="wide gd" id="kippu" aria-labelledby="t-kippu">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-kippu">Kippu</h2>
+        <p class="gd__meta">Logo e identidade visual · Gestão de vale-transporte</p>
+      </div>
+      <div class="gd__text">
+        <p>Logotipo e identidade visual de uma plataforma para empresas administrarem o vale-transporte e o transporte eventual dos funcionários.</p>
+        <p>A marca parte da ideia de intermodalidade do transporte e suas conexões, para expressar praticidade e confiança.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/122834377/Kippu-Logo-e-identidade-visual" target="_blank" rel="noopener">Ver no Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid">
+      <figure class="full"><img src="assets/grafico/kippu/logo.jpg" alt="Logo da Kippu em fundo verde" width="1600" height="719" loading="lazy"></figure>
+    </div>
+    <div class="gd__grid gd__grid--3">
+      <figure><img src="assets/grafico/kippu/tipografia-cores.jpg" alt="Tipografia Mitr e cores da marca: verde, magenta e amarelo" width="1400" height="771" loading="lazy"></figure>
+      <figure><img src="assets/grafico/kippu/cartao.jpg" alt="Cartões de visita da Kippu" width="1400" height="771" loading="lazy"></figure>
+      <figure><img src="assets/grafico/kippu/redes-sociais.jpg" alt="Posts da Kippu para redes sociais" width="1400" height="771" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Capitães da Areia -->
+  <section class="wide gd" id="capitaes" aria-labelledby="t-capitaes">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-capitaes">Capitães da Areia</h2>
+        <p class="gd__meta">Projeto editorial · Universidade Anhembi Morumbi</p>
+      </div>
+      <div class="gd__text">
+        <p>Redesign do livro de Jorge Amado, feito na disciplina de Design Editorial do curso de Design Gráfico. O livro tem 28 × 28 cm fechado, formato pensado para uma edição especial.</p>
+        <p>A paleta em preto, cinza e amarelo representa o contraste entre a areia e o concreto da cidade. As ilustrações são autorais, com referência à xilogravura popular, e as tipografias simulam impressão com tipo móvel.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/102880831/Projeto-editorial-Livro-capitaes-da-areia" target="_blank" rel="noopener">Ver no Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid">
+      <figure class="full"><img src="assets/grafico/capitaes/capa.jpg" alt="Capa do livro Capitães da Areia em amarelo e preto, com tipografia sobreposta" width="1500" height="913" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-1.jpg" alt="Página dupla com o título Como uma estrela de loira cabeleira e ilustração de barco" width="1500" height="916" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-2.jpg" alt="Página dupla em fundo preto: Canção da Bahia, Canção da Liberdade" width="1500" height="914" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-3.jpg" alt="Página com a frase Capitães da Areia? Já li algo... Não são crianças abandonadas?" width="1500" height="911" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-4.jpg" alt="Página dupla em fundo preto: Sob a lua, num velho trapiche abandonado" width="1500" height="912" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Dellas -->
+  <section class="wide gd" id="dellas" aria-labelledby="t-dellas">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-dellas">Dellas Massas</h2>
+        <p class="gd__meta">Logotipo · Empresa familiar de massas</p>
+      </div>
+      <div class="gd__text">
+        <p>Logotipo para uma empresa familiar de massas, com elementos gráficos e tipografia que remetem a tradição e qualidade.</p>
+      </div>
+    </div>
+    <div class="gd__grid gd__grid--3">
+      <figure><img src="assets/grafico/dellas/logo.jpg" alt="Logotipo Dellas Massas" width="1400" height="1008" loading="lazy"></figure>
+      <figure><img src="assets/grafico/dellas/tag.jpg" alt="Tags redondas com o logotipo Dellas Massas" width="1400" height="830" loading="lazy"></figure>
+      <figure><img src="assets/grafico/dellas/etiqueta.jpg" alt="Etiquetas amarelas com a frase Feito com amor" width="1400" height="1085" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <div class="col back"><a href="projetos.html">← Voltar para projetos</a></div>
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>

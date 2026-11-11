@@ -22,7 +22,24 @@
 }
 .site-header .nav__link:hover { border-bottom-color: currentColor; }
 .site-header a:focus-visible { outline: 2px solid #0D99FF; outline-offset: 4px; border-radius: 4px; }
+.site-header .nav__list { align-items: center; }
+.site-header .lang { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border: 1px solid #D9D9D9; border-radius: 999px; font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif; }
+.site-header .lang__opt { font-size: 0.8125rem; font-weight: 600; letter-spacing: .06em; padding: 4px 10px; border-radius: 999px; color: #6B6B6B; text-decoration: none; line-height: 1.2; }
+.site-header a.lang__opt:hover { color: #262626; background: #EFEFEF; }
+.site-header .lang__opt.is-active { background: #262626; color: #fff; }
 @media (max-width: 600px) {
   .site-header .nav__list { gap: 24px; }
   .site-header .nav__link { letter-spacing: .1em; }
+}
+/* Com o seletor de idioma, o menu precisa caber no celular */
+@media (max-width: 600px) {
+  .site-header .nav__list:has(.lang) { gap: 14px; }
+  .site-header .nav__list:has(.lang) .nav__link { letter-spacing: .04em; font-size: 0.9375rem; }
+  .site-header .lang__opt { padding: 3px 7px; font-size: 0.75rem; }
+}
+@media (max-width: 380px) {
+  .site-header__inner:has(.lang) { gap: 12px; }
+  .site-header .nav__list:has(.lang) { gap: 10px; }
+  .site-header .nav__list:has(.lang) .nav__link { font-size: 0.875rem; letter-spacing: .02em; }
+  .site-header .logo { font-size: 2.25rem; }
 }

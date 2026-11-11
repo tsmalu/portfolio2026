@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" data-lang-alt="design-grafico.html">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graphic design · Malu</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="case.css">
+<link rel="stylesheet" href="header.css">
+<link rel="stylesheet" href="footer.css">
+<style>
+/* Galeria de design gráfico: um bloco por projeto, texto curto + grade de imagens */
+.gd-lead { font-size: clamp(1rem, 1.2vw, 1.125rem); color: var(--text); max-width: 60ch; }
+.gd-index { display: flex; flex-wrap: wrap; gap: 8px 10px; list-style: none; margin: 8px 0 0; padding: 0; }
+.gd-index a { display: inline-block; font-size: 0.875rem; font-weight: 500; color: var(--fg); text-decoration: none; border: 1px solid #D9D9D9; background: var(--surface); padding: 6px 14px; border-radius: 999px; }
+.gd-index a:hover { border-color: var(--fg); }
+
+.gd { padding-block: clamp(40px, 5vw, 72px) 0; scroll-margin-top: 24px; }
+.intro + .gd { padding-top: clamp(72px, 8vw, 128px); }
+.gd + .gd { border-top: 1px solid #E4E4E4; margin-top: clamp(40px, 5vw, 72px); }
+.gd__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: clamp(20px, 4vw, 64px); align-items: start; }
+.gd__meta { margin: 10px 0 0; font-size: 0.9375rem; color: var(--muted); }
+.gd__text { display: flex; flex-direction: column; gap: 14px; }
+
+.gd__be { align-self: flex-start; font-weight: 700; color: var(--fg); text-decoration: underline; text-underline-offset: 5px; }
+.gd__be:hover { text-decoration-thickness: 2px; }
+.gd__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 1.2vw, 16px); margin-top: clamp(24px, 3vw, 40px); }
+.gd__grid figure { margin: 0; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
+.gd__grid img { display: block; width: 100%; height: auto; }
+.gd__grid .full { grid-column: 1 / -1; }
+.gd__grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+.gd__grid + .gd__grid { margin-top: clamp(10px, 1.2vw, 16px); }
+.gd__grid--banners { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gd__grid--emails { max-width: 820px; margin-inline: auto; align-items: start; margin-top: clamp(24px, 3vw, 40px) !important; }
+.gd__grid--emails figure { border-radius: 8px; box-shadow: 0 1px 2px rgb(0 0 0 / .05), 0 10px 28px rgb(0 0 0 / .08); }
+.gd__grid--banners figure { border-radius: 8px; }
+
+@media (max-width: 760px) {
+  .gd__head { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .gd__grid { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header id="site-header"></header>
+
+<main>
+  <section class="wide intro">
+    <div class="stack">
+      <h1 class="h1">Graphic design</h1>
+      <p class="gd-lead">Visual identity, campaigns and editorial design.</p>
+      <ul class="gd-index" aria-label="Projects on this page">
+        <li><a href="#enjoei">enjoei</a></li>
+        <li><a href="#fretadao">Fretadão</a></li>
+        <li><a href="#garsoni">Garsoni Seguros</a></li>
+        <li><a href="#kippu">Kippu</a></li>
+        <li><a href="#capitaes">Book design</a></li>
+        <li><a href="#dellas">Dellas Massas</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- enjoei -->
+  <section class="wide gd" id="enjoei" aria-labelledby="t-enjoei">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-enjoei">enjoei</h2>
+        <p class="gd__meta">Banners and campaigns · Marketplace</p>
+      </div>
+      <div class="gd__text">
+        <p>As a graphic designer at enjoei, a Brazilian marketplace for new and pre-owned items, I created banners, newsletters and campaign pieces for the website and app, following the brand’s light and irreverent tone.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/55654785/Enjoei-Comunicacao-visual-enjoeicom" target="_blank" rel="noopener">View on Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid gd__grid--banners">
+      <figure><img src="assets/grafico/enjoei/banner-01.gif" alt="Animated enjoei banner: Pitty’s shop" width="600" height="187" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-02.jpg" alt="enjoei banner: Dona Diva Depressão" width="1400" height="437" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-03.gif" alt="Animated enjoei banner: R$ 50 off on shoes" width="1400" height="437" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-04.gif" alt="Animated enjoei banner: Cobrinha Fanfarrona, with shipping prices" width="1176" height="367" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-05.jpg" alt="enjoei banner: Dani Noce and Paulo" width="1400" height="437" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/banner-06.gif" alt="Animated enjoei banner: 12 interest-free installments" width="1400" height="437" loading="lazy"></figure>
+    </div>
+    <div class="gd__grid gd__grid--emails">
+      <figure><img src="assets/grafico/enjoei/email-01.jpg" alt="enjoei marketing e-mail for Consumer Day, inspired by a Brazilian retailer’s catchphrases" width="600" height="1370" loading="lazy"></figure>
+      <figure><img src="assets/grafico/enjoei/email-02.gif" alt="Animated enjoei e-mail: scratch card with a coupon button" width="600" height="847" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Fretadão -->
+  <section class="wide gd" id="fretadao" aria-labelledby="t-fretadao">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-fretadao">Fretadão</h2>
+        <p class="gd__meta">Visual identity · Corporate mobility</p>
+      </div>
+      <div class="gd__text">
+        <p>New visual identity for Fretadão, a charter bus company for employee commuting, and the brand guidelines covering logo, variations, minimum size, colors, icons and typography.</p>
+        <p>Lato is the main typeface, for headings, and Rubik is used for body text. The guidelines also show the brand applied to the app and social media.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/140124405/Identidade-visual-Fretadao" target="_blank" rel="noopener">View on Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid">
+      <figure class="full"><img src="assets/grafico/fretadao/manual.jpg" alt="Fretadão brand guidelines: cover, logo, variations, minimum size, colors, icon, applications, typography and posts" width="1800" height="1013" loading="lazy"></figure>
+      <figure><img src="assets/grafico/fretadao/tipografia.jpg" alt="Typography page of the guidelines: Lato Bold as primary and Rubik Regular as secondary" width="711" height="399" loading="lazy"></figure>
+      <figure><img src="assets/grafico/fretadao/redes-sociais.jpg" alt="Fretadão social media posts" width="712" height="399" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Garsoni -->
+  <section class="wide gd" id="garsoni" aria-labelledby="t-garsoni">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-garsoni">Garsoni Seguros</h2>
+        <p class="gd__meta">Visual identity · Insurance consultancy</p>
+      </div>
+      <div class="gd__text">
+        <p>Visual identity for a consultancy specialized in insurance. Before the visual work, I defined the brand’s vision, audience and attributes with the client, and analyzed the identities already used in the industry.</p>
+        <p>The central concept was humanized support, explored through the letter G. The main green (#48746C) was chosen to convey stability and closeness.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/225121563/Design-de-Identidade-Visual-para-Garsoni-Seguros" target="_blank" rel="noopener">View on Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid gd__grid--3">
+      <figure><img src="assets/grafico/garsoni/logo-final.jpg" alt="Final Garsoni logo: G symbol and the version with the tagline" width="1600" height="1175" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/conceito.jpg" alt="Humanized support concept: care, support, service and personalization, with reference brands" width="1600" height="842" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/exploracao.jpg" alt="Logo exploration based on the letter G, with outline and negative variations" width="1600" height="833" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/cores.jpg" alt="Color palette: main green, secondary green, light and white, with HEX and RGB values" width="1600" height="856" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/cartao.jpg" alt="Garsoni business card, front and back" width="1600" height="827" loading="lazy"></figure>
+      <figure><img src="assets/grafico/garsoni/linkedin.jpg" alt="Brand applied to the Garsoni LinkedIn page" width="1600" height="824" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Kippu -->
+  <section class="wide gd" id="kippu" aria-labelledby="t-kippu">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-kippu">Kippu</h2>
+        <p class="gd__meta">Logo and visual identity · Commuter benefits</p>
+      </div>
+      <div class="gd__text">
+        <p>Logo and visual identity for a platform that helps companies manage their employees’ transit benefits and occasional transportation.</p>
+        <p>The brand builds on the idea of intermodal transportation and its connections, to express practicality and trust.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/122834377/Kippu-Logo-e-identidade-visual" target="_blank" rel="noopener">View on Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid">
+      <figure class="full"><img src="assets/grafico/kippu/logo.jpg" alt="Kippu logo on a green background" width="1600" height="719" loading="lazy"></figure>
+    </div>
+    <div class="gd__grid gd__grid--3">
+      <figure><img src="assets/grafico/kippu/tipografia-cores.jpg" alt="Mitr typeface and brand colors: green, magenta and yellow" width="1400" height="771" loading="lazy"></figure>
+      <figure><img src="assets/grafico/kippu/cartao.jpg" alt="Kippu business cards" width="1400" height="771" loading="lazy"></figure>
+      <figure><img src="assets/grafico/kippu/redes-sociais.jpg" alt="Kippu social media posts" width="1400" height="771" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Capitães da Areia -->
+  <section class="wide gd" id="capitaes" aria-labelledby="t-capitaes">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-capitaes">Capitães da Areia</h2>
+        <p class="gd__meta">Book design · Anhembi Morumbi University</p>
+      </div>
+      <div class="gd__text">
+        <p>Redesign of Jorge Amado’s novel Capitães da Areia (Captains of the Sands), developed for the Editorial Design course of my Graphic Design degree. The book measures 28 × 28 cm closed, a format chosen for a special edition.</p>
+        <p>The black, gray and yellow palette represents the contrast between the sand and the concrete of the city. The illustrations are my own, referencing Brazilian popular woodcut prints, and the typefaces simulate movable-type printing.</p>
+        <a class="gd__be" href="https://www.behance.net/gallery/102880831/Projeto-editorial-Livro-capitaes-da-areia" target="_blank" rel="noopener">View on Behance <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="gd__grid">
+      <figure class="full"><img src="assets/grafico/capitaes/capa.jpg" alt="Capitães da Areia book cover in yellow and black, with layered typography" width="1500" height="913" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-1.jpg" alt="Spread with a chapter title and a boat illustration" width="1500" height="916" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-2.jpg" alt="Black spread: Canção da Bahia, Canção da Liberdade" width="1500" height="914" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-3.jpg" alt="Page with a quote set in large yellow type" width="1500" height="911" loading="lazy"></figure>
+      <figure><img src="assets/grafico/capitaes/miolo-4.jpg" alt="Black spread with a moon illustration" width="1500" height="912" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- Dellas -->
+  <section class="wide gd" id="dellas" aria-labelledby="t-dellas">
+    <div class="gd__head">
+      <div>
+        <h2 class="h2" id="t-dellas">Dellas Massas</h2>
+        <p class="gd__meta">Logo · Family pasta business</p>
+      </div>
+      <div class="gd__text">
+        <p>Logo for a family-owned pasta business, with graphic elements and typography that evoke tradition and quality.</p>
+      </div>
+    </div>
+    <div class="gd__grid gd__grid--3">
+      <figure><img src="assets/grafico/dellas/logo.jpg" alt="Dellas Massas logo" width="1400" height="1008" loading="lazy"></figure>
+      <figure><img src="assets/grafico/dellas/tag.jpg" alt="Round tags with the Dellas Massas logo" width="1400" height="830" loading="lazy"></figure>
+      <figure><img src="assets/grafico/dellas/etiqueta.jpg" alt="Yellow labels reading Feito com amor (made with love)" width="1400" height="1085" loading="lazy"></figure>
+    </div>
+  </section>
+
+</main>
+<footer id="site-footer"></footer>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>

@@ -14,6 +14,7 @@
     nav: [
       { label: "Início", href: "./" },
       { label: "Projetos", href: "projetos.html" },
+      { label: "Design gráfico", href: "design-grafico.html" },
       { label: "Blog", href: "blog.html" },
     ],
     projects: [
@@ -22,6 +23,16 @@
       { label: "Jogo de xadrez", href: "case-xadrez.html" },
     ],
   };
+
+  // Versão em inglês (páginas com <html lang="en">)
+  if ((document.documentElement.lang || "").toLowerCase().startsWith("en")) {
+    FOOTER.nav = [
+      { label: "Home", href: "./" },
+      { label: "Projects", href: "projetos.html" },
+      { label: "Graphic design", href: "graphic-design.html" },
+      { label: "Blog", href: "blog.html" },
+    ];
+  }
 
   const ICONS = {
     linkedin: '<img src="assets/icons/linkedin.png" alt="" width="28" height="28">',

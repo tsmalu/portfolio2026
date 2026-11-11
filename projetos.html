@@ -37,6 +37,40 @@
 .project__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1; color: var(--fg); margin: 0; text-wrap: balance; }
 .project__text { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; margin: 0; }
 
+/* Chamada para a página de design gráfico */
+.more-gd {
+  display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: stretch;
+  margin-top: clamp(48px, 6vw, 96px); background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius);
+  overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 1px 2px rgb(0 0 0 / .03);
+  transition: transform 260ms ease-out, box-shadow 260ms ease-out;
+}
+@media (hover: hover) {
+  .more-gd:hover { transform: translateY(-5px); box-shadow: 0 2px 6px rgb(0 0 0 / .04), 0 12px 32px rgb(0 0 0 / .09); }
+  .more-gd:hover .more-gd__cta span { transform: translateX(4px); }
+}
+.more-gd:focus-visible { outline: 2px solid var(--select); outline-offset: 6px; }
+.more-gd__body { padding: clamp(28px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.more-gd__k { font-size: 0.875rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.more-gd__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 5.4vw, 4.75rem); line-height: .95; color: var(--fg); margin: 0; }
+.more-gd__tags { margin-top: 4px; }
+.more-gd__cta { margin-top: 10px; font-weight: 700; color: var(--fg); text-decoration: underline; text-underline-offset: 5px; }
+.more-gd__cta span { display: inline-block; transition: transform 200ms ease-out; }
+.more-gd__mosaic {
+  display: grid; gap: 10px; padding: 14px; background: #F2F2F2; height: clamp(300px, 32vw, 440px);
+  grid-template-columns: 1.15fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "a a b" "c d b" "c e e";
+}
+.more-gd__mosaic img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; min-height: 0; }
+.more-gd__mosaic .m1 { grid-area: a; }
+.more-gd__mosaic .m2 { grid-area: b; }
+.more-gd__mosaic .m3 { grid-area: c; }
+.more-gd__mosaic .m4 { grid-area: d; object-fit: contain; background: #048985; }
+.more-gd__mosaic .m5 { grid-area: e; }
+@media (max-width: 760px) {
+  .more-gd { grid-template-columns: minmax(0, 1fr); }
+  .more-gd__mosaic { order: -1; height: 300px; }
+}
+@media (prefers-reduced-motion: reduce) { .more-gd:hover { transform: none; } }
 @media (max-width: 760px) {
   .projects__grid { grid-template-columns: minmax(0, 1fr); }
 }
@@ -49,6 +83,25 @@
 <main class="container projects-page">
   <h1 class="projects-page__title">Projetos de Design</h1>
   <div class="projects__grid" id="grid"></div>
+
+  <a class="more-gd" href="design-grafico.html">
+    <div class="more-gd__body">
+      <p class="more-gd__k">Também faço</p>
+      <h2 class="more-gd__title">Design gráfico</h2>
+      <ul class="tags more-gd__tags">
+        <li class="tag">Identidade visual</li>
+        <li class="tag">Campanhas</li>
+      </ul>
+      <span class="more-gd__cta">Ver trabalhos <span aria-hidden="true">→</span></span>
+    </div>
+    <div class="more-gd__mosaic" aria-hidden="true">
+      <img class="m1" src="assets/grafico/enjoei/banner-02.jpg" alt="" loading="lazy" width="1400" height="437">
+      <img class="m2" src="assets/grafico/capitaes/capa.jpg" alt="" loading="lazy" width="1500" height="913">
+      <img class="m3" src="assets/grafico/garsoni/cartao.jpg" alt="" loading="lazy" width="1600" height="827">
+      <img class="m4" src="assets/grafico/kippu/logo.jpg" alt="" loading="lazy" width="1600" height="719">
+      <img class="m5" src="assets/grafico/dellas/tag.jpg" alt="" loading="lazy" width="1400" height="830">
+    </div>
+  </a>
 </main>
 
 <footer id="site-footer"></footer>
