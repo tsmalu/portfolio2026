@@ -1,6 +1,6 @@
 /* =========================================================
    RODAPÉ — componente compartilhado
-   Uso: <footer id="site-footer"></footer> + footer.css + este script.
+   Uso: <footer id="site-footer"></footer> + css/footer.css + este script.
    Para mudar links ou projetos, edite só FOOTER abaixo.
    ========================================================= */
 (function () {

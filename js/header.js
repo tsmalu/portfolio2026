@@ -1,6 +1,6 @@
 /* =========================================================
    HEADER — componente compartilhado
-   Uso: <header id="site-header"></header> + header.css + este script
+   Uso: <header id="site-header"></header> + css/header.css + este script
    (o script deve vir depois do elemento). Edite os links só aqui.
    ========================================================= */
 (function () {
