@@ -1,0 +1,65 @@
+/* =========================================================
+   TOKENS — design system do site
+   Cores, raios, sombras, espaçamento e layout.
+   A tipografia fica em type.css. Nenhuma página usa valor solto:
+   tudo o que é visual sai daqui.
+   ========================================================= */
+:root {
+  color-scheme: light;
+
+  /* --- Cores --- */
+  --color-bg: #F8F8F8;             /* fundo das páginas */
+  --color-surface: #FFFFFF;        /* cards, rodapé, painéis */
+  --color-surface-alt: #F2F2F2;    /* áreas recuadas, fundos de imagem */
+  --color-fg: #262626;             /* títulos, texto forte, botões */
+  --color-text: #333333;           /* corpo de texto */
+  --color-muted: #6B6B6B;          /* texto secundário, metadados */
+  --color-border-subtle: #E2E2E2;  /* bordas de card, divisórias */
+  --color-border: #CFCFCF;         /* bordas de pílula, placeholders */
+  --color-dark: #363636;           /* faixa escura do blog */
+  --color-on-dark: #FFFFFF;        /* texto sobre fundo escuro */
+  --color-accent: #F9C23C;         /* destaque (etiqueta do cursor) */
+  --color-accent-ink: #1E1A10;     /* texto sobre o destaque */
+  --color-focus: #0D99FF;          /* anel de foco */
+
+  /* --- Raios --- */
+  --radius-sm: 4px;      /* elementos pequenos */
+  --radius-md: 8px;      /* botões, imagens internas */
+  --radius-lg: 14px;     /* cards e mídias */
+  --radius-pill: 999px;  /* tags, chips, seletores */
+  --radius-full: 50%;    /* avatar */
+
+  /* --- Sombras --- */
+  --shadow-rest: 0 1px 2px rgb(0 0 0 / .03);                                     /* card em repouso */
+  --shadow-hover: 0 2px 6px rgb(0 0 0 / .04), 0 12px 32px rgb(0 0 0 / .09);      /* card em hover */
+  --shadow-top: 0 -1px 0 rgb(0 0 0 / .04), 0 -10px 30px -24px rgb(0 0 0 / .12);  /* rodapé: sombra para cima */
+  --shadow-label: 0 3px 8px -4px rgb(0 0 0 / .3);                                /* etiqueta do cursor */
+  --shadow-raised: 0 2px 4px rgb(0 0 0 / .03), 0 16px 36px -20px rgb(0 0 0 / .14); /* elementos elevados */
+
+  /* --- Espaçamento: escala de 4 em 4 --- */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
+
+  /* Espaços fluidos: crescem com a tela entre dois degraus da escala */
+  --space-fluid-16: clamp(8px, 1vw, 16px);
+  --space-fluid-24: clamp(16px, 2vw, 24px);
+  --space-fluid-32: clamp(24px, 3vw, 32px);
+  --space-fluid-48: clamp(32px, 4vw, 48px);
+  --space-fluid-64: clamp(48px, 5vw, 64px);
+  --space-fluid-96: clamp(64px, 7vw, 96px);
+  --space-fluid-128: clamp(96px, 9vw, 128px);
+
+  /* --- Layout --- */
+  --gutter: clamp(16px, 7.8vw, 112px);  /* margem lateral */
+  --col: 680px;                        /* coluna de texto */
+  --wide: 1240px;                      /* área larga (imagens) */
+  --maxw: 1440px;                      /* largura máxima */
+}

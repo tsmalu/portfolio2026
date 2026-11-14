@@ -13,14 +13,17 @@ redirect_from: /case-landing-pages.html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/type.css">
 <link rel="stylesheet" href="../css/case.css">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/components.css">
 <style>
 .shots { display: flex; flex-direction: column; gap: 0; }
 .shots img { display: block; width: 100%; height: auto; }
-.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
-.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius-lg); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: var(--space-24); color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small); }
 </style>
 </head>
 <body>
@@ -52,7 +55,7 @@ redirect_from: /case-landing-pages.html
     </div>
   </section>
 
-  <section class="col block stack" aria-label="Sobre a coleção" style="padding-block-start: clamp(24px, 3vw, 40px)">
+  <section class="col block stack" aria-label="Sobre a coleção" style="padding-block-start: var(--space-fluid-32)">
       <p>Essa coleção reúne diferentes landing pages que desenvolvi para marcas e projetos com necessidades específicas, como campanhas de captação e páginas institucionais.</p>
       <p>Cada uma foi pensada para comunicar com clareza, guiar o usuário à ação e refletir a identidade visual de cada negócio.</p>
   </section>

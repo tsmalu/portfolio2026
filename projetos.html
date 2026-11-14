@@ -10,57 +10,46 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/type.css">
 <link rel="stylesheet" href="css/case.css">
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/components.css">
 <style>
 /* Página de projetos: título central, filtros e grade de cards (mesmo card da home) */
-.projects-page { padding-block: clamp(24px, 3vw, 48px) 0; }
-.projects-page__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 5.4vw, 4.75rem); line-height: 1; color: var(--fg); text-align: center; margin: 0 0 clamp(32px, 4vw, 56px); }
+.projects-page { padding-block: var(--space-fluid-48) 0; }
+.projects-page__title { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h1); line-height: var(--lh-h1); color: var(--fg); text-align: center; margin: 0 0 var(--space-fluid-48); }
 
-.projects__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2vw, 32px); }
-.project {
-  background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius);
-  overflow: hidden; display: flex; flex-direction: column; min-width: 0;
-  box-shadow: 0 1px 2px rgb(0 0 0 / .03);
-  transition: transform 260ms ease-out, box-shadow 260ms ease-out;
-  text-decoration: none; color: inherit;
-}
-@media (hover: hover) {
-  .project:hover { transform: translateY(-5px); box-shadow: 0 2px 6px rgb(0 0 0 / .04), 0 12px 32px rgb(0 0 0 / .09); }
-}
-@media (prefers-reduced-motion: reduce) { .project:hover { transform: none; } }
+.projects__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-fluid-32); }
+.project { overflow: hidden; display: flex; flex-direction: column; min-width: 0; text-decoration: none; color: inherit; }  /* aparência: components.css */
 .project:focus-visible { outline: 2px solid var(--select); outline-offset: 6px; }
-.project__media { position: relative; aspect-ratio: 1167 / 552; min-height: 0; overflow: hidden; border-bottom: 1px solid #E2E2E2; background: #F4F4F4; }
+.project__media { position: relative; aspect-ratio: 1167 / 552; min-height: 0; overflow: hidden; border-bottom: 1px solid var(--color-border-subtle); background: var(--color-surface-alt); }
 .project__media img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-.project__body { padding: clamp(20px, 2.2vw, 32px) clamp(20px, 2.2vw, 32px) clamp(28px, 3vw, 44px); display: flex; flex-direction: column; gap: 12px; }
-.project__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1; color: var(--fg); margin: 0; text-wrap: balance; }
-.project__text { font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.6; margin: 0; }
+.project__body { padding: var(--space-fluid-32) var(--space-fluid-32) var(--space-fluid-48); display: flex; flex-direction: column; gap: var(--space-12); }
+.project__title { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h3); line-height: var(--lh-h3); color: var(--fg); margin: 0; text-wrap: balance; }
+.project__text { font-size: var(--fs-lead); line-height: var(--lh-lead); margin: 0; }
 
 /* Chamada para a página de design gráfico */
 .more-gd {
   display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: stretch;
-  margin-top: clamp(48px, 6vw, 96px); background: var(--surface); border: 1px solid #E2E2E2; border-radius: var(--radius);
-  overflow: hidden; text-decoration: none; color: inherit; box-shadow: 0 1px 2px rgb(0 0 0 / .03);
-  transition: transform 260ms ease-out, box-shadow 260ms ease-out;
+  margin-top: var(--space-fluid-96);
+  overflow: hidden; text-decoration: none; color: inherit;
 }
-@media (hover: hover) {
-  .more-gd:hover { transform: translateY(-5px); box-shadow: 0 2px 6px rgb(0 0 0 / .04), 0 12px 32px rgb(0 0 0 / .09); }
-  .more-gd:hover .more-gd__cta span { transform: translateX(4px); }
-}
+@media (hover: hover) { .more-gd:hover .more-gd__cta span { transform: translateX(4px); } }
 .more-gd:focus-visible { outline: 2px solid var(--select); outline-offset: 6px; }
-.more-gd__body { padding: clamp(28px, 3.4vw, 52px); display: flex; flex-direction: column; justify-content: center; gap: 14px; }
-.more-gd__k { font-size: 0.875rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0; }
-.more-gd__title { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 5.4vw, 4.75rem); line-height: .95; color: var(--fg); margin: 0; }
-.more-gd__tags { margin-top: 4px; }
-.more-gd__cta { margin-top: 10px; font-weight: 700; color: var(--fg); text-decoration: underline; text-underline-offset: 5px; }
+.more-gd__body { padding: var(--space-fluid-48); display: flex; flex-direction: column; justify-content: center; gap: var(--space-16); }
+.more-gd__k { font-size: var(--fs-small); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0; line-height: var(--lh-small); }
+.more-gd__title { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h2); line-height: var(--lh-h2); color: var(--fg); margin: 0; }
+.more-gd__tags { margin-top: var(--space-4); }
+.more-gd__cta { margin-top: var(--space-12); }
 .more-gd__cta span { display: inline-block; transition: transform 200ms ease-out; }
 .more-gd__mosaic {
-  display: grid; gap: 10px; padding: 14px; background: #F2F2F2; height: clamp(300px, 32vw, 440px);
+  display: grid; gap: var(--space-12); padding: var(--space-16); background: var(--color-surface-alt); height: clamp(300px, 32vw, 440px);
   grid-template-columns: 1.15fr 1fr 1fr; grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: "a a b" "c d b" "c e e";
 }
-.more-gd__mosaic img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; min-height: 0; }
+.more-gd__mosaic img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); min-height: 0; }
 .more-gd__mosaic .m1 { grid-area: a; }
 .more-gd__mosaic .m2 { grid-area: b; }
 .more-gd__mosaic .m3 { grid-area: c; }

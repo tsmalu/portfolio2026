@@ -13,15 +13,18 @@ redirect_from: /case-passageiros.html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/type.css">
 <link rel="stylesheet" href="../css/case.css">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/components.css">
 <style>
 .shots { display: flex; flex-direction: column; gap: 0; }
 .shots img { display: block; width: 100%; height: auto; }
-.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
 .list strong { color: var(--fg); }
-.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius-lg); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: var(--space-24); color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small); }
 </style>
 </head>
 <body>
@@ -53,7 +56,7 @@ redirect_from: /case-passageiros.html
     </div>
   </section>
 
-  <section class="block" aria-labelledby="cliente" style="padding-block-start: clamp(24px, 3vw, 40px)">
+  <section class="block" aria-labelledby="cliente" style="padding-block-start: var(--space-fluid-32)">
     <div class="col stack">
       <h2 class="h2" id="cliente">Cliente</h2>
       <p>Fretadão é uma empresa de tecnologia voltada para a área de fretamento e oferece o serviço de planejamento, implantação e gestão da operação de fretado para colaboradores de empresas de médio e grande porte.</p>
@@ -85,7 +88,7 @@ redirect_from: /case-passageiros.html
   <section class="block" aria-labelledby="imersao">
     <div class="col stack">
       <h2 class="h2" id="imersao">Imersão</h2>
-      <h3 class="h3" style="margin-top: 16px">Análise dos concorrentes</h3>
+      <h3 class="h3" style="margin-top: var(--space-16)">Análise dos concorrentes</h3>
       <p>Há diversos sites e aplicativos de transporte no mercado, revisar esses produtos me ajudou a entender as estratégias que eles aplicam.</p>
       <p><strong>Concorrentes diretos:</strong> oferecem serviços similares de fretados ou transporte rodoviário.</p>
       <ul class="list">
@@ -99,13 +102,13 @@ redirect_from: /case-passageiros.html
         <li>BlaBlaCar</li>
         <li>Uber</li>
       </ul>
-      <h3 class="h3" style="margin-top: 16px">Análise da interface</h3>
+      <h3 class="h3" style="margin-top: var(--space-16)">Análise da interface</h3>
       <p>Analisei tela por tela do aplicativo, para entender as funcionalidades, arquitetura, navegação e identificar pontos problemáticos e/ou de melhoria.</p>
     </div>
     <div class="wide media-row">
       <div class="media"><img src="../assets/passageiros/analise-interface.png" alt="Prints do aplicativo anterior: tela inicial, busca de fretado, pontos da linha com valores e agendamento de viagem." width="1400" height="944" loading="lazy"></div>
     </div>
-    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+    <div class="col stack" style="margin-top: var(--space-fluid-48)">
       <p><strong>Página inicial:</strong> a primeira tela é muito simples, há apenas um texto e dois botões, quando baixamos um aplicativo novo, esperamos entender um pouco melhor sobre ele, ou até mesmo relembrar para que serve e porque o baixamos.</p>
       <p><strong>Resultado de busca:</strong> olhando rapidamente, parece que todas as opções são iguais, é possível melhorar visualmente, organizar os dados nesta página, remover o que se repete e trazer mais informações sobre a linha, para que o usuário consiga diferenciar melhor as linhas para compará-las e então ver mais detalhes.</p>
       <p><strong>Detalhes da linha:</strong> é uma página longa, as informações podem ser organizadas e divididas, assim será possível dar destaque para as informações mais importantes.</p>
@@ -116,21 +119,21 @@ redirect_from: /case-passageiros.html
     <div class="col stack">
       <h2 class="h2" id="ideacao">Ideação</h2>
       <p>Depois de entender o problema e analisar cada ponto problemático, eu estava pronta para encontrar soluções.</p>
-      <h3 class="h3" style="margin-top: 16px">Fluxo do usuário</h3>
+      <h3 class="h3" style="margin-top: var(--space-16)">Fluxo do usuário</h3>
       <p>Criei um fluxo sobre como os usuários vão navegar no novo app.</p>
     </div>
     <div class="wide media-row">
       <div class="media"><img src="../assets/passageiros/passageiros-fluxo.png" alt="Fluxo de navegação do novo app: home, busca, listagem, detalhes, agendar viagem e resumo, com as informações de cada etapa." width="1400" height="785" loading="lazy"></div>
     </div>
-    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
-      <h3 class="h3" style="margin-top: 16px">Esboços</h3>
+    <div class="col stack" style="margin-top: var(--space-fluid-48)">
+      <h3 class="h3" style="margin-top: var(--space-16)">Esboços</h3>
       <p>Comecei a desenhar as telas principais do app para ter uma ideia das informações.</p>
     </div>
     <div class="wide media-row">
       <div class="media"><img src="../assets/passageiros/passageiros-rascunhos.png" alt="Esboços em papel das telas principais: onboarding, escolha do fretado, detalhes da linha e escolha de datas." width="1400" height="793" loading="lazy"></div>
     </div>
-    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
-      <h3 class="h3" style="margin-top: 16px">Refinamento</h3>
+    <div class="col stack" style="margin-top: var(--space-fluid-48)">
+      <h3 class="h3" style="margin-top: var(--space-16)">Refinamento</h3>
       <p>Depois de alguns rascunhos queria explorar mais e comecei a desenhar no Adobe XD, comecei com layouts sem cores.</p>
     </div>
     <div class="wide media-row">
@@ -142,7 +145,7 @@ redirect_from: /case-passageiros.html
     <div class="col stack">
       <h2 class="h2" id="prototipo">Prototipagem e teste de usabilidade</h2>
       <p>Após alguns esboços, fiz a primeira versão do protótipo, já com elementos da nova identidade visual, adicionando mais informações à página de busca e separando melhor o conteúdo da página de detalhes da linha.</p>
-      <h3 class="h3" style="margin-top: 16px">Testes internos</h3>
+      <h3 class="h3" style="margin-top: var(--space-16)">Testes internos</h3>
       <p>Realizei alguns testes de usabilidade internos, com funcionários da empresa, antigos e recém chegados, foi uma etapa crucial para validar minhas ideias e detectar erros antes de testar com usuários reais.</p>
       <p>Alguns aprendizados e decisões de design que apliquei:</p>
       <ul class="list">
@@ -150,7 +153,7 @@ redirect_from: /case-passageiros.html
         <li>O tempo de caminhada estava confuso.</li>
         <li>Normalmente a viagem de ida e volta é feita pela mesma linha de fretado, então a divisão entre “ida” e “volta” no fluxo é uma coisa nova e não foi bem aceita entre os participantes. Decidi esperar e ver se mais usuários teriam essa percepção antes de remover a funcionalidade.</li>
       </ul>
-      <h3 class="h3" style="margin-top: 16px">Testes externos</h3>
+      <h3 class="h3" style="margin-top: var(--space-16)">Testes externos</h3>
       <p>Optei por testes presenciais e para que os participantes não tivessem que se deslocar de grandes distâncias, selecionei pessoas que estavam buscando por linhas que embarcavam ou desembarcavam no bairro da Barra Funda, que é onde está localizado o escritório do Fretadão, além de pessoas que estavam buscando por linhas, também recrutei quem havia feito uma viagem de teste recentemente.</p>
       <p>Seis usuários foram convidados para conhecer nosso escritório e participar da pesquisa.</p>
       <p>O teste tinha como objetivo identificar erros e verificar a compreensão dos usuários em relação às informações e funções do novo aplicativo.</p>

@@ -10,33 +10,36 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/type.css">
 <link rel="stylesheet" href="css/case.css">
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/components.css">
 <style>
 /* Peças específicas do post (tudo o mais vem do template de case) */
-.team { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.team { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-8); }
 .team strong { color: var(--fg); font-weight: 600; }
-.caption { font-size: 0.875rem; color: var(--muted); margin-top: 10px; }
-.img-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-.slot-img { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 200px; display: grid; place-items: center; padding: 20px; text-align: center; color: var(--muted); font-size: 0.875rem; }
-.personas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
-.persona { background: #E3E3E3; border-radius: 10px; padding: 18px 18px 22px; box-shadow: 0 1px 3px rgb(0 0 0 / .08); }
-.persona__name { margin: 0; font-weight: 700; font-size: 1.0625rem; color: var(--fg); display: flex; align-items: center; gap: 8px; }
-.persona .stack { gap: 16px; margin-top: 12px; font-size: 0.9375rem; line-height: 1.6; }
+.caption { font-size: var(--fs-small); color: var(--muted); margin-top: var(--space-12); line-height: var(--lh-small); }
+.img-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-12); }
+.slot-img { border: 1.5px dashed var(--line); border-radius: var(--radius-lg); background: var(--surface); min-height: 200px; display: grid; place-items: center; padding: var(--space-24); text-align: center; color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small); }
+.personas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-16); align-items: stretch; }
+.persona { background: var(--color-surface-alt); border-radius: var(--radius-md); padding: var(--space-16) var(--space-16) var(--space-24); box-shadow: var(--shadow-rest); }
+.persona__name { margin: 0; font-weight: 700; font-size: var(--fs-body); color: var(--fg); display: flex; align-items: center; gap: var(--space-8); line-height: var(--lh-body); }
+.persona .stack { gap: var(--space-16); margin-top: var(--space-12); font-size: var(--fs-small); line-height: var(--lh-small); }
 .persona .stack p { margin: 0; }
 .persona strong { color: var(--fg); font-weight: 700; }
 @media (max-width: 760px) { .personas { grid-template-columns: minmax(0, 1fr); } }
 /* Fotos do workshop: quase a largura da tela */
-.bleed-pair { margin: clamp(20px, 2.4vw, 32px) auto 0; max-width: 1920px; padding-inline: clamp(12px, 1.6vw, 24px); }
-.bleed-pair .img-pair { gap: clamp(8px, 1vw, 16px); }
-.bleed-pair img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.bleed-pair { margin: var(--space-fluid-32) auto 0; max-width: 1920px; padding-inline: var(--space-fluid-24); }
+.bleed-pair .img-pair { gap: var(--space-fluid-16); }
+.bleed-pair img { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); }
 .bleed-pair--md { max-width: calc(1080px + 2 * clamp(12px, 1.6vw, 24px)); }
-.bleed-pair .caption { text-align: center; margin-top: clamp(16px, 2vw, 28px); }
+.bleed-pair .caption { text-align: center; margin-top: var(--space-fluid-24); }
 /* Projeto e Time lado a lado (2/3 + 1/3) */
-.proj-team { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); column-gap: clamp(24px, 3vw, 40px); align-items: start; }
-.proj-team .team { gap: 12px; }
-@media (max-width: 760px) { .proj-team { grid-template-columns: minmax(0, 1fr); row-gap: clamp(24px, 2.8vw, 40px); } }
+.proj-team { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); column-gap: var(--space-fluid-32); align-items: start; }
+.proj-team .team { gap: var(--space-12); }
+@media (max-width: 760px) { .proj-team { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-fluid-32); } }
 @media (max-width: 600px) { .img-pair { grid-template-columns: minmax(0, 1fr); } }
 </style>
 </head>
@@ -68,7 +71,7 @@
     </div>
   </section>
 
-  <div class="col block proj-team" style="padding-block-start: clamp(24px, 3vw, 40px)">
+  <div class="col block proj-team" style="padding-block-start: var(--space-fluid-32)">
     <section class="stack" aria-labelledby="projeto">
       <h2 class="h2" id="projeto">Projeto</h2>
       <p>O cliente precisava de uma solução para apoiar empresas na implantação de práticas ESG. O projeto envolveu imersão, entrevistas e definição colaborativa de funcionalidades, resultando em uma plataforma para diagnóstico, gestão de temas materiais e metas.</p>
@@ -126,7 +129,7 @@
     <p>Com a visão de produto definida, iniciamos a ideação para estruturar o que seria desenvolvido.</p>
     <p>Nessa etapa, criamos as personas, mapeamos a jornada do usuário e definimos as funcionalidades essenciais para a plataforma.</p>
 
-    <h3 class="h3" style="margin-top: 16px">Personas</h3>
+    <h3 class="h3" style="margin-top: var(--space-16)">Personas</h3>
     <div class="personas">
       <div class="persona">
         <p class="persona__name"><span aria-hidden="true">👨‍💼</span> Edson</p>
@@ -154,15 +157,15 @@
       </div>
     </div>
 
-    <h3 class="h3" style="margin-top: 16px">Jornada da pessoa usuária</h3>
+    <h3 class="h3" style="margin-top: var(--space-16)">Jornada da pessoa usuária</h3>
     <p>Realizamos uma dinâmica com o cliente e desenhamos a jornada de experiência que esperamos para o produto.</p>
     </div>
     <figure class="bleed-pair bleed-pair--md">
       <img src="assets/esg/esg-jornada.png" alt="Jornada da pessoa usuária em quatro etapas: descoberta, análise interna, estratégia e acompanhamento, com falas e uma curva de emoção ao longo do processo." width="2800" height="1392" loading="lazy">
     </figure>
-    <div class="col stack" style="margin-top: clamp(32px, 4vw, 56px)">
+    <div class="col stack" style="margin-top: var(--space-fluid-48)">
 
-    <h3 class="h3" style="margin-top: 16px">Revisão técnica e sequenciador</h3>
+    <h3 class="h3" style="margin-top: var(--space-16)">Revisão técnica e sequenciador</h3>
     <p>Classificamos o valor para o negócio, usuário e esforço de desenvolvimento. Utilizamos o sequenciador para ordenar funcionalidades essenciais que precisam ser entregues inicialmente no MVP.</p>
     </div>
     <figure class="bleed-pair bleed-pair--md">

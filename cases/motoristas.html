@@ -13,13 +13,16 @@ redirect_from: /case-motoristas.html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/type.css">
 <link rel="stylesheet" href="../css/case.css">
 <link rel="stylesheet" href="../css/header.css">
 <link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/components.css">
 <style>
 .shots { display: flex; flex-direction: column; gap: 0; }
 .shots img { display: block; width: 100%; height: auto; }
-.slot { border: 1.5px dashed var(--line); border-radius: var(--radius); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); font-size: 0.9375rem; }
+.slot { border: 1.5px dashed var(--line); border-radius: var(--radius-lg); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: var(--space-24); color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small); }
 </style>
 </head>
 <body>
@@ -50,7 +53,7 @@ redirect_from: /case-motoristas.html
     </div>
   </section>
 
-  <section class="block" aria-labelledby="cliente" style="padding-block-start: clamp(24px, 3vw, 40px)">
+  <section class="block" aria-labelledby="cliente" style="padding-block-start: var(--space-fluid-32)">
     <div class="col stack">
       <h2 class="h2" id="cliente">Cliente e objetivo</h2>
       <p>Fretadão é uma empresa de tecnologia voltada para a área de fretamento e oferece o serviço de planejamento, implantação e gestão da operação de fretado para colaboradores de empresas de médio e grande porte.</p>

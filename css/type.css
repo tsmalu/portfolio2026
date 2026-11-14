@@ -1,0 +1,39 @@
+/* =========================================================
+   TIPOGRAFIA — escala única do site
+   Tamanhos e alturas de linha da escala:
+   12/20 · 14/22 · 16/24 · 20/28 · 24/32 · 30/38 · 38/46 · 46/54 · 56/64 · 68/76
+   Os papéis abaixo usam só esses pares. No celular, cada papel desce um ou dois degraus.
+   ========================================================= */
+
+/* Mango Grotesque (Rajesh Rajput, freeware para uso pessoal e comercial).
+   Arquivos originais, sem conversão: a licença não permite modificar os arquivos. */
+@font-face { font-family: "Mango Grotesque"; src: url("../assets/fonts/MangoGrotesque-Regular.ttf") format("truetype"); font-weight: 400 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Mango Grotesque"; src: url("../assets/fonts/MangoGrotesque-SemiBold.ttf") format("truetype"); font-weight: 600 700; font-style: normal; font-display: swap; }
+
+:root {
+  --font-display: "Mango Grotesque", "Antonio", "Arial Narrow", sans-serif;  /* títulos */
+  --font-body: "Montserrat", "Helvetica Neue", Arial, sans-serif;           /* texto */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;    /* nomes de token em cases */
+  --fs-hero: 68px;  --lh-hero: 76px;   /* título da home */
+  --fs-h1: 56px;    --lh-h1: 64px;     /* título de página */
+  --fs-h2: 46px;    --lh-h2: 54px;     /* título de seção */
+  --fs-h3: 38px;    --lh-h3: 46px;     /* subtítulo e título de card */
+  --fs-h5: 24px;    --lh-h5: 32px;     /* títulos pequenos (etapas, links) */
+  --fs-logo: 46px;
+  --fs-sub: 20px;   --lh-sub: 28px;    /* subtítulo em Montserrat */
+  --fs-lead: 20px;  --lh-lead: 28px;   /* texto de abertura e de cards */
+  --fs-body: 16px;  --lh-body: 24px;   /* corpo de texto */
+  --fs-small: 14px; --lh-small: 22px;  /* legendas, metadados */
+  --fs-xs: 12px;    --lh-xs: 20px;     /* tags, rótulos */
+}
+@media (max-width: 760px) {
+  :root {
+    --fs-hero: 56px; --lh-hero: 64px;
+    --fs-h1: 46px;   --lh-h1: 54px;
+    --fs-h2: 38px;   --lh-h2: 46px;
+    --fs-h3: 30px;   --lh-h3: 38px;
+    --fs-h5: 20px;   --lh-h5: 28px;
+    --fs-logo: 38px;
+    --fs-lead: 16px; --lh-lead: 24px;
+  }
+}

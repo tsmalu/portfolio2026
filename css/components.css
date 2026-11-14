@@ -1,0 +1,47 @@
+/* =========================================================
+   COMPONENTES COMPARTILHADOS
+   Estilos que se repetem entre páginas. Cada página cuida só do layout.
+   Depende de tokens.css e type.css.
+   ========================================================= */
+
+/* --- Pílula preenchida (tag de categoria) --- */
+.tag {
+  display: inline-flex; align-items: center;
+  font-size: var(--fs-xs); line-height: var(--lh-xs); font-weight: 500;
+  color: var(--color-on-dark); background: var(--color-fg);
+  padding: 0 var(--space-12); border-radius: var(--radius-pill);
+}
+
+/* --- Pílula contornada (chips do perfil, atalhos de seção) --- */
+.chip, .gd-index a {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  font-size: var(--fs-xs); line-height: var(--lh-xs); font-weight: 500;
+  color: var(--color-text); background: var(--color-surface);
+  padding: 0 var(--space-12);
+  border: 1.5px solid var(--color-border); border-radius: var(--radius-pill);
+  text-decoration: none;
+}
+.gd-index a:hover { border-color: var(--color-fg); color: var(--color-fg); }
+
+/* --- Link de ação ("Fale comigo", "Ver no Behance ↗", "Ver trabalhos →", "← Voltar") --- */
+.strong-link, .gd__be, .more-gd__cta, .back a {
+  font-weight: 700; color: var(--color-fg);
+  text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.strong-link:hover, .gd__be:hover, .back a:hover, .more-gd:hover .more-gd__cta { text-decoration-thickness: 2px; }
+
+/* --- Card base (projeto, destaque, link, nota) --- */
+.project, .more-gd, .linkcard, .fix {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-rest);
+}
+/* card que é link: sobe um pouco no hover */
+.project, .more-gd, .linkcard { transition: transform 260ms ease-out, box-shadow 260ms ease-out; }
+@media (hover: hover) {
+  a.project:hover, .project--link:hover, .more-gd:hover, .linkcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+}
+@media (prefers-reduced-motion: reduce) {
+  a.project:hover, .project--link:hover, .more-gd:hover, .linkcard:hover { transform: none; }
+}

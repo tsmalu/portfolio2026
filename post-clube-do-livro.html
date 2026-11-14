@@ -10,11 +10,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/type.css">
 <link rel="stylesheet" href="css/case.css">
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/components.css">
 <style>
-.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
 .list strong { color: var(--fg); font-weight: 600; }
 .lp-shot img { display: block; width: 100%; height: auto; }
 </style>
@@ -47,7 +50,7 @@
     </div>
   </section>
 
-  <section class="col block stack" aria-labelledby="projeto" style="padding-block-start: clamp(24px, 3vw, 40px)">
+  <section class="col block stack" aria-labelledby="projeto" style="padding-block-start: var(--space-fluid-32)">
     <h2 class="h2" id="projeto">Projeto</h2>
     <p>Criação de uma landing page para divulgar a primeira edição do Clube do Livro, promovido pela Revista Gama, com foco na conversão de inscrições.</p>
     <p>A edição tinha o tema "Leitura de Si" e curadoria da escritora Bianca Santana.</p>
