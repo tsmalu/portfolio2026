@@ -12,13 +12,13 @@
   window.addEventListener("pageshow", (e) => { if (e.persisted) toTop(); });
 
   const HEADER = {
-    brand: { label: "Malu", href: "./#top" },
+    brand: { label: "Malu", href: "/#top" },
     nav: [
-      { label: "projetos", href: "projetos.html" },
+      { label: "projetos", href: "/projetos.html" },
       { label: "contato", href: "https://wa.me/5511953552005?text=Ol%C3%A1%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.", external: true },
     ],
     navEn: [
-      { label: "projects", href: "projetos.html" },
+      { label: "projects", href: "/projetos.html" },
       { label: "contact", href: "https://wa.me/5511953552005?text=Hi%21%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20talk%20about%20a%20project.", external: true },
     ],
   };
