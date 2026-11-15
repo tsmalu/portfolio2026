@@ -21,7 +21,7 @@
   --fs-h5: 24px;    --lh-h5: 32px;     /* títulos pequenos (etapas, links) */
   --fs-logo: 46px;
   --fs-sub: 20px;   --lh-sub: 28px;    /* subtítulo em Montserrat */
-  --fs-lead: 20px;  --lh-lead: 28px;   /* texto de abertura e de cards */
+  --fs-lead: 16px;  --lh-lead: 24px;   /* texto de abertura e de cards */
   --fs-body: 16px;  --lh-body: 24px;   /* corpo de texto */
   --fs-small: 14px; --lh-small: 22px;  /* legendas, metadados */
   --fs-xs: 12px;    --lh-xs: 20px;     /* tags, rótulos */

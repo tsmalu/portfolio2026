@@ -44,6 +44,7 @@
    ========================================================= */
 *, *::before, *::after { box-sizing: border-box; }
 body {
+  margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
@@ -191,16 +192,23 @@ a { color: inherit; }
 @media (min-width: 1025px) and (max-width: 1279px) { .chips { flex-wrap: wrap; } }
 @media (max-width: 760px) {
   .chips { flex-wrap: wrap; }
-  /* card no celular: foto alinhada a nome + cargo; tags abaixo do bloco */
-  .profile { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--space-16); align-items: center; }
-  .profile > div { display: contents; }
-  .profile .avatar { grid-row: 1 / 3; }
-  .profile__name { grid-column: 2; grid-row: 1; align-self: end; }
-  .profile__role { grid-column: 2; grid-row: 2; align-self: start; }
-  .profile .chips { grid-column: 1 / -1; grid-row: 3; margin-top: var(--space-16); }
-  .role-sep { display: inline; }   /* celular: mantém "Product Designer | São Paulo, Brasil" */
-  .role-br { display: none; }
-  .hero__title { white-space: normal; text-wrap: balance; }
+  /* card no celular: foto ao lado de nome + cargo, sem tags */
+  .profile { gap: var(--space-16); }
+  .profile .chips { display: none; }
+  /* celular: sem o título "Projetos principais"; botão centralizado abaixo dos cards */
+  .projects .container { display: flex; flex-direction: column; }
+  .projects__grid { order: 1; }
+  .projects__head { order: 2; justify-content: center; margin: var(--space-32) 0 0; }
+  .projects__head .section__title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .services__grid { gap: var(--space-32); }   /* celular: itens mais próximos */
+  .service { gap: var(--space-8); }           /* título mais perto do texto */
+  .role-sep { display: none; }     /* celular: cargo e cidade em duas linhas */
+  .role-br { display: inline; }
+  .hero__grid { gap: var(--space-24); }   /* texto mais perto do card */
+  .card { gap: var(--space-24); }
+  .avatar { width: 64px; }
+  .profile__role { font-size: var(--fs-xs); line-height: var(--lh-xs); }
+  .hero { padding-top: var(--space-24); }   /* celular: título mais perto do header */
   .cursor { display: none; }   /* sem espaço ao lado do card no celular */
 }
 @media (prefers-reduced-motion: reduce) { .scroll-cue__line::after { animation: none; } }
@@ -220,23 +228,23 @@ const CONTENT = {
   ],
   hero: {
     title: "curiosidade por natureza",
-    lead: "Transformo problemas complexos em experiências digitais simples, eficientes e fáceis de usar, conectando estratégia, UX e interface para criar produtos que funcionam melhor para pessoas e negócios.",
+    lead: "Trabalho entre UX, interface e produto: entendo o problema, defino fluxos, priorizo com o time e acompanho a solução até a entrega.",
   },
   card: {
     name: "Malu Sousa",
     role: 'Product Designer<span class="role-sep"> | </span><br class="role-br">São Paulo, Brasil',
-    chips: ["Interface", "web design", "graphic design"],
-    bio: "Já trabalhei em diferentes contextos, de startups e consultorias a varejo e mobilidade, criando experiências para sites, apps, plataformas e produtos SaaS.",    cta: { prefix: "Tem um projeto em mente?", label: "Fale comigo", href: "https://wa.me/5511953552005?text=Ol%C3%A1%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." },
+    chips: ["interface", "UX/UI", "graphic design"],
+    bio: "B2B e B2C, web e mobile, em startups, consultoria, varejo e SaaS.",    cta: { prefix: "Tem um projeto em mente?", label: "Fale comigo", href: "https://wa.me/5511953552005?text=Ol%C3%A1%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." },
     cursorLabel: "Malu",
   },
   services: [
-    { title: "Product design", text: "Crio produtos digitais de ponta a ponta ao lado do negócio." },
-    { title: "UX/UI design", text: "Desenvolvo interfaces intuitivas e acessíveis com foco no usuário." },
-    { title: "Design systems", text: "Planejo e gerencio bibliotecas com padrões de design." },
+    { title: "Product design", text: "Discovery, priorização e histórias com critérios de aceite, junto de produto e tecnologia." },
+    { title: "UX/UI design", text: "Fluxos, protótipos e testes de usabilidade para interfaces web e mobile." },
+    { title: "Design systems", text: "Style guides, tokens e componentes para manter consistência entre telas e times." },
   ],
   projects: {
     title: "Projetos principais",
-    cta: { label: "Ver todos", href: "projetos.html" },
+    cta: { label: "Ver todos os projetos", href: "projetos.html" },
     items: [
       { title: "Design System e redesign de plataforma SaaS", href: "cases/cbrdoc-ds.html", text: "Criação do Design System com tokens e redesign dos fluxos principais, com IA para gerar variações de tela, protótipos e documentação.", img: "assets/projetos/cbrdoc-ds-capa-v5.jpg", alt: "" },
       { title: "Plataforma para gerenciar ações de ESG", href: "cases/esg.html", text: "Solução que ajuda empresas com ações ESG. O projeto inclui imersão, prototipação e testes de usabilidade.", img: "assets/projetos/esg-capa.jpg", alt: "Tela inicial da plataforma Conexão F, com diagnóstico, materialidade, gestão de objetivos e plano de ação" },
@@ -341,19 +349,18 @@ app.innerHTML = `
 `;
 
 
-// Título em uma linha: reduz a fonte até caber na largura da coluna (desktop/tablet)
+// Título em uma linha: reduz a fonte até caber na largura da coluna (todas as telas)
 const title = document.getElementById("hero-title");
 const fitTitle = () => {
   title.style.fontSize = ""; title.style.lineHeight = "";
-  if (window.matchMedia("(max-width: 760px)").matches) return;
   const box = title.parentElement.clientWidth;
   const base = parseFloat(getComputedStyle(title).fontSize);
   if (title.scrollWidth > box) {
-    // se não couber, desce para o próximo tamanho da escala (68 → 56 → 46 → 38)
+    // se não couber, desce para o próximo tamanho da escala (68 → 56 → 46 → 38 → 30 → 24)
     const fits = base * box / title.scrollWidth;
-    const step = [68, 56, 46, 38].find(s => s <= fits) || 38;
+    const step = [68, 56, 46, 38, 30, 24].find(s => s <= fits) || 24;
     title.style.fontSize = `${step}px`;
-    const lineHeights = { 68: 76, 56: 64, 46: 54, 38: 46 };
+    const lineHeights = { 68: 76, 56: 64, 46: 54, 38: 46, 30: 38, 24: 32 };
     title.style.lineHeight = lineHeights[step] + "px";
   }
 };

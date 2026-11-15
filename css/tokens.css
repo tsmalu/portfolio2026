@@ -63,3 +63,8 @@
   --wide: 1240px;                      /* área larga (imagens) */
   --maxw: 1440px;                      /* largura máxima */
 }
+
+/* margem lateral no celular */
+@media (max-width: 760px) {
+  :root { --gutter: var(--space-16); }
+}
