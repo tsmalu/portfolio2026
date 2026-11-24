@@ -29,6 +29,10 @@ redirect_from: /case-cbrdoc-ds.html
 <link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/components.css">
 <style>
+  /* Tela longa com altura fixa e rolagem */
+  .media--scroll { height: 580px; overflow-y: auto; overscroll-behavior: contain; }
+  .media--scroll img { display: block; width: 100%; height: auto; }
+  @media (max-width: 760px) { .media--scroll { height: 320px; } }
   /* Linha fina da abertura */
   .deck { margin: var(--space-8) 0 0; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--color-text); }
   /* Espaço reservado para imagens que ainda vão entrar */
@@ -461,8 +465,8 @@ redirect_from: /case-cbrdoc-ds.html
     </div>
     <div class="wide media-row">
       <figure style="margin: 0">
-        <div class="media"><img src="../assets/cbrdoc/meus-pedidos-claude.png" alt="Tela Meus pedidos gerada pelo Claude a partir do Design System: header da plataforma, cards de resumo por status, busca, abas Pedidos e Itens, filtros e tabela de pedidos com tags de status e paginação" width="1600" height="1100" loading="lazy"></div>
-        <figcaption class="tk-caption">Tela gerada pelo Claude a partir do DS, já com os componentes e tokens do produto.</figcaption>
+        <div class="media media--scroll" tabindex="0" aria-label="Home criada no Claude, role para ver a tela inteira"><img src="../assets/cbrdoc/home-claude.png" alt="Home da plataforma criada no Claude: saudação e busca, banner de novo recurso, visão geral de pedidos por status, uso do plano, sugestões, atalhos para os serviços, pedidos finalizados recentes e a Rede de Relacionamentos" width="1600" height="2031" loading="lazy"></div>
+        <figcaption class="tk-caption">Home criada no Claude a partir do DS, com os componentes, os tokens e o vocabulário do produto. Role a imagem para ver a tela inteira.</figcaption>
       </figure>
     </div>
     <div class="col stack media-row">
