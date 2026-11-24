@@ -30,7 +30,7 @@ redirect_from: /case-cbrdoc-ds.html
 <link rel="stylesheet" href="../css/components.css">
 <style>
   /* Linha fina da abertura */
-  .deck { margin: var(--space-8) 0 0; font-size: var(--fs-sub); line-height: var(--lh-sub); color: var(--color-text); }
+  .deck { margin: var(--space-8) 0 0; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--color-text); }
   /* Espaço reservado para imagens que ainda vão entrar */
   .slot { border: 1.5px dashed var(--line); border-radius: var(--radius-lg); background: var(--surface); min-height: 220px; display: grid; place-items: center; text-align: center; padding: var(--space-24); color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small); }
   .sub-h { margin: var(--space-12) 0 0; font-family: var(--font-body); font-weight: 700; font-size: var(--fs-sub); line-height: var(--lh-sub); color: var(--fg); }
@@ -448,12 +448,25 @@ redirect_from: /case-cbrdoc-ds.html
   <section class="block" aria-labelledby="ia">
     <div class="col stack">
       <h2 class="h2" id="ia">IA no processo</h2>
-      <p>A IA entrou depois que o DS existia, e foi o DS que a tornou útil. Com o Figma agent, construí no Claude um arquivo do Design System a partir do Figma. Assim, as telas geradas já saíam com os componentes e tokens do produto.</p>
+      <p>A IA entrou depois que o DS existia, e foi o DS que a tornou útil.</p>
+      <h4 class="sub-h">O Design System dentro do Claude</h4>
+      <p>O Figma e o Claude não estavam conectados, então eu fazia a ponte. Usei o Figma agent, a IA do próprio Figma, para levantar as informações do arquivo e para transformar as cores em tokens. Levei esse material para o Claude e montei lá o Design System: fundamentos, componentes, padrões de tela e a documentação de uso, seguindo a mesma lógica do Figma e do código (primitivo → semântico → componente).</p>
+      <p>As divergências encontradas no caminho, como cores que não batiam entre Figma e código, ficaram registradas para decisão, em vez de serem corrigidas em silêncio. Com isso, as telas geradas pelo Claude já saíam com os componentes, os tokens e o vocabulário do produto.</p>
+      <h4 class="sub-h">Como usei</h4>
       <ul class="list">
         <li><strong>Exploração:</strong> o Claude gerava alternativas de tela para comparar. As soluções vinham cruas, e a escolha do que evoluir e o refinamento ficavam comigo.</li>
         <li><strong>Protótipos navegáveis:</strong> para apresentar as soluções ao negócio e aos devs.</li>
         <li><strong>Documentação:</strong> specs, descrição do projeto e regras de estado. Eu passava o prompt, o Claude escrevia e eu revisava.</li>
       </ul>
+    </div>
+    <div class="wide media-row">
+      <figure style="margin: 0">
+        <div class="media"><img src="../assets/cbrdoc/meus-pedidos-claude.png" alt="Tela Meus pedidos gerada pelo Claude a partir do Design System: header da plataforma, cards de resumo por status, busca, abas Pedidos e Itens, filtros e tabela de pedidos com tags de status e paginação" width="1600" height="1100" loading="lazy"></div>
+        <figcaption class="tk-caption">Tela gerada pelo Claude a partir do DS, já com os componentes e tokens do produto.</figcaption>
+      </figure>
+    </div>
+    <div class="col stack media-row">
+      <p>O que continuou comigo: escolher entre as alternativas, aplicar as regras de negócio, refinar as telas e validar com o negócio e com os devs.</p>
     </div>
   </section>
 
