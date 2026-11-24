@@ -317,6 +317,7 @@ redirect_from: /case-cbrdoc-ds.html
       <h4 class="sub-h">Segunda versão: kits prontos</h4>
       <p>A primeira versão corrigiu a interface do fluxo. Na segunda, a plataforma passou a oferecer kits prontos para os usos mais comuns, como financiamento, terreno, crédito agrícola, ambiental e Tribunal de Justiça. O usuário pode usar um modelo como está ou personalizá-lo, sem selecionar documento por documento.</p>
       <p>Para definir os modelos, busquei o time de operação, que conhecia os pedidos mais frequentes dos clientes, e validei a seleção de documentos com a advogada da empresa.</p>
+      <p>Segundo o time de operação, os clientes passaram a usar os modelos prontos, e o de Financiamento foi o mais usado.</p>
     </div>
     <div class="wide media-row">
       <figure style="margin: 0">
@@ -477,11 +478,23 @@ redirect_from: /case-cbrdoc-ds.html
   <section class="block" aria-labelledby="resultado">
     <div class="col stack">
       <h2 class="h2" id="resultado">Resultado e aprendizados</h2>
+      <h4 class="sub-h">Resultado</h4>
       <ul class="list">
         <li>DS e redesign em produção, com os tokens adotados pelo time de desenvolvimento.</li>
         <li>Menos tarefas voltando do ambiente de teste por inconsistências visuais, com Figma e código usando as mesmas referências.</li>
-        <li>Os redesigns não foram testados com usuários. Os próximos indicadores a acompanhar seriam o tempo para montar um kit e o abandono na criação de pedido.</li>
+        <li>O redesign entrou nas histórias das funcionalidades, sem disputar o roadmap. Com as telas principais no padrão, os ajustes viraram pontuais.</li>
+        <li>Os clientes passaram a usar os kits prontos, com o de Financiamento como o mais usado, segundo o time de operação.</li>
+        <li>Com o DS no Claude, telas novas como a Home já nasceram dentro do padrão.</li>
       </ul>
+      <h4 class="sub-h">Aprendizados</h4>
+      <ul class="list">
+        <li><strong>Começar pelas cores:</strong> era onde a inconsistência mais aparecia, e resolver primeiro o problema mais visível ajudou o time a adotar o resto.</li>
+        <li><strong>Partir do código:</strong> os tokens foram adotados porque partiram do código, não só do Figma. A dev de front-end levantou as cores usadas no CSS, e a estrutura foi montada em cima disso.</li>
+        <li><strong>IA com sistema por trás:</strong> a IA rende quando tem um sistema por trás. Sem o DS, as telas geradas viriam genéricas.</li>
+        <li><strong>Acessibilidade:</strong> a proposta de ajuste de contraste não passou. Da próxima vez, levaria o argumento com o impacto para o usuário e para o negócio desde o início.</li>
+      </ul>
+      <h4 class="sub-h">Próximos passos</h4>
+      <p>Os redesigns não foram testados com usuários. Os próximos indicadores a acompanhar seriam o tempo para montar um kit e o abandono na criação de pedido.</p>
     </div>
   </section>
 
