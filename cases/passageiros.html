@@ -29,11 +29,46 @@ redirect_from: /case-passageiros.html
 <link rel="stylesheet" href="../css/footer.css">
 <link rel="stylesheet" href="../css/components.css">
 <style>
-.shots { display: flex; flex-direction: column; gap: 0; }
-.shots img { display: block; width: 100%; height: auto; }
-.list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
-.list strong { color: var(--fg); }
-.slot { border: 1.5px dashed var(--line); border-radius: var(--radius-lg); background: var(--surface); min-height: 260px; display: grid; place-items: center; text-align: center; padding: var(--space-24); color: var(--muted); font-size: var(--fs-small); line-height: var(--lh-small); }
+  .deck { margin: var(--space-8) 0 0; font-size: var(--fs-body); line-height: var(--lh-body); color: var(--color-text); }
+  .sub-h { margin: var(--space-12) 0 0; font-family: var(--font-body); font-weight: 700; font-size: var(--fs-sub); line-height: var(--lh-sub); color: var(--fg); }
+  .list { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: var(--space-8); }
+  .list strong { color: var(--fg); }
+
+  /* Cartões de texto (contexto, rodadas, etapas) */
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-fluid-24); }
+  .cards--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cards--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-12); }
+  .card-t { background: var(--surface); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); padding: var(--space-fluid-24); display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
+  .card-t p { margin: 0; font-size: var(--fs-small); line-height: var(--lh-small); }
+  .card-t .k { font-size: var(--fs-xs); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); line-height: var(--lh-xs); }
+  .card-t .n { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-h3); line-height: 1; color: var(--fg); }
+  .card-t .t { font-weight: 600; color: var(--fg); }
+  .card-t ul { margin: 0; padding-left: 1.1em; font-size: var(--fs-small); line-height: var(--lh-small); }
+  .card-t.is-loop { border-color: var(--fg); }
+  .loop-note { margin: var(--space-12) 0 0; font-size: var(--fs-small); line-height: var(--lh-small); color: var(--muted); }
+
+  /* Telas do app */
+  .screens { background: #F5F5F5; border-radius: 4px; padding: var(--space-fluid-32) var(--space-fluid-24); display: flex; justify-content: center; align-items: flex-start; flex-wrap: wrap; gap: var(--space-fluid-24); }
+  .screens figure { margin: 0; display: flex; flex-direction: column; gap: var(--space-8); width: clamp(140px, 17vw, 220px); min-width: 0; }
+  .screens figure.is-wide { width: clamp(220px, 26vw, 300px); }
+  .screens figure.is-lg { width: clamp(240px, 30vw, 360px); }
+  .screens img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgb(17 21 42 / .08); background: #fff; }
+  .screens img.bare { box-shadow: none; border-radius: 0; background: none; }
+  .screens figcaption { font-size: var(--fs-xs); line-height: var(--lh-xs); color: var(--muted); }
+  .screens figcaption strong { color: var(--fg); font-weight: 600; }
+  .screens .arrow { align-self: center; color: var(--muted); width: 32px; flex: none; }
+  .screens .arrow svg { display: block; width: 100%; height: auto; }
+
+  .quote { margin: 0; padding-left: var(--space-16); border-left: 3px solid var(--fg); font-style: italic; color: var(--fg); }
+  .quote cite { display: block; margin-top: var(--space-4, 4px); font-style: normal; font-size: var(--fs-xs); line-height: var(--lh-xs); color: var(--muted); }
+
+  @media (max-width: 900px) { .cards--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) {
+    .cards, .cards--2, .cards--5 { grid-template-columns: minmax(0, 1fr); }
+    .screens .arrow { display: none; }
+    .screens figure { width: calc(50% - var(--space-fluid-24) / 2); }
+    .screens figure.is-wide, .screens figure.is-lg { width: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -41,7 +76,6 @@ redirect_from: /case-passageiros.html
 <header id="site-header"></header>
 
 <main>
-  <!-- Abertura (template de case) -->
   <section class="col intro">
     <ol class="crumbs" aria-label="Você está em">
       <li><a href="../">Início</a></li>
@@ -55,134 +89,251 @@ redirect_from: /case-passageiros.html
         <li class="tag">Pesquisa</li>
         <li class="tag">Aplicativo</li>
       </ul>
+      <p class="deck">Redesenho da busca e do agendamento da viagem teste do Fretadão, aplicando a nova identidade da marca e testando cada tela com pessoas antes de implementar.</p>
       <div class="byline">
         <img src="../assets/profile.jpg" alt="" width="56" height="56">
         <div>
           <p class="byline__name"><strong>Malu Sousa</strong> · Designer</p>
-          <p class="byline__meta">Projeto feito para Fretadão · 2021</p>
+          <p class="byline__meta">Projeto feito para Fretadão</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="block" aria-labelledby="cliente" style="padding-block-start: var(--space-fluid-32)">
+  <!-- Contexto -->
+  <section class="block" aria-labelledby="contexto" style="padding-block-start: var(--space-fluid-32)">
     <div class="col stack">
-      <h2 class="h2" id="cliente">Cliente</h2>
-      <p>Fretadão é uma empresa de tecnologia voltada para a área de fretamento e oferece o serviço de planejamento, implantação e gestão da operação de fretado para colaboradores de empresas de médio e grande porte.</p>
-      <p>Meu primeiro projeto como designer de produtos no Fretadão foi redesenhar o aplicativo com a nova identidade visual que criei para a marca e torná-lo mais fácil de usar.</p>
+      <h2 class="h2" id="contexto">Contexto</h2>
+      <p>O Fretadão é uma plataforma onde o passageiro busca, experimenta e contrata um fretado para ir e voltar do trabalho. Meu primeiro projeto como designer de produtos na empresa foi redesenhar o aplicativo com a nova identidade visual que criei para a marca.</p>
     </div>
-  </section>
-
-  <section class="block" aria-labelledby="objetivos">
-    <div class="col stack">
-      <h2 class="h2" id="objetivos">Objetivos</h2>
-      <ul class="list">
-        <li>Redesenhar o aplicativo com a nova identidade visual;</li>
-        <li>Melhorar a experiência dos usuários;</li>
-        <li>Otimizar o aplicativo com as funções existentes;</li>
-        <li>Testar com usuários e analisar o funcionamento do novo layout.</li>
+    <div class="wide media-row">
+      <ul class="cards">
+        <li class="card-t"><p class="k">Problema</p><p>O app usava a identidade antiga, e as linhas pareciam todas iguais na busca. Faltavam as informações que permitem comparar uma com a outra.</p></li>
+        <li class="card-t"><p class="k">Papel</p><p>Única designer da empresa. Fiz a análise, o fluxo, os protótipos, o recrutamento, a condução e a análise dos testes. Decisões de escopo passavam pelo fundador.</p></li>
+        <li class="card-t"><p class="k">Resultado</p><p>Busca e agendamento redesenhados com a nova identidade e validados em duas rodadas de teste. Todas as mudanças deste case foram implementadas.</p></li>
       </ul>
     </div>
   </section>
 
+  <!-- Diagnóstico -->
+  <section class="block" aria-labelledby="antes">
+    <div class="col stack">
+      <h2 class="h2" id="antes">O app antes do redesenho</h2>
+      <p>Analisei o app tela por tela. Três pontos travavam a decisão do passageiro.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/antes-inicial.png" alt="Tela inicial do app antigo: logo do Fretadão, texto Para começar, escolha uma opção e os botões Já sou passageiro e Buscar fretado" width="1128" height="1768" loading="lazy"><figcaption><strong>Página inicial.</strong> Só um texto e dois botões. Quem baixava o app não entendia para que ele servia.</figcaption></figure>
+        <figure><img src="../assets/passageiros/v2/antes-busca.png" alt="Resultado de busca do app antigo: lista de linhas com nome longo, Tem vagas, descrição e botão Ver detalhes, todas com o mesmo formato" width="1134" height="2552" loading="lazy"><figcaption><strong>Resultado de busca.</strong> As linhas pareciam iguais e não dava para compará-las.</figcaption></figure>
+        <figure><img class="bare" src="../assets/passageiros/v2/antes-linha.png" alt="Detalhes da linha no app antigo: três telas sobrepostas mostrando comodidades, a lista de pontos de ida e a tabela de valores mensais" width="1404" height="3600" loading="lazy"><figcaption><strong>Detalhes da linha.</strong> Página longa, sem hierarquia, em que o importante se perdia.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Processo -->
   <section class="block" aria-labelledby="processo">
     <div class="col stack">
       <h2 class="h2" id="processo">Processo de design</h2>
+      <p>Depois da análise, o protótipo passou por duas rodadas de teste. Entre uma sessão e outra, eu ajustava as telas e testava de novo.</p>
     </div>
     <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/processo-de-design.png" alt="Processo de design: imersão, ideação, prototipação e validação, com prototipação e validação se repetindo." width="1400" height="415" loading="lazy"></div>
+      <ol class="cards cards--5">
+        <li class="card-t"><p class="k">01</p><p class="t">Análise do app</p><p>Tela por tela, e concorrentes de transporte e viagem</p></li>
+        <li class="card-t"><p class="k">02</p><p class="t">Fluxo e esboços</p><p>Fluxo do usuário e esboços das telas principais</p></li>
+        <li class="card-t is-loop"><p class="k">03</p><p class="t">Protótipo</p><p>Android, já com a nova identidade</p></li>
+        <li class="card-t is-loop"><p class="k">04</p><p class="t">Piloto interno</p><p>12 funcionários do Fretadão</p></li>
+        <li class="card-t is-loop"><p class="k">05</p><p class="t">Usuários reais</p><p>6 passageiros, sessões presenciais</p></li>
+      </ol>
+      <p class="loop-note">As etapas 03 a 05 se repetiram: ajustes nas telas entre as sessões.</p>
     </div>
   </section>
 
-  <section class="block" aria-labelledby="imersao">
+  <!-- Como testei -->
+  <section class="block" aria-labelledby="testes">
     <div class="col stack">
-      <h2 class="h2" id="imersao">Imersão</h2>
-      <h3 class="h3" style="margin-top: var(--space-16)">Análise dos concorrentes</h3>
-      <p>Há diversos sites e aplicativos de transporte no mercado, revisar esses produtos me ajudou a entender as estratégias que eles aplicam.</p>
-      <p><strong>Concorrentes diretos:</strong> oferecem serviços similares de fretados ou transporte rodoviário.</p>
-      <ul class="list">
-        <li>Viação Cometa</li>
-        <li>Buser</li>
-        <li>Clickbus</li>
-      </ul>
-      <p><strong>Concorrentes indiretos:</strong> soluções alternativas para mobilidade ou viagem.</p>
-      <ul class="list">
-        <li>Decolar</li>
-        <li>BlaBlaCar</li>
-        <li>Uber</li>
-      </ul>
-      <h3 class="h3" style="margin-top: var(--space-16)">Análise da interface</h3>
-      <p>Analisei tela por tela do aplicativo, para entender as funcionalidades, arquitetura, navegação e identificar pontos problemáticos e/ou de melhoria.</p>
+      <h2 class="h2" id="testes">Como testei</h2>
+      <p>Testei o protótipo Android em duas rodadas e iterei as telas entre as sessões.</p>
     </div>
     <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/analise-interface.png" alt="Prints do aplicativo anterior: tela inicial, busca de fretado, pontos da linha com valores e agendamento de viagem." width="1400" height="944" loading="lazy"></div>
+      <ul class="cards cards--2">
+        <li class="card-t"><p class="k">Rodada 1 · Piloto interno</p><p class="n">12</p><p class="t">Funcionários do Fretadão</p><p>10 recém-contratados e 2 antigos. O objetivo era achar erros e ajustar o protótipo antes de levá-lo a usuários.</p></li>
+        <li class="card-t"><p class="k">Rodada 2 · Usuários reais</p><p class="n">6</p><p class="t">Passageiros, em sessões presenciais</p><ul><li>3 tinham feito viagem teste</li><li>2 tinham agendado viagem teste</li><li>1 tinha buscado uma linha no site</li></ul><p>Recrutei quem buscava linhas com embarque ou desembarque na Barra Funda, onde ficava o escritório. As sessões duravam cerca de 20 minutos.</p></li>
+      </ul>
     </div>
     <div class="col stack" style="margin-top: var(--space-fluid-48)">
-      <p><strong>Página inicial:</strong> a primeira tela é muito simples, há apenas um texto e dois botões, quando baixamos um aplicativo novo, esperamos entender um pouco melhor sobre ele, ou até mesmo relembrar para que serve e porque o baixamos.</p>
-      <p><strong>Resultado de busca:</strong> olhando rapidamente, parece que todas as opções são iguais, é possível melhorar visualmente, organizar os dados nesta página, remover o que se repete e trazer mais informações sobre a linha, para que o usuário consiga diferenciar melhor as linhas para compará-las e então ver mais detalhes.</p>
-      <p><strong>Detalhes da linha:</strong> é uma página longa, as informações podem ser organizadas e divididas, assim será possível dar destaque para as informações mais importantes.</p>
-    </div>
-  </section>
-
-  <section class="block" aria-labelledby="ideacao">
-    <div class="col stack">
-      <h2 class="h2" id="ideacao">Ideação</h2>
-      <p>Depois de entender o problema e analisar cada ponto problemático, eu estava pronta para encontrar soluções.</p>
-      <h3 class="h3" style="margin-top: var(--space-16)">Fluxo do usuário</h3>
-      <p>Criei um fluxo sobre como os usuários vão navegar no novo app.</p>
+      <p><strong>Cenário:</strong> você mora na Barra Funda e vai começar a trabalhar numa empresa em Campinas, das 8h às 17h.</p>
+      <p><strong>Tarefa:</strong> encontre o fretado que melhor te atende.</p>
     </div>
     <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/passageiros-fluxo.png" alt="Fluxo de navegação do novo app: home, busca, listagem, detalhes, agendar viagem e resumo, com as informações de cada etapa." width="1400" height="785" loading="lazy"></div>
-    </div>
-    <div class="col stack" style="margin-top: var(--space-fluid-48)">
-      <h3 class="h3" style="margin-top: var(--space-16)">Esboços</h3>
-      <p>Comecei a desenhar as telas principais do app para ter uma ideia das informações.</p>
-    </div>
-    <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/passageiros-rascunhos.png" alt="Esboços em papel das telas principais: onboarding, escolha do fretado, detalhes da linha e escolha de datas." width="1400" height="793" loading="lazy"></div>
-    </div>
-    <div class="col stack" style="margin-top: var(--space-fluid-48)">
-      <h3 class="h3" style="margin-top: var(--space-16)">Refinamento</h3>
-      <p>Depois de alguns rascunhos queria explorar mais e comecei a desenhar no Adobe XD, comecei com layouts sem cores.</p>
-    </div>
-    <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/passageiros-refinamento.png" alt="Telas refinadas sem cor: onboarding, escolha do fretado de ida e detalhes da linha com o trajeto." width="1400" height="677" loading="lazy"></div>
-    </div>
-  </section>
-
-  <section class="block" aria-labelledby="prototipo">
-    <div class="col stack">
-      <h2 class="h2" id="prototipo">Prototipagem e teste de usabilidade</h2>
-      <p>Após alguns esboços, fiz a primeira versão do protótipo, já com elementos da nova identidade visual, adicionando mais informações à página de busca e separando melhor o conteúdo da página de detalhes da linha.</p>
-      <h3 class="h3" style="margin-top: var(--space-16)">Testes internos</h3>
-      <p>Realizei alguns testes de usabilidade internos, com funcionários da empresa, antigos e recém chegados, foi uma etapa crucial para validar minhas ideias e detectar erros antes de testar com usuários reais.</p>
-      <p>Alguns aprendizados e decisões de design que apliquei:</p>
-      <ul class="list">
-        <li>Os horários são informações muito importantes e devem ser evidenciados.</li>
-        <li>O tempo de caminhada estava confuso.</li>
-        <li>Normalmente a viagem de ida e volta é feita pela mesma linha de fretado, então a divisão entre “ida” e “volta” no fluxo é uma coisa nova e não foi bem aceita entre os participantes. Decidi esperar e ver se mais usuários teriam essa percepção antes de remover a funcionalidade.</li>
+      <ul class="cards">
+        <li class="card-t"><p class="n">13</p><p>participantes escolheram uma linha adequada</p></li>
+        <li class="card-t"><p class="n">3</p><p>escolheram uma linha ruim, todos nos primeiros testes</p></li>
+        <li class="card-t"><p class="n">6min38s</p><p>tempo médio para concluir a tarefa</p></li>
       </ul>
-      <h3 class="h3" style="margin-top: var(--space-16)">Testes externos</h3>
-      <p>Optei por testes presenciais e para que os participantes não tivessem que se deslocar de grandes distâncias, selecionei pessoas que estavam buscando por linhas que embarcavam ou desembarcavam no bairro da Barra Funda, que é onde está localizado o escritório do Fretadão, além de pessoas que estavam buscando por linhas, também recrutei quem havia feito uma viagem de teste recentemente.</p>
-      <p>Seis usuários foram convidados para conhecer nosso escritório e participar da pesquisa.</p>
-      <p>O teste tinha como objetivo identificar erros e verificar a compreensão dos usuários em relação às informações e funções do novo aplicativo.</p>
-      <p>Foram realizados testes de usabilidade em protótipos Android, com duração média de 20 minutos, observando aspectos de usabilidade e entendimento das funcionalidades.</p>
-      <p><strong>Cenário:</strong> imagine que você mora no bairro Barra Funda e vai começar a trabalhar em uma empresa em Campinas, com horário de entrada às 8h e saída às 17h.</p>
-      <p><strong>Tarefa:</strong> encontre um fretado que melhor te atenda nessas condições.</p>
-      <p>Nenhum usuário teve dificuldade em realizar a tarefa e os feedbacks foram muito importantes para adicionar informações, sanar dúvidas e fazer ajustes na interface.</p>
     </div>
   </section>
 
-  <section class="block" aria-labelledby="final">
+  <!-- Decisões -->
+  <section class="block" aria-labelledby="decisoes">
     <div class="col stack">
-      <h2 class="h2" id="final">Iterações e design final</h2>
-      <p>Depois de passar por várias iterações cheguei no design final, essas são as principais mudanças.</p>
+      <h2 class="h2" id="decisoes">Decisões a partir dos testes</h2>
+
+      <h3 class="h3" style="margin-top: var(--space-16)">Explicar o app antes de pedir qualquer coisa</h3>
+      <p>A nova primeira abertura apresenta o valor do serviço e as funcionalidades, com a nova identidade e uma ilustração do cenário de uso.</p>
     </div>
     <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/passageiros-pagina-inicial.gif" alt="Animação da nova página inicial do app, com a nova identidade visual, ilustração do cenário de uso e os botões Buscar fretado e Já sou passageiro." width="1200" height="800" loading="lazy"></div>
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/onboarding-1.png" alt="Onboarding 1: conforto, segurança e pontualidade" width="720" height="1416" loading="lazy"></figure>
+        <figure><img src="../assets/passageiros/v2/onboarding-2.png" alt="Onboarding 2: busque, encontre e experimente grátis" width="720" height="1416" loading="lazy"></figure>
+        <figure><img src="../assets/passageiros/v2/onboarding-3.png" alt="Onboarding 3: localize o fretado em tempo real" width="720" height="1416" loading="lazy"></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <blockquote class="quote">“Achei bonitinha essa página inicial, com mensagens explicativas.”<cite>Participante do teste</cite></blockquote>
+
+      <h3 class="h3" style="margin-top: var(--space-fluid-48)">Filtrar antes de buscar</h3>
+      <p>Perguntar o tipo de viagem, o trajeto e os horários antes de mostrar resultados transforma a busca numa conversa. A lista já chega filtrada pelo que a pessoa precisa.</p>
     </div>
     <div class="wide media-row">
-      <div class="media"><img src="../assets/passageiros/passageiros-pagina-filtros.gif" alt="Animação do filtro no início da busca, em que o usuário informa os endereços de origem e destino." width="1200" height="800" loading="lazy"></div>
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/filtro-1.png" alt="Tela Como será sua viagem? com as opções Ida e volta, Somente ida e Somente volta" width="1080" height="2124" loading="lazy"></figure>
+        <figure><img src="../assets/passageiros/v2/filtro-2.png" alt="Tela Defina seu trajeto com os campos de origem e destino" width="1080" height="2124" loading="lazy"></figure>
+        <figure><img src="../assets/passageiros/v2/filtro-3.png" alt="Tela Defina seus horários com o horário de chegada na ida e o de saída na volta" width="1080" height="2124" loading="lazy"></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <blockquote class="quote">“Achei interessante que as opções vão se adequando à minha necessidade.”<cite>Participante do teste</cite></blockquote>
+
+      <h3 class="h3" style="margin-top: var(--space-fluid-48)">O card que permite comparar linhas</h3>
+      <p>No teste, horário e tempo de caminhada foram o que as pessoas usaram para escolher entre linhas. O card passou por três iterações durante a pesquisa.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure class="is-wide"><img src="../assets/passageiros/v2/card-v1.png" alt="Card versão 1: horários de embarque e desembarque e caminhada em minutos" width="900" height="591" loading="lazy"><figcaption><strong>Versão 1</strong></figcaption></figure>
+        <figure class="is-wide"><img src="../assets/passageiros/v2/card-v2.png" alt="Card versão 2: horários de origem e destino adicionados, caminhada como número ao lado do ícone" width="900" height="591" loading="lazy"><figcaption><strong>Versão 2.</strong> Entraram os horários de saída de casa e de chegada ao destino, não só os do fretado. O tempo de caminhada virou um número ao lado do ícone.</figcaption></figure>
+        <figure class="is-wide"><img src="../assets/passageiros/v2/card-v3.png" alt="Card versão 3: rótulos Origem, Embarque, Desembarque e Destino" width="900" height="663" loading="lazy"><figcaption><strong>Versão 3.</strong> Cada horário ganhou um rótulo: origem, embarque, desembarque e destino. Os participantes tinham dúvidas sobre quais horários o card mostrava.</figcaption></figure>
+        <figure class="is-lg"><img src="../assets/passageiros/v2/card-final.png" alt="Card final com ida e volta, tempo de caminhada em minutos e rótulos em cada horário" width="1140" height="1017" loading="lazy"><figcaption><strong>Versão final.</strong> Metade dos participantes não entendeu o número sozinho ao lado do ícone de caminhada, e o “min” voltou. Ida e volta passaram a aparecer no mesmo card.</figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <blockquote class="quote">“É importante analisar quanto tempo vou caminhar, se vale a pena.”<cite>Participante do teste</cite></blockquote>
+
+      <h3 class="h3" style="margin-top: var(--space-fluid-48)">Uma linha para ir, outra para voltar</h3>
+      <p>O protótipo separava a busca em ida e volta, permitindo escolher uma linha diferente para cada trecho. Era uma novidade: normalmente o passageiro faz os dois trechos na mesma linha.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/busca-v1.png" alt="Primeira versão da busca: lista de linhas de ida" width="294" height="676" loading="lazy"><figcaption><strong>Versão 1.</strong> A separação não era percebida.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/busca-v2.png" alt="Segunda versão da busca: etapas Ida, Volta e Agendar no topo" width="387" height="691" loading="lazy"><figcaption><strong>Versão 2.</strong> Etapas no topo da tela.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/busca-v3.png" alt="Terceira versão da busca: abas Ida e Volta e título Escolha seu fretado de ida" width="375" height="582" loading="lazy"><figcaption><strong>Versão 3.</strong> Abas e título explícito.</figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <p><strong>Piloto interno:</strong> a separação foi mal recebida. Em vez de cortar com base em funcionários, decidi esperar a rodada com usuários reais.</p>
+      <p><strong>Usuários reais:</strong> depois das iterações, a maioria entendia a separação já na tela de ida, e o restante na de volta. A flexibilidade foi bem avaliada.</p>
+      <blockquote class="quote">“Eu tenho a opção de escolher um fretado diferente pra voltar, não tinha isso antes. Não me amarra com o horário da volta.”<cite>Participante do teste</cite></blockquote>
+      <p><strong>Decisão:</strong> com esses resultados, o fundador decidiu manter ida e volta juntas, como já funcionava, e rever a separação no futuro. A busca final mostra ida e volta da mesma linha num único card.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure class="is-wide"><img src="../assets/passageiros/v2/busca-final.png" alt="Busca final: cada card mostra ida e volta da mesma linha" width="371" height="870" loading="lazy"><figcaption><strong>Busca final</strong></figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <h3 class="h3" style="margin-top: var(--space-fluid-16)">O mapa sai do link e vai para o topo</h3>
+      <p>Só um participante clicou em “ver no mapa”, mas vários disseram que o mapa era essencial: queriam saber por onde caminhar até o ponto sem abrir outro app.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/linha-v1.png" alt="Primeira versão da tela da linha, com o mapa acessível só pelo link Ver no mapa" width="385" height="686" loading="lazy"><figcaption><strong>Antes.</strong> Mapa escondido num link.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/linha-v2.png" alt="Segunda versão da tela da linha, com o mapa no topo" width="376" height="661" loading="lazy"><figcaption><strong>Depois do teste.</strong> Mapa no topo.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/linha-final.png" alt="Tela final da linha: mapa no topo, abas Como ir e Como voltar e botão Agendar viagem de teste" width="373" height="711" loading="lazy"><figcaption><strong>Final.</strong> Abas de ida e volta e agendamento direto.</figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <blockquote class="quote">“Minha preocupação era por onde eu tinha que caminhar até o fretado, então tinha que ficar abrindo o Google Maps.”<cite>Participante do teste</cite></blockquote>
+
+      <h3 class="h3" style="margin-top: var(--space-fluid-48)">Destacar o ponto sugerido</h3>
+      <p>O itinerário era uma lista longa de endereços. A nova tela destaca o ponto de embarque sugerido e deixa a lista inteira a um toque, para quem embarca em outro lugar.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/itinerario-antes.gif" alt="Itinerário antigo: lista longa de endereços rolando" width="332" height="634" loading="lazy"><figcaption><strong>Antes.</strong> Lista completa de paradas.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/itinerario-depois.gif" alt="Novo itinerário: ponto sugerido em destaque e paradas recolhidas" width="322" height="652" loading="lazy"><figcaption><strong>Depois.</strong> Ponto sugerido em destaque, paradas recolhidas.</figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <blockquote class="quote">“Moro em Jundiaí, mas pego o fretado em outro lugar. Vou de moto até o ponto.”<cite>Participante do teste</cite></blockquote>
+
+      <h3 class="h3" style="margin-top: var(--space-fluid-48)">De modal para tela</h3>
+      <p>O pré-agendamento explica que o plano só é contratado depois da viagem teste. Como modal, os participantes ignoravam o texto e clicavam em OK.</p>
+      <p>Virou uma tela comum, sem o fundo competindo pela atenção, com o texto dividido em tópicos.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/preagendamento-modal.png" alt="Pré-agendamento como modal sobre a tela de cadastro" width="720" height="1407" loading="lazy"><figcaption><strong>Antes.</strong> Modal, texto corrido.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/preagendamento-tela.png" alt="Pré-agendamento como tela própria, com os próximos passos em tópicos" width="720" height="1407" loading="lazy"><figcaption><strong>Depois.</strong> Tela própria, próximos passos em tópicos.</figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <h3 class="h3" style="margin-top: var(--space-fluid-16)">Agendamento como checkout</h3>
+      <p>O agendamento passou a funcionar como um checkout, com uma barra de progresso mostrando quantas etapas faltam.</p>
+      <p>O cadastro foi para o início do fluxo. Assim a empresa captura o contato de quem demonstrou interesse e consegue medir o abandono antes da viagem teste.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/agendamento-v1.png" alt="Agendamento anterior, como terceira etapa da busca" width="494" height="897" loading="lazy"><figcaption><strong>Antes.</strong> Agendamento como última etapa da busca.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/agendamento-datas.png" alt="Novo agendamento com progresso Cadastro, Datas e Resumo" width="720" height="1406" loading="lazy"><figcaption><strong>Depois.</strong> Cadastro, datas e resumo, com progresso.</figcaption></figure>
+      </div>
+    </div>
+    <div class="col stack" style="margin-top: var(--space-fluid-32)">
+      <h3 class="h3" style="margin-top: var(--space-fluid-16)">Mostrar o custo da viagem teste, não do plano</h3>
+      <p>O resumo mostrava o valor total do plano, o que dava a sensação de já estar contratando. Passou a mostrar o valor da viagem teste, destacando que ela é gratuita.</p>
+      <p>Também ganhou os endereços dos pontos e a opção de alterá-los.</p>
+    </div>
+    <div class="wide media-row">
+      <div class="screens">
+        <figure><img src="../assets/passageiros/v2/resumo-v1.png" alt="Resumo anterior com o valor total do plano" width="381" height="665" loading="lazy"><figcaption><strong>Antes.</strong> Total do plano mensal.</figcaption></figure>
+        <span class="arrow" aria-hidden="true"><svg viewBox="0 0 44 12"><path d="M0 6h40m-6-5 6 5-6 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <figure><img src="../assets/passageiros/v2/resumo-final.png" alt="Resumo final com endereços, opção de alterar e preço da viagem gratuito" width="720" height="1460" loading="lazy"><figcaption><strong>Depois.</strong> Viagem teste grátis, pontos editáveis.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fechamento -->
+  <section class="block" aria-labelledby="fechamento">
+    <div class="col stack">
+      <h2 class="h2" id="fechamento">O que ficou e o que aprendi</h2>
+      <p>Tudo o que aparece neste case foi implementado.</p>
+
+      <h4 class="sub-h">O que acompanhar</h4>
+      <ul class="list">
+        <li><strong>Abandono antes da viagem teste:</strong> entre o cadastro e a viagem. O novo fluxo passou a permitir medir.</li>
+        <li><strong>Conversão em plano:</strong> quantas viagens teste viram contratação.</li>
+      </ul>
+
+      <h4 class="sub-h">Sugestões dos participantes, no backlog</h4>
+      <ul class="list">
+        <li>Usar a localização atual</li>
+        <li>Filtrar por menos caminhada</li>
+        <li>Escolher a poltrona</li>
+        <li>Plano para alguns dias por semana</li>
+      </ul>
+
+      <h4 class="sub-h">Aprendizados</h4>
+      <ul class="list">
+        <li><strong>Funcionários e usuários reagem diferente ao novo.</strong> A separação entre ida e volta foi rejeitada no piloto e bem avaliada por quem usa o serviço.</li>
+        <li><strong>O piloto interno compensa.</strong> Pegou erros de entendimento antes das sessões com usuários reais.</li>
+        <li><strong>Pedido e uso não contam a mesma história.</strong> O mapa foi apontado como essencial, mas só uma pessoa clicou no link.</li>
+        <li><strong>Texto em modal não é lido.</strong> Informação que muda a decisão precisa de espaço próprio.</li>
+      </ul>
     </div>
   </section>
 
